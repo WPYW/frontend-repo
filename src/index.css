@@ -1,0 +1,50 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+body {
+  min-height: 100vh;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+:root {
+  /* 폰트 두께 */
+  --base-text-weight-bold: 800;
+  --base-text-weight-semibold: 700;
+
+  /* 폰트 사이즈 */
+  --base-text-size-large: 1.6rem;
+  --base-text-size-medium: 1.2rem;
+  --base-text-size-normal: 1rem;
+
+  /* 폰트 컬러 */
+  --base-text-color-dark: rgb(255, 255, 255);
+  --base-text-color-light: rgb(0, 0, 0);
+
+  /* 폰트 컬러 hover */
+  --base-text-color-hover-dark: rgba(255, 255, 255, 0.5);
+  --base-text-color-hover-light: rgba(0, 0, 0, 0.5);
+
+  /* 배경색 */
+  --base-background-color-dark: rgb(15, 23, 42);
+  --base-background-color-light: rgb(255, 255, 255);
+}
