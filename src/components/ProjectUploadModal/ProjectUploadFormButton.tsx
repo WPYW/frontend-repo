@@ -18,7 +18,7 @@ export const ProjectUploadFormButton = ({ projectUploadForm }: ProjectUploadForm
   return (
     <SubmitButtonWrapper>
       <SubmitButton type="button" onClick={onSubmitHandler}>
-        제출
+        업로드
       </SubmitButton>
     </SubmitButtonWrapper>
   );
@@ -83,4 +83,12 @@ const SubmitButtonWrapper = styled.div`
 
 const SubmitButton = styled.button`
   border: 2px solid limegreen;
+
+  font-size: var(--base-text-size-large);
+
+  background-color: var(--toss-main-color-blue-2);
+
+  padding: 8px 16px 8px 16px;
+
+  border-radius: 8px;
 `;
