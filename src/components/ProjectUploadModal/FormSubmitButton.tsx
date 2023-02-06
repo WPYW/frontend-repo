@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { IProject } from './index.types';
 
-export const ProjectUploadFormButton = ({ projectUploadForm }: ProjectUploadFormButtonProps) => {
+export const FormSubmitButton = ({ projectUploadForm }: ProjectUploadFormButtonProps) => {
   const onSubmitHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 

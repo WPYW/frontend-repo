@@ -2,17 +2,16 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { IProject } from './index.types';
-import { ProjectUploadFormButton } from './ProjectUploadFormButton';
 
-export const ProjectUploadForm = () => {
-  const [projectUploadForm, setProjectUploadForm] = useState<IProject>({
-    projectTitle: '',
-    projectDescription: '',
-    projectLink: '',
-    demoSiteLink: '',
-    hashtagArr: [],
-  });
+interface ProjectUploadFormProps {
+  projectUploadForm: IProject;
+  setProjectUploadForm: React.Dispatch<React.SetStateAction<IProject>>;
+}
 
+export const ProjectUploadForm = ({
+  projectUploadForm,
+  setProjectUploadForm,
+}: ProjectUploadFormProps) => {
   const [hashtag, setHashtag] = useState('');
 
   const { projectTitle, projectDescription, projectLink, demoSiteLink, hashtagArr } =
@@ -98,7 +97,6 @@ export const ProjectUploadForm = () => {
           />
         </HashtagItemsWrapper>
       </FormInputWrapper>
-      <ProjectUploadFormButton projectUploadForm={projectUploadForm} />
     </FormWrapper>
   );
 };

@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import { ProjectUploadModal } from '@/components';
 
+import { useDispatch } from 'react-redux';
+import { modalOpen } from '@/RTK/slices/modalSlice';
+
 export default function App() {
-  const [modalOpen, setModalOpen] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const colorMode = window.localStorage.getItem('color_mode') || 'dark';
@@ -12,11 +15,8 @@ export default function App() {
 
   return (
     <div id="App" className="App" style={{ height: 3000 }}>
-      <button
-        onClick={() => setModalOpen((prev) => !prev)}
-        style={{ position: 'relative', zIndex: 1000 }}
-      >
-        프로젝트 모달 버튼
+      <button onClick={() => dispatch(modalOpen())} style={{ position: 'relative', zIndex: 1000 }}>
+        모달 열기
       </button>
       <button
         onClick={() => {
@@ -35,7 +35,7 @@ export default function App() {
         다크 모드 활성화
       </button>
 
-      <ProjectUploadModal isOpen={modalOpen} />
+      <ProjectUploadModal />
     </div>
   );
 }
