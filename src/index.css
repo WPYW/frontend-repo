@@ -28,23 +28,55 @@ a {
 
 :root {
   /* 폰트 두께 */
-  --base-text-weight-bold: 800;
-  --base-text-weight-semibold: 700;
+  --base-text-weight-normal: 400;
+  --base-text-weight-medium: 500;
+  --base-text-weight-semibold: 600;
+  --base-text-weight-bold: 700;
+  --base-text-weight-extrabold: 800;
 
   /* 폰트 사이즈 */
-  --base-text-size-large: 1.6rem;
-  --base-text-size-medium: 1.2rem;
+  --base-text-size-small: 0.75rem;
   --base-text-size-normal: 1rem;
+  --base-text-size-medium: 1.25rem;
+  --base-text-size-large: 1.5rem;
+  --base-text-size-xlarge: 2rem;
+  --base-text-size-2xlarge: 2.5rem;
 
   /* 폰트 컬러 */
   --base-text-color-dark: rgb(255, 255, 255);
-  --base-text-color-light: rgb(0, 0, 0);
-
-  /* 폰트 컬러 hover */
-  --base-text-color-hover-dark: rgba(255, 255, 255, 0.5);
-  --base-text-color-hover-light: rgba(0, 0, 0, 0.5);
+  --base-text-color-light: var(--toss-text-color-1);
 
   /* 배경색 */
   --base-background-color-dark: rgb(15, 23, 42);
   --base-background-color-light: rgb(255, 255, 255);
+
+  /* 토스 메인 컬러 */
+  --toss-main-color-blue-1: rgb(0, 100, 255);
+  --toss-main-color-blue-2: #4880ee;
+  --toss-main-color-blue-3: #83b4f9;
+
+  --toss-main-color-gray-1: rgb(32, 35, 50);
+  --toss-main-color-gray-2: #505866;
+  --toss-main-color-gray-3: #b1b8c0;
+
+  /* 토스 텍스트 컬러 */
+  --toss-text-color-1: #1a1e27;
+  --toss-text-color-2: #505866;
+  --toss-text-color-3: #b1b8c0;
+}
+
+body.dark {
+  --base-text-color: var(--base-text-color-dark);
+  --base-background-color: var(--base-background-color-dark);
+
+  color: var(--base-text-color);
+  background-color: var(--base-background-color);
+}
+
+body.light {
+  --base-text-color: var(--base-text-color-light);
+  --base-background-color: var(--base-background-color-light);
+
+  color: var(--base-text-color);
+  background-color: var(--base-background-color);
 }
