@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { IProject } from './index.types';
+import { IProject, IProjectUploadForm } from './index.types';
 
-export const FormSubmitButton = ({ projectUploadForm }: ProjectUploadFormButtonProps) => {
+const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_API_TOKEN;
+
+export function FormSubmitButton({ projectUploadForm }: IProjectUploadForm) {
   const onSubmitHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
@@ -16,13 +18,13 @@ export const FormSubmitButton = ({ projectUploadForm }: ProjectUploadFormButtonP
   };
 
   return (
-    <SubmitButtonWrapper>
-      <SubmitButton type="button" onClick={onSubmitHandler}>
+    <ButtonWrapper>
+      <Button type="button" onClick={onSubmitHandler}>
         업로드
-      </SubmitButton>
-    </SubmitButtonWrapper>
+      </Button>
+    </ButtonWrapper>
   );
-};
+}
 
 const uploadProject = (projectUploadForm: IProject) => {
   fetchEncodedReadme(projectUploadForm.projectLink)
@@ -71,17 +73,11 @@ function projectUploadFormValidationCheck(projectUploadForm: IProject) {
   if (projectUploadForm.projectLink === '') throw Error('깃허브 리포지토리을 입력해주세요');
 }
 
-const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_API_TOKEN;
-
-interface ProjectUploadFormButtonProps {
-  projectUploadForm: IProject;
-}
-
-const SubmitButtonWrapper = styled.div`
+const ButtonWrapper = styled.div`
   border: 2px solid limegreen;
 `;
 
-const SubmitButton = styled.button`
+const Button = styled.button`
   border: 2px solid limegreen;
 
   font-size: var(--base-text-size-large);

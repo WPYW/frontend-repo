@@ -8,13 +8,13 @@ export function ModalCloseButton() {
   const dispatch = useDispatch();
 
   return (
-    <ModalCloseButtonWrapper>
-      <CloseButton type="button" onClick={() => dispatch(modalClose())}>
+    <ButtonWrapper>
+      <Button type="button" onClick={() => dispatch(modalClose())}>
         닫기
-      </CloseButton>
-    </ModalCloseButtonWrapper>
+      </Button>
+    </ButtonWrapper>
   );
 }
 
-const ModalCloseButtonWrapper = styled.div``;
-const CloseButton = styled.button``;
+const ButtonWrapper = styled.div``;
+const Button = styled.button``;

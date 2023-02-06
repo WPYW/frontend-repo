@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { ProjectUploadForm } from './ProjectUploadForm';
-
 import type { RootState } from '@/RTK/stores/store';
 import { useSelector } from 'react-redux';
+
 import { IProject } from './index.types';
 
+import { ProjectUploadForm } from './ProjectUploadForm';
 import { FormSubmitButton } from './FormSubmitButton';
 import { ModalCloseButton } from './ModalCloseButton';
 
@@ -35,11 +35,7 @@ export function ProjectUploadModal() {
   );
 }
 
-interface ProjectUploadModalOverlayProps {
-  isOpen: boolean;
-}
-
-const ProjectUploadModalOverlay = styled.div<ProjectUploadModalOverlayProps>`
+const ProjectUploadModalOverlay = styled.div<{ isOpen: boolean }>`
   border: 2px solid limegreen;
 
   display: ${(props) => (props.isOpen ? 'flex' : 'none')};
