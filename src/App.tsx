@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { ProjectUploadModal } from '@/components';
+import { ProjectCardList, ProjectUploadModal } from '@/components';
 
 import { useDispatch } from 'react-redux';
 import { modalOpen } from '@/RTK/slices/modalSlice';
@@ -34,6 +34,8 @@ export default function App() {
       >
         다크 모드 활성화
       </button>
+
+      <ProjectCardList />
 
       <ProjectUploadModal />
     </div>
