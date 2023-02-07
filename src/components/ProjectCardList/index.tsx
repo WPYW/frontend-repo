@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useInfiniteQuery } from 'react-query';
 import styled from 'styled-components';
 
 interface IProject {
+  id: string;
   projectTitle: string;
   projectDescription: string;
   projectLink: string;
@@ -10,28 +12,47 @@ interface IProject {
 }
 
 export function ProjectCardList() {
-  const [projectList, setProjectList] = useState<IProject[]>([]);
-  useEffect(() => {
-    fetch('/project-list')
-      .then((res) => res.json())
-      .then((res) => setProjectList(() => [...res.projectList]));
-  }, []);
+  const { data, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, status } =
+    useInfiniteQuery(
+      'projectList',
+      ({ pageParam = 0 }) => fetch(`/project-list?cursor=${pageParam}`).then((res) => res.json()),
+      {
+        getNextPageParam: (lastPage) => {
+          return !lastPage.isLastPage ? lastPage.nextCursor : null;
+        },
+      },
+    );
 
-  return (
+  return status === 'loading' ? (
+    <div>로딩중</div>
+  ) : status === 'error' ? (
+    <div>error</div>
+  ) : (
     <CardListWrapper>
-      {projectList?.map((item, index) => (
-        <CardWrapper key={index}>
-          <ProjectTitleWrapper>{item.projectTitle}</ProjectTitleWrapper>
-          <ProjectDescriptionWrapper>{item.projectDescription}</ProjectDescriptionWrapper>
-          <ProjectLinkWrapper>{item.projectLink}</ProjectLinkWrapper>
-          <ProjectDemoSiteLinkWrapper>{item.demoSiteLink}</ProjectDemoSiteLinkWrapper>
-          <ProjectHashtagsWrapper>
-            {item.hashtagArr.map((item, index) => (
-              <HashtagWrapper key={index}>{item}</HashtagWrapper>
-            ))}
-          </ProjectHashtagsWrapper>
-        </CardWrapper>
-      ))}
+      <button
+        onClick={() => {
+          fetchNextPage();
+        }}
+        disabled={!hasNextPage || isFetchingNextPage}
+      >
+        {isFetchingNextPage ? '가져오는 중' : hasNextPage ? '더 가져오기' : '불러올게 없어요'}
+      </button>
+      <div>{isFetching && !isFetchingNextPage ? '가져오는중' : null}</div>
+      {data?.pages.map((group) =>
+        group.data.map((item: IProject, index: number) => (
+          <CardWrapper key={index}>
+            <ProjectTitleWrapper>{item.projectTitle}</ProjectTitleWrapper>
+            <ProjectDescriptionWrapper>{item.projectDescription}</ProjectDescriptionWrapper>
+            <ProjectLinkWrapper>{item.projectLink}</ProjectLinkWrapper>
+            <ProjectDemoSiteLinkWrapper>{item.demoSiteLink}</ProjectDemoSiteLinkWrapper>
+            <ProjectHashtagsWrapper>
+              {item.hashtagArr.map((item, index) => (
+                <HashtagWrapper key={index}>{item}</HashtagWrapper>
+              ))}
+            </ProjectHashtagsWrapper>
+          </CardWrapper>
+        )),
+      )}
     </CardListWrapper>
   );
 }
