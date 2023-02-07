@@ -1,19 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { IProject, IProjectUploadForm } from './index.types';
+import { IProject, IFormSubmitButton } from './index.types';
 
 const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_API_TOKEN;
 
-export function FormSubmitButton({ projectUploadForm }: IProjectUploadForm) {
-  const onSubmitHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+export function FormSubmitButton({ projectUploadForm }: IFormSubmitButton) {
+  const onSubmitHandler = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
     try {
       projectUploadFormValidationCheck(projectUploadForm);
-      uploadProject(projectUploadForm);
+      console.log(await uploadProject(projectUploadForm));
     } catch (err) {
       console.log(err);
+      return;
     }
   };
 
@@ -26,52 +27,44 @@ export function FormSubmitButton({ projectUploadForm }: IProjectUploadForm) {
   );
 }
 
-const uploadProject = (projectUploadForm: IProject) => {
-  fetchEncodedReadme(projectUploadForm.projectLink)
-    .then((encodedReadme) => encodedReadme && sendProjectToServer(projectUploadForm)) // 올바른 리포지토리 링크이면 프로젝트 업로드
-    .catch((err) => {
-      throw err;
-    });
+const uploadProject = async (projectUploadForm: IProject) => {
+  await fetchEncodedReadme(projectUploadForm.projectLink); // 존재하는 리포지토리인지 확인
+  return await sendProjectToServer(projectUploadForm); //올바른 리포지토리 링크이면 프로젝트 업로드
 };
 
-const fetchEncodedReadme = (projectLink: string) => {
+const fetchEncodedReadme = async (projectLink: string) => {
   const [repoOwner, repoName] = projectLink.replace('https://github.com/', '').split('/');
 
-  return fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/readme`, {
+  const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/readme`, {
     headers: {
       Authorization: `token ${GITHUB_TOKEN}`,
     },
-  })
-    .then((res) => {
-      if (res.status === 200) return res.json();
-      throw new Error(`리드미 패칭 에러 발생 코드 : ${res.status}`);
-    })
-    .then((res) => res.content)
-    .catch((err) => {
-      throw err;
-    });
+  });
+
+  if (response.status !== 200) throw new Error(`리드미 fetch 에러 발생 코드 : ${response.status}`);
 };
 
-const sendProjectToServer = (project: IProject) => {
-  return fetch('/project', {
-    method: 'POST',
-    body: JSON.stringify({ project: { ...project } }),
-  })
-    .then((res) => res.json())
-    .then((res) => {
-      console.log(JSON.parse(res));
+const sendProjectToServer = async (project: IProject) => {
+  const response = await (
+    await fetch('/project', {
+      method: 'POST',
+      body: JSON.stringify({ project: { ...project } }),
     })
-    .catch((err) => {
-      throw err;
+  )
+    .json()
+    .catch(() => {
+      throw new Error(`POST 에러 : Project 프로젝트 서버(${response.status})`);
     });
+
+  return JSON.parse(response);
 };
 
 // 유효성 검사 함수
-function projectUploadFormValidationCheck(projectUploadForm: IProject) {
+const projectUploadFormValidationCheck = (projectUploadForm: IProject) => {
   if (projectUploadForm.projectTitle === '') throw new Error('프로젝트 제목을 입력해주세요');
   if (projectUploadForm.projectDescription === '') throw Error('프로젝트 설명을 입력해주세요');
   if (projectUploadForm.projectLink === '') throw Error('깃허브 리포지토리을 입력해주세요');
-}
+};
 
 const ButtonWrapper = styled.div`
   border: 2px solid limegreen;
