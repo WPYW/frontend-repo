@@ -12,8 +12,10 @@ export interface IProjectUploadForm {
 }
 
 export interface IHashtagInput {
+  label: string;
   hashtagArr: string[];
   setProjectUploadForm: React.Dispatch<React.SetStateAction<IProject>>;
+  required?: boolean;
 }
 
 export interface IFormInput {
@@ -23,6 +25,7 @@ export interface IFormInput {
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   placeholder?: string;
   maxLength?: number;
+  required?: boolean;
 }
 
 export interface IFormSubmitButton {

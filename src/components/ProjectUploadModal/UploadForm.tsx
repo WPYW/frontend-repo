@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { IProjectUploadForm } from './index.types';
 
 import { FormInput } from './FormInput';
-import { HashtagInput } from './HashtagInput';
+import { HashtagFormInput } from './HashtagFormInput';
 
 export function UploadForm({ projectUploadForm, setProjectUploadForm }: IProjectUploadForm) {
   const { projectTitle, projectDescription, projectLink, demoSiteLink, hashtagArr } =
@@ -21,36 +21,43 @@ export function UploadForm({ projectUploadForm, setProjectUploadForm }: IProject
   return (
     <FormWrapper>
       <FormInput
-        label="프로젝트 제목"
+        label="프로젝트명"
         name="projectTitle"
         value={projectTitle}
         onChange={onChangeHandler}
-        placeholder="프로젝트 제목을 입력해주세요"
+        placeholder="예시 - WhatProjectYouWant"
+        required
       />
       <FormInput
-        label="프로젝트 설명"
+        label="프로젝트 간단 소개"
         name="projectDescription"
         value={projectDescription}
         onChange={onChangeHandler}
-        placeholder="프로젝트 설명을 입력해주세요"
+        placeholder="예시 - IT 프로젝트 공유 사이트"
         maxLength={50}
+        required
       />
       <FormInput
-        label="프로젝트 링크"
+        label="프로젝트 깃허브 링크"
         name="projectLink"
         value={projectLink}
         onChange={onChangeHandler}
-        placeholder="https://github.com/repoOwner/repoName"
+        placeholder="예시 - https://github.com/repoOwner/repoName"
         maxLength={50}
+        required
       />
       <FormInput
         label="데모사이트 링크"
         name="demoSiteLink"
         value={demoSiteLink}
         onChange={onChangeHandler}
-        placeholder="데모사이트 링크를 입력해주세요"
+        placeholder="예시 - https://wpyw.io"
       />
-      <HashtagInput hashtagArr={hashtagArr} setProjectUploadForm={setProjectUploadForm} />
+      <HashtagFormInput
+        label="해시태크 (최대 10개)"
+        hashtagArr={hashtagArr}
+        setProjectUploadForm={setProjectUploadForm}
+      />
     </FormWrapper>
   );
 }
