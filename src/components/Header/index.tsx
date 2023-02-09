@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { modalOpen } from '@/RTK/slices/modalSlice';
 
+import { ProjectUploadModal } from '@/components';
+
 export function Header() {
   const dispatch = useDispatch();
 
@@ -30,6 +32,7 @@ export function Header() {
         </ProjectUploadModalButton>
         <DarkModeButton onClick={DarkModeHandler}>다크 모드</DarkModeButton>
       </ButtonWrapper>
+      <ProjectUploadModal />
     </HeaderWrapper>
   );
 }
@@ -40,6 +43,9 @@ const HeaderWrapper = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  position: sticky;
+  top: 0;
 `;
 
 const HeaderLogoWrapper = styled.div`
