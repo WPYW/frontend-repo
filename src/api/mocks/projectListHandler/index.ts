@@ -26,6 +26,13 @@ export const projectListHandlers = [
       }),
     );
   }),
+  rest.get('/project/detail/:id', async (req, res, ctx) => {
+    await waitLikeServer(2000);
+
+    const id = Number(req.url.searchParams.get('id'));
+
+    return res(ctx.status(200), ctx.json({ data: projectList[id] }));
+  }),
 ];
 
 function waitLikeServer(time: number) {

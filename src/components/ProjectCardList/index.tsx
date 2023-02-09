@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useInfiniteQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { LoadingDots } from '../LoadingDots';
 
@@ -13,6 +14,8 @@ interface IProject {
 }
 
 export function ProjectCardList() {
+  const navigate = useNavigate();
+
   const { data, isFetching, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
     useInfiniteQuery(
       'projectList',
@@ -54,7 +57,7 @@ export function ProjectCardList() {
         <CardListWrapper>
           {data?.pages.map((group) =>
             group.data.map((item: IProject, index: number) => (
-              <CardWrapper key={index}>
+              <CardWrapper key={index + 1} onClick={() => navigate(`/project/detail/${index + 1}`)}>
                 <ProjectImageWrapper>
                   <ProjectImage src="/gallery.svg" alt="" />
                 </ProjectImageWrapper>
