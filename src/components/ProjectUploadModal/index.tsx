@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 import { IProject } from './index.types';
 
-import { ProjectUploadForm } from './ProjectUploadForm';
+import { UploadForm } from './UploadForm';
 import { FormSubmitButton } from './FormSubmitButton';
 import { ModalCloseButton } from './ModalCloseButton';
 import { ModalTitle } from './ModalTitle';
@@ -26,7 +26,7 @@ export function ProjectUploadModal() {
     <ProjectUploadModalOverlay isOpen={isOpen}>
       <ProjectUploadModalWrapper>
         <ModalTitle />
-        <ProjectUploadForm
+        <UploadForm
           projectUploadForm={projectUploadForm}
           setProjectUploadForm={setProjectUploadForm}
         />

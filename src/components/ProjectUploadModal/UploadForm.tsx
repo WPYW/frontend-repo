@@ -6,7 +6,7 @@ import { IProjectUploadForm } from './index.types';
 import { FormInput } from './FormInput';
 import { HashtagInput } from './HashtagInput';
 
-export function ProjectUploadForm({ projectUploadForm, setProjectUploadForm }: IProjectUploadForm) {
+export function UploadForm({ projectUploadForm, setProjectUploadForm }: IProjectUploadForm) {
   const { projectTitle, projectDescription, projectLink, demoSiteLink, hashtagArr } =
     projectUploadForm;
 
