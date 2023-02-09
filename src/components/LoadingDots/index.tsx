@@ -13,12 +13,9 @@ export function LoadingDots() {
 
 const LoadingDotsWrapper = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 16px;
-
-  margin-top: 100px;
 `;
 
 const bounce = keyframes`
