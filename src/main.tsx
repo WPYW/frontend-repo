@@ -11,6 +11,8 @@ import { worker } from '@/api/mocks/browser';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
+import { BrowserRouter as Router } from 'react-router-dom';
+
 if (process.env.NODE_ENV === 'development') {
   worker.start();
 }
@@ -21,7 +23,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   // <React.StrictMode>
   <Provider store={store}>
     <QueryClientProvider client={queryClient}>
-      <App />
+      <Router>
+        <App />
+      </Router>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </Provider>,
