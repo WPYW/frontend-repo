@@ -44,10 +44,15 @@ const ProjectUploadModalOverlay = styled.div<{ isOpen: boolean }>`
 
   padding: 32px;
 
-  position: sticky;
+  position: absolute;
   top: 0;
 
+  width: 100vw;
   height: 100vh;
+
+  backdrop-filter: blur(10px);
+
+  z-index: 1000;
 `;
 
 const ProjectUploadModalWrapper = styled.div`
@@ -61,4 +66,6 @@ const ProjectUploadModalWrapper = styled.div`
   width: 500px;
 
   padding: 32px;
+
+  background-color: black;
 `;
