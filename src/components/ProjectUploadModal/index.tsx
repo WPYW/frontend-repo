@@ -9,6 +9,7 @@ import { IProject } from './index.types';
 import { ProjectUploadForm } from './ProjectUploadForm';
 import { FormSubmitButton } from './FormSubmitButton';
 import { ModalCloseButton } from './ModalCloseButton';
+import { ModalTitle } from './ModalTitle';
 
 export function ProjectUploadModal() {
   const isOpen = useSelector((state: RootState) => state.modal.isOpen);
@@ -24,6 +25,7 @@ export function ProjectUploadModal() {
   return (
     <ProjectUploadModalOverlay isOpen={isOpen}>
       <ProjectUploadModalWrapper>
+        <ModalTitle />
         <ProjectUploadForm
           projectUploadForm={projectUploadForm}
           setProjectUploadForm={setProjectUploadForm}
@@ -67,5 +69,5 @@ const ProjectUploadModalWrapper = styled.div`
 
   padding: 32px;
 
-  background-color: black;
+  background-color: var(--base-background-color);
 `;
