@@ -41,6 +41,7 @@ a {
   --base-text-size-large: 1.5rem;
   --base-text-size-xlarge: 2rem;
   --base-text-size-2xlarge: 2.5rem;
+  --base-text-size-3xlarge: 3rem;
 
   /* 폰트 컬러 */
   --base-text-color-dark: rgb(255, 255, 255);
