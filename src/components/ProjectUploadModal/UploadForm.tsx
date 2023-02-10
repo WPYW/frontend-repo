@@ -5,10 +5,17 @@ import { IProjectUploadForm } from './index.types';
 
 import { FormInput } from './FormInput';
 import { HashtagFormInput } from './HashtagFormInput';
+import { ImageFormInput } from './ImageFormInput';
 
 export function UploadForm({ projectUploadForm, setProjectUploadForm }: IProjectUploadForm) {
-  const { projectTitle, projectDescription, projectLink, demoSiteLink, hashtagArr } =
-    projectUploadForm;
+  const {
+    projectTitle,
+    projectDescription,
+    projectLink,
+    demoSiteLink,
+    hashtagList,
+    thumbnailList,
+  } = projectUploadForm;
 
   // input onChange 핸들러
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,21 +62,25 @@ export function UploadForm({ projectUploadForm, setProjectUploadForm }: IProject
       />
       <HashtagFormInput
         label="해시태크 (최대 10개)"
-        hashtagArr={hashtagArr}
+        hashtagList={hashtagList}
         setProjectUploadForm={setProjectUploadForm}
+      />
+      <ImageFormInput
+        label="Thumbnail 이미지 (최대 3개)"
+        thumbnailList={thumbnailList}
+        setProjectUploadForm={setProjectUploadForm}
+        required
       />
     </FormWrapper>
   );
 }
 
 const FormWrapper = styled.form`
-  border: 2px solid limegreen;
-
   display: flex;
   flex-direction: column;
   gap: 16px;
 
-  width: 100%;
-
   padding: 16px;
+
+  width: 100%;
 `;

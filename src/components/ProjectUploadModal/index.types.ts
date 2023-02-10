@@ -3,19 +3,13 @@ export interface IProject {
   projectDescription: string;
   projectLink: string;
   demoSiteLink: string;
-  hashtagArr: string[];
+  hashtagList: string[];
+  thumbnailList: File[];
 }
 
 export interface IProjectUploadForm {
   projectUploadForm: IProject;
   setProjectUploadForm: React.Dispatch<React.SetStateAction<IProject>>;
-}
-
-export interface IHashtagInput {
-  label: string;
-  hashtagArr: string[];
-  setProjectUploadForm: React.Dispatch<React.SetStateAction<IProject>>;
-  required?: boolean;
 }
 
 export interface IFormInput {
@@ -25,6 +19,20 @@ export interface IFormInput {
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   placeholder?: string;
   maxLength?: number;
+  required?: boolean;
+}
+
+export interface IHashtagFormInput {
+  label: string;
+  hashtagList: string[];
+  setProjectUploadForm: React.Dispatch<React.SetStateAction<IProject>>;
+  required?: boolean;
+}
+
+export interface IImageFormInput {
+  label: string;
+  thumbnailList: File[];
+  setProjectUploadForm: React.Dispatch<React.SetStateAction<IProject>>;
   required?: boolean;
 }
 

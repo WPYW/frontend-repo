@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { IHashtagInput } from './index.types';
+import { IHashtagFormInput } from './index.types';
 
-export function HashtagFormInput({ hashtagArr, setProjectUploadForm, ...props }: IHashtagInput) {
+export function HashtagFormInput({
+  hashtagList,
+  setProjectUploadForm,
+  ...props
+}: IHashtagFormInput) {
   const [hashtag, setHashtag] = useState('');
 
   // input onChange 핸들러
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (hashtagArr.length >= 10) return;
+    if (hashtagList.length >= 10) return;
 
     const elementName = event.target.name;
     const elementValue = event.target.value;
@@ -20,16 +24,16 @@ export function HashtagFormInput({ hashtagArr, setProjectUploadForm, ...props }:
   const onAddHashtag = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (hashtag === '') return;
     if (event.key === 'Enter') {
-      setProjectUploadForm((prev) => ({ ...prev, hashtagArr: [...prev.hashtagArr, hashtag] }));
+      setProjectUploadForm((prev) => ({ ...prev, hashtagList: [...prev.hashtagList, hashtag] }));
       setHashtag('');
     }
   };
 
   // 해시태그 제거
   const onRemoveHashtag = (index: number) => {
-    const newHashtagArr = hashtagArr;
-    newHashtagArr.splice(index, 1);
-    setProjectUploadForm((prev) => ({ ...prev, hashtagArr: [...newHashtagArr] }));
+    const newHashtagList = hashtagList;
+    newHashtagList.splice(index, 1);
+    setProjectUploadForm((prev) => ({ ...prev, hashtagList: [...newHashtagList] }));
   };
 
   return (
@@ -39,7 +43,7 @@ export function HashtagFormInput({ hashtagArr, setProjectUploadForm, ...props }:
         <Label>{props.label}</Label>
       </LabelWrapper>
       <HashtagFormInputWrapper>
-        {hashtagArr.map((item, index) => (
+        {hashtagList?.map((item, index) => (
           <Hashtag key={index} onClick={() => onRemoveHashtag(index)}>
             {item}
           </Hashtag>
@@ -50,6 +54,9 @@ export function HashtagFormInput({ hashtagArr, setProjectUploadForm, ...props }:
           onChange={onChangeHandler}
           onKeyUp={onAddHashtag}
           placeholder="태그를 입력하세요"
+          spellCheck={false}
+          autoComplete="false"
+          {...props}
         />
       </HashtagFormInputWrapper>
     </HashTagFormInputContainer>
@@ -85,7 +92,7 @@ const Required = styled.div<{ required: boolean | undefined }>`
 const Label = styled.div`
   font-size: var(--base-text-size-small);
   font-weight: var(--base-text-weight-medium);
-  color: var(--base-text-color);
+  color: var(--project-upload-modal-hashtag-input-label-text-color);
 `;
 
 const HashtagFormInputWrapper = styled.div`
@@ -93,6 +100,8 @@ const HashtagFormInputWrapper = styled.div`
   flex-wrap: wrap;
   align-items: center;
   gap: 6px;
+
+  padding: 2px 8px;
 `;
 
 const Hashtag = styled.div`
@@ -112,8 +121,10 @@ const Hashtag = styled.div`
 `;
 
 const Input = styled.input`
+  all: unset;
+
   font-size: var(--base-text-size-small);
-  color: var(--base-text-color);
+  color: var(--project-upload-modal-hashtag-input-text-color);
 
   padding: 8px 8px 8px 8px;
 

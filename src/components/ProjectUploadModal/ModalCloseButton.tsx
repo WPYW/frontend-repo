@@ -9,12 +9,24 @@ export function ModalCloseButton() {
 
   return (
     <ButtonWrapper>
-      <Button type="button" onClick={() => dispatch(modalClose())}>
-        닫기
-      </Button>
+      <Button type="button" onClick={() => dispatch(modalClose())}></Button>
     </ButtonWrapper>
   );
 }
 
-const ButtonWrapper = styled.div``;
-const Button = styled.button``;
+const ButtonWrapper = styled.div`
+  position: absolute;
+  right: 30px;
+`;
+const Button = styled.button`
+  all: unset;
+
+  width: 20px;
+  height: 20px;
+
+  background-image: url('/close-x.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  cursor: pointer;
+`;

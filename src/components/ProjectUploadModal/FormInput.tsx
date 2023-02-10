@@ -56,18 +56,15 @@ const Required = styled.div<{ required: boolean | undefined }>`
 const Label = styled.label`
   font-size: var(--base-text-size-small);
   font-weight: var(--base-text-weight-medium);
-  color: var(--base-text-color);
+  color: var(--project-upload-modal-input-label-text-color);
 `;
 
 const Input = styled.input`
+  all: unset;
   font-size: var(--base-text-size-small);
-  color: var(--base-text-color);
+  color: var(--project-upload-modal-input-text-color);
 
   padding: 8px 8px 8px 8px;
-
-  border: none;
-
-  outline: none;
 `;
 
 const InputDescription = styled.div`

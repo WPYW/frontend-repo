@@ -19,32 +19,29 @@ export function ProjectUploadModal() {
     projectDescription: '',
     projectLink: '',
     demoSiteLink: '',
-    hashtagArr: [],
+    hashtagList: [],
+    thumbnailList: [],
   });
 
   return (
     <ProjectUploadModalOverlay isOpen={isOpen}>
       <ProjectUploadModalWrapper>
+        <ModalCloseButton />
         <ModalTitle />
         <UploadForm
           projectUploadForm={projectUploadForm}
           setProjectUploadForm={setProjectUploadForm}
         />
         <FormSubmitButton projectUploadForm={projectUploadForm} />
-        <ModalCloseButton />
       </ProjectUploadModalWrapper>
     </ProjectUploadModalOverlay>
   );
 }
 
 const ProjectUploadModalOverlay = styled.div<{ isOpen: boolean }>`
-  border: 2px solid limegreen;
-
   display: ${(props) => (props.isOpen ? 'flex' : 'none')};
   align-items: center;
   justify-content: center;
-
-  padding: 32px;
 
   position: absolute;
   top: 0;
@@ -53,21 +50,24 @@ const ProjectUploadModalOverlay = styled.div<{ isOpen: boolean }>`
   height: 100vh;
 
   backdrop-filter: blur(10px);
-
-  z-index: 1000;
 `;
 
 const ProjectUploadModalWrapper = styled.div`
-  border: 2px solid limegreen;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 20px;
 
-  width: 500px;
+  position: relative;
 
   padding: 32px;
 
+  border-radius: 12px;
+
   background-color: var(--base-background-color);
+
+  width: 600px;
+  max-height: 80vh;
+
+  overflow: scroll;
 `;

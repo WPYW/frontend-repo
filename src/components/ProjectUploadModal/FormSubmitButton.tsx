@@ -64,20 +64,23 @@ const projectUploadFormValidationCheck = (projectUploadForm: IProject) => {
   if (projectUploadForm.projectTitle === '') throw new Error('프로젝트 제목을 입력해주세요');
   if (projectUploadForm.projectDescription === '') throw Error('프로젝트 설명을 입력해주세요');
   if (projectUploadForm.projectLink === '') throw Error('깃허브 리포지토리을 입력해주세요');
+  if (projectUploadForm.thumbnailList.length === 0) throw Error('섬네일 이미지를 업로드해주세요');
 };
 
-const ButtonWrapper = styled.div`
-  border: 2px solid limegreen;
-`;
+const ButtonWrapper = styled.div``;
 
 const Button = styled.button`
-  border: 2px solid limegreen;
+  font-size: var(--base-text-size-normal);
 
-  font-size: var(--base-text-size-large);
+  background-color: var(--project-upload-modal-submit-button-background-color);
+  color: var(--project-upload-modal-submit-button-text-color);
 
-  background-color: var(--toss-main-color-blue-2);
+  border: 2px solid;
+  border-color: var(--project-upload-modal-submit-button-border-color);
 
-  padding: 8px 16px 8px 16px;
+  padding: 8px 32px 8px 32px;
 
   border-radius: 8px;
+
+  cursor: pointer;
 `;
