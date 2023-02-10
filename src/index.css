@@ -77,6 +77,11 @@ body.dark {
   color: var(--base-text-color);
   background-color: var(--base-background-color);
 
+  --header-background-color: var(--base-background-color-dark);
+
+  --dark-mode-toggle-border-color: var(--main-color-orange);
+  --dark-mode-toggle-background-color: var(--main-color-orange);
+
   --project-upload-modal-title-color: var(--main-color-orange);
   --project-upload-modal-subtitle-color: #dedede;
 
@@ -105,6 +110,11 @@ body.light {
 
   color: var(--base-text-color);
   background-color: var(--base-background-color);
+
+  --header-background-color: var(--base-background-color-light);
+
+  --dark-mode-toggle-border-color: var(--main-color-orange);
+  --dark-mode-toggle-background-color: var(--main-color-orange);
 
   --project-upload-modal-title-color: var(--main-color-orange);
   --project-upload-modal-subtitle-color: #656565;
