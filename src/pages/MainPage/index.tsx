@@ -3,19 +3,29 @@ import styled from 'styled-components';
 
 import { ProjectCardList } from '@/components';
 
+import { useDispatch } from 'react-redux';
+import { modalOpen } from '@/RTK/slices/modalSlice';
+
+import { ReactComponent as DescriptionImage } from '@/assets/main-page-image.svg';
+
 export function MainPage() {
+  const dispatch = useDispatch();
+
   return (
     <MainPageWrapper>
       <DescriptionWrapper>
-        <DescribtionImageWrapper>
-          <DescribtionImage src="/DescribtionImage.svg" alt="" />
-        </DescribtionImageWrapper>
-        <DescriptionSubWrapper>
-          <DescribtionTitle>What Project You Want?</DescribtionTitle>
-          <DescribtionSubTitle>
+        <DescriptionImageWrapper>
+          <DescriptionImage style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        </DescriptionImageWrapper>
+        <DescriptionTitleWrapper>
+          <DescriptionTitle>What Project You Want?</DescriptionTitle>
+          <DescriptionSubTitle>
             프로젝트를 같이 진행하려는 팀원을 찾지 못해 고민중이신가요?
-          </DescribtionSubTitle>
-        </DescriptionSubWrapper>
+          </DescriptionSubTitle>
+          <ModalButtonWrapper>
+            <ModalButton onClick={() => dispatch(modalOpen())}>프로젝트 공유</ModalButton>
+          </ModalButtonWrapper>
+        </DescriptionTitleWrapper>
       </DescriptionWrapper>
       <ProjectCardList />
     </MainPageWrapper>
@@ -23,44 +33,30 @@ export function MainPage() {
 }
 
 const MainPageWrapper = styled.div`
-  border: 2px solid limegreen;
-
   display: flex;
   flex-direction: column;
 `;
 
 const DescriptionWrapper = styled.article`
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 50px;
 
   padding: 60px;
 
-  background-color: #fdc2be;
-
-  /* Small devices (portrait tablets and large phones, 600px and up) */
   @media only screen and (max-width: 1200px) {
     flex-direction: column;
-    align-items: center;
   }
 `;
 
-const DescribtionImageWrapper = styled.div`
-  width: 400px;
-  height: 400px;
-  object-fit: contain;
-
-  @media only screen and (max-width: 900px) {
+const DescriptionImageWrapper = styled.div`
+  @media only screen and (max-width: 1200px) {
     width: 300px;
     height: 300px;
   }
 `;
 
-const DescribtionImage = styled.img`
-  max-height: 100%;
-`;
-
-const DescriptionSubWrapper = styled.div`
+const DescriptionTitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -69,25 +65,20 @@ const DescriptionSubWrapper = styled.div`
   text-align: center;
 `;
 
-const DescribtionTitle = styled.h1`
-  font-weight: var(--base-text-weight-extrabold);
+const DescriptionTitle = styled.h1`
+  font-weight: var(--base-text-weight-2extrabold);
   font-size: var(--base-text-size-3xlarge);
-
-  text-shadow: 4px 5px 4px rgba(0, 0, 0, 0.25);
-
-  color: #ffffff;
+  color: var(--mainpage-title-text-color);
 `;
 
-const DescribtionSubTitle = styled.h2`
+const DescriptionSubTitle = styled.h2`
   font-weight: var(--base-text-weight-bold);
   font-size: var(--base-text-size-large);
-
-  white-space: pre-wrap;
+  color: var(--mainpage-subtitle-text-color);
 
   display: flex;
   flex-direction: column;
-
-  color: #000000;
+  gap: 10px;
 
   &::before {
     content: '포트폴리오를 편하게 등록할 수 있는 사이트를 찾으시나요?';
@@ -96,4 +87,22 @@ const DescribtionSubTitle = styled.h2`
   &::after {
     content: 'WPYW가 당신의 고민을 해결해드립니다!';
   }
+`;
+
+const ModalButtonWrapper = styled.div``;
+
+const ModalButton = styled.button`
+  all: unset;
+
+  font-weight: var(--base-text-weight-bold);
+  font-size: var(--base-text-size-large);
+  color: var(--mainpage-modal-button-text-color);
+
+  border: 4px solid;
+  border-color: var(--mainpage-modal-button-border-color);
+  border-radius: 8px;
+
+  width: 100%;
+
+  padding: 12px 0px;
 `;

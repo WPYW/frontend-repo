@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { css, keyframes } from 'styled-components';
 
-import { useDispatch } from 'react-redux';
-import { modalOpen } from '@/RTK/slices/modalSlice';
-
 import { ProjectUploadModal } from '@/components';
 
 import { ReactComponent as HeaderLogoLight } from '@/assets/logo-light.svg';
@@ -17,8 +14,6 @@ import { ReactComponent as DarkSun } from '@/assets/dark-mode-sun.svg';
 import { ReactComponent as DarkMoon } from '@/assets/dark-mode-moon.svg';
 
 export function Header() {
-  const dispatch = useDispatch();
-
   const [mode, setMode] = useState('');
 
   useEffect(() => {
@@ -49,9 +44,6 @@ export function Header() {
           {mode === 'dark' && <HeaderLogodark />}
         </HeaderLogoWrapper>
       </Link>
-      {/* <ProjectUploadModalButton onClick={() => dispatch(modalOpen())}>
-          링크 등록
-        </ProjectUploadModalButton> */}
       <DarkModeToggleWrapper onClick={DarkModeHandler} data-mode={mode}>
         <DarkModeToggleSunWrapper>
           {mode === 'light' && (
@@ -90,12 +82,6 @@ const HeaderWrapper = styled.header`
 
 const HeaderLogoWrapper = styled.div`
   padding: 8px;
-`;
-
-const ProjectUploadModalButton = styled.button`
-  border: 2px solid limegreen;
-
-  background: none;
 `;
 
 const LightToDark = keyframes`

@@ -33,6 +33,7 @@ a {
   --base-text-weight-semibold: 600;
   --base-text-weight-bold: 700;
   --base-text-weight-extrabold: 800;
+  --base-text-weight-2extrabold: 800;
 
   /* 폰트 사이즈 */
   --base-text-size-xsmall: 0.5rem;
@@ -70,6 +71,44 @@ a {
   --main-color-orange: #ff9b25;
 }
 
+body.light {
+  --base-text-color: var(--base-text-color-light);
+  --base-background-color: var(--base-background-color-light);
+
+  color: var(--base-text-color);
+  background-color: var(--base-background-color);
+
+  --header-background-color: var(--base-background-color-light);
+
+  --dark-mode-toggle-border-color: var(--main-color-orange);
+  --dark-mode-toggle-background-color: var(--main-color-orange);
+
+  --project-upload-modal-title-color: var(--main-color-orange);
+  --project-upload-modal-subtitle-color: #656565;
+
+  --project-upload-modal-input-label-text-color: var(--base-text-color-light);
+  --project-upload-modal-input-text-color: var(--base-text-color-light);
+  --project-upload-modal-input-underline-color: var(--main-color-orange);
+  --project-upload-modal-input-required-color: #ff0000;
+
+  --project-upload-modal-hashtag-background-color: var(--main-color-orange);
+  --project-upload-modal-hashtag-text-color: #f7f7f8;
+
+  --project-upload-modal-image-input-label-text-color: var(--base-text-color-light);
+  --project-upload-modal-image-input-wrapper-background-color: #f6f6f6;
+  --project-upload-modal-image-input-wrapper-text-color: var(--main-color-orange);
+
+  --project-upload-modal-submit-button-background-color: var(--base-background-color-light);
+  --project-upload-modal-submit-button-text-color: var(--main-color-orange);
+  --project-upload-modal-submit-button-border-color: var(--main-color-orange);
+
+  --mainpage-title-text-color: var(--main-color-orange);
+  --mainpage-subtitle-text-color: #747474;
+
+  --mainpage-modal-button-text-color: var(--main-color-orange);
+  --mainpage-modal-button-border-color: var(--main-color-orange);
+}
+
 body.dark {
   --base-text-color: var(--base-text-color-dark);
   --base-background-color: var(--base-background-color-dark);
@@ -102,36 +141,10 @@ body.dark {
   --project-upload-modal-submit-button-background-color: var(--base-background-color-dark);
   --project-upload-modal-submit-button-text-color: var(--main-color-orange);
   --project-upload-modal-submit-button-border-color: var(--main-color-orange);
-}
 
-body.light {
-  --base-text-color: var(--base-text-color-light);
-  --base-background-color: var(--base-background-color-light);
+  --mainpage-title-text-color: var(--main-color-orange);
+  --mainpage-subtitle-text-color: #DEDEDE;
 
-  color: var(--base-text-color);
-  background-color: var(--base-background-color);
-
-  --header-background-color: var(--base-background-color-light);
-
-  --dark-mode-toggle-border-color: var(--main-color-orange);
-  --dark-mode-toggle-background-color: var(--main-color-orange);
-
-  --project-upload-modal-title-color: var(--main-color-orange);
-  --project-upload-modal-subtitle-color: #656565;
-
-  --project-upload-modal-input-label-text-color: var(--base-text-color-light);
-  --project-upload-modal-input-text-color: var(--base-text-color-light);
-  --project-upload-modal-input-underline-color: var(--main-color-orange);
-  --project-upload-modal-input-required-color: #ff0000;
-
-  --project-upload-modal-hashtag-background-color: var(--main-color-orange);
-  --project-upload-modal-hashtag-text-color: #f7f7f8;
-
-  --project-upload-modal-image-input-label-text-color: var(--base-text-color-light);
-  --project-upload-modal-image-input-wrapper-background-color: #f6f6f6;
-  --project-upload-modal-image-input-wrapper-text-color: var(--main-color-orange);
-
-  --project-upload-modal-submit-button-background-color: var(--base-background-color-light);
-  --project-upload-modal-submit-button-text-color: var(--main-color-orange);
-  --project-upload-modal-submit-button-border-color: var(--main-color-orange);
+  --mainpage-modal-button-text-color: var(--main-color-orange);
+  --mainpage-modal-button-border-color: var(--main-color-orange);
 }
