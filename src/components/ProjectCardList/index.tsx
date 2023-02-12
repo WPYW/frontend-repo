@@ -94,9 +94,12 @@ export function ProjectCardList() {
                     <ProjectTitle>{item.projectTitle}</ProjectTitle>
                     <ProjectDescription>{item.projectDescription}</ProjectDescription>
                     <ProjectHashtagsWrapper>
-                      {item.projectHashtags.map((item, index) => (
-                        <Hashtag key={index}>{item}</Hashtag>
-                      ))}
+                      {item.projectHashtags.map((item, index) => {
+                        if (index < 3) return <Hashtag key={index}>{item}</Hashtag>;
+                      })}
+                      {item.projectHashtags.length > 3 && (
+                        <Hashtag>{`+ ${item.projectHashtags.length - 3}`}</Hashtag>
+                      )}
                     </ProjectHashtagsWrapper>
                   </ProjectInfoWrapper>
                 </CardWrapper>
@@ -176,6 +179,8 @@ const ProjectInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+
+  height: 50%;
 `;
 
 const ProjectTitle = styled.h1`
@@ -185,13 +190,12 @@ const ProjectTitle = styled.h1`
 `;
 
 const ProjectDescription = styled.p`
+  flex: 0 1 30%;
+
   font-weight: var(--base-text-weight-normal);
   font-size: var(--base-text-size-medium);
 
-  display: block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow: scroll;
 `;
 
 const ProjectHashtagsWrapper = styled.div`
