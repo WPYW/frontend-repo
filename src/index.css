@@ -107,6 +107,16 @@ body.light {
 
   --mainpage-modal-button-text-color: var(--main-color-orange);
   --mainpage-modal-button-border-color: var(--main-color-orange);
+
+  --mainpage-navigation-bar-item-background-color: var(--main-color-orange);
+  --mainpage-navigation-bar-item-text-color: #ffffff;
+
+  --mainpage-cardlist-title-text-color: var(--main-color-orange);
+
+  --mainpage-cardlist-description-text-color: var(--base-text-color-light);
+
+  --mainpage-cardlist-hashtag-text-color: #ffffff;
+  --mainpage-cardlist-hashtag-background-color: var(--main-color-orange);
 }
 
 body.dark {
@@ -143,8 +153,18 @@ body.dark {
   --project-upload-modal-submit-button-border-color: var(--main-color-orange);
 
   --mainpage-title-text-color: var(--main-color-orange);
-  --mainpage-subtitle-text-color: #DEDEDE;
+  --mainpage-subtitle-text-color: #dedede;
 
   --mainpage-modal-button-text-color: var(--main-color-orange);
   --mainpage-modal-button-border-color: var(--main-color-orange);
+
+  --mainpage-navigation-bar-item-background-color: var(--main-color-orange);
+  --mainpage-navigation-bar-item-text-color: #343434;
+
+  --mainpage-cardlist-title-text-color: var(--main-color-orange);
+
+  --mainpage-cardlist-description-text-color: #f2f2f2;
+
+  --mainpage-cardlist-hashtag-text-color: #343434;
+  --mainpage-cardlist-hashtag-background-color: var(--main-color-orange);
 }

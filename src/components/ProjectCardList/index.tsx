@@ -1,26 +1,37 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+
+import { BACKEND_API_URL } from '@/common/url';
 import { useInfiniteQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { LoadingDots } from '../LoadingDots';
+import { Carousel } from './Carousel';
 
 interface IProject {
-  id: string;
   projectTitle: string;
   projectDescription: string;
-  projectLink: string;
-  demoSiteLink: string;
-  hashtagArr: string[];
+  projectHashtags: string[];
+  projectImages: string[];
+}
+
+interface IParams {
+  type: string;
+  search: string;
+  page: number;
 }
 
 export function ProjectCardList() {
   const navigate = useNavigate();
 
+  const [params, setParams] = useState<IParams>({ type: 'latest', search: '', page: 1 });
+
   const { data, isFetching, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
     useInfiniteQuery(
       'projectList',
       ({ pageParam = 1 }) =>
-        fetch(`/project-list?page=${pageParam}`)
+        fetch(
+          `${BACKEND_API_URL}/projects?type=${params.type}&search=${params.search}&page=${pageParam}`,
+        )
           .then((res) => res.json())
           .then((res) => {
             const { data, isLastPage } = res;
@@ -53,29 +64,44 @@ export function ProjectCardList() {
 
   return (
     <Background>
+      <CardListNavigationBarWrapper>
+        <NavigationBar>
+          <NavigationItemWrapper>
+            <NavigationItem onClick={() => setParams((prev) => ({ ...prev, type: 'latest' }))}>
+              최신순
+            </NavigationItem>
+          </NavigationItemWrapper>
+          <NavigationItemWrapper>
+            <NavigationItem onClick={() => setParams((prev) => ({ ...prev, type: 'views' }))}>
+              조회수순
+            </NavigationItem>
+          </NavigationItemWrapper>
+          <NavigationItemWrapper>
+            <NavigationItem onClick={() => setParams((prev) => ({ ...prev, type: 'like' }))}>
+              좋아요순
+            </NavigationItem>
+          </NavigationItemWrapper>
+        </NavigationBar>
+      </CardListNavigationBarWrapper>
       <CardListContainer>
         <CardListWrapper>
           {data?.pages.map((group) =>
-            group.data.map((item: IProject, index: number) => (
-              <CardWrapper key={index + 1} onClick={() => navigate(`/project/detail/${index + 1}`)}>
-                <ProjectImageWrapper>
-                  <ProjectImage src="/gallery.svg" alt="" />
-                </ProjectImageWrapper>
-                <ProjectInfoWrapper>
-                  <ProjectTitleWrapper>
+            group.data.map((item: IProject, index: number) => {
+              return (
+                <CardWrapper key={index + 1}>
+                  <Carousel projectImages={item.projectImages} />
+                  <ProjectInfoWrapper onClick={() => navigate(`/project/detail/${index + 1}`)}>
                     <ProjectTitle>{item.projectTitle}</ProjectTitle>
-                  </ProjectTitleWrapper>
-                  <ProjectDescriptionWrapper>
                     <ProjectDescription>{item.projectDescription}</ProjectDescription>
-                  </ProjectDescriptionWrapper>
-                  <ProjectHashtagsWrapper>
-                    {item.hashtagArr.map((item, index) => (
-                      <Hashtag key={index}>{item}</Hashtag>
-                    ))}
-                  </ProjectHashtagsWrapper>
-                </ProjectInfoWrapper>
-              </CardWrapper>
-            )),
+                    <ProjectHashtagsWrapper>
+                      {item.projectHashtags.map((item, index) => (
+                        <Hashtag key={index}>{item}</Hashtag>
+                      ))}
+                    </ProjectHashtagsWrapper>
+                  </ProjectInfoWrapper>
+                </CardWrapper>
+              );
+            }),
           )}
         </CardListWrapper>
 
@@ -90,9 +116,7 @@ export function ProjectCardList() {
   );
 }
 
-const Background = styled.div`
-  background-color: #f9f9f9;
-`;
+const Background = styled.article``;
 
 const CardListContainer = styled.div`
   max-width: 1280px;
@@ -111,11 +135,11 @@ const CardListWrapper = styled.div`
   padding: 64px;
 
   /* Extra small devices (phones, 600px and down) */
-  @media only screen and (max-width: 700px) {
+  @media only screen and (max-width: 900px) {
     grid-template-columns: repeat(1, 1fr);
   }
   /* Small devices (portrait tablets and large phones, 600px and up) */
-  @media only screen and (min-width: 700px) and (max-width: 1200px) {
+  @media only screen and (min-width: 900px) and (max-width: 1200px) {
     grid-template-columns: repeat(2, 1fr);
   }
 `;
@@ -125,39 +149,25 @@ const CardWrapper = styled.div`
   flex-direction: column;
   gap: 12px;
 
-  height: 350px;
+  width: 28vw;
+  height: 500px;
 
+  margin: 0 auto;
+
+  border: 1px solid #bcbcbc;
   border-radius: 24px;
 
   box-shadow: 5px 10px 10px rgb(0 0 0 / 20%);
 
   cursor: pointer;
 
-  @media only screen and (max-width: 600px) {
-    height: 300px;
+  @media only screen and (max-width: 900px) {
+    width: 70vw;
   }
   /* Small devices (portrait tablets and large phones, 600px and up) */
-  @media only screen and (min-width: 600px) and (max-width: 992px) {
+  @media only screen and (min-width: 900px) and (max-width: 1200px) {
+    width: 40vw;
   }
-`;
-
-const ProjectImageWrapper = styled.div`
-  flex: 1 1 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background-color: #bcbcbc;
-
-  border-top-left-radius: 24px;
-  border-top-right-radius: 24px;
-
-  overflow: hidden;
-`;
-
-const ProjectImage = styled.img`
-  object-fit: cover;
 `;
 
 const ProjectInfoWrapper = styled.div`
@@ -168,23 +178,29 @@ const ProjectInfoWrapper = styled.div`
   gap: 12px;
 `;
 
-const ProjectTitleWrapper = styled.div``;
-
 const ProjectTitle = styled.h1`
   font-weight: var(--base-text-weight-bold);
   font-size: var(--base-text-size-large);
+  color: var(--mainpage-cardlist-title-text-color);
 `;
-
-const ProjectDescriptionWrapper = styled.div``;
 
 const ProjectDescription = styled.p`
   font-weight: var(--base-text-weight-normal);
   font-size: var(--base-text-size-medium);
+
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const ProjectHashtagsWrapper = styled.div`
   display: flex;
   gap: 12px;
+
+  flex-wrap: wrap;
+
+  overflow: hidden;
 `;
 
 const Hashtag = styled.div`
@@ -195,6 +211,8 @@ const Hashtag = styled.div`
   border-radius: 12px;
 
   font-size: var(--base-text-size-normal);
+  color: var(--mainpage-cardlist-hashtag-text-color);
+  background-color: var(--mainpage-cardlist-hashtag-background-color);
 `;
 
 const LoadingCatcher = styled.div`
@@ -206,3 +224,26 @@ const LoadingCatcher = styled.div`
 `;
 
 const NoMoreProject = styled.div``;
+
+const CardListNavigationBarWrapper = styled.div`
+  padding: 30px;
+`;
+
+const NavigationBar = styled.nav`
+  display: flex;
+  gap: 30px;
+`;
+
+const NavigationItemWrapper = styled.div`
+  cursor: pointer;
+`;
+
+const NavigationItem = styled.div`
+  color: var(--mainpage-navigation-bar-item-text-color);
+
+  background-color: var(--mainpage-navigation-bar-item-background-color);
+
+  border-radius: 8px;
+
+  padding: 10px 20px;
+`;
