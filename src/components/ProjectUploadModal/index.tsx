@@ -45,8 +45,9 @@ const ProjectUploadModalOverlay = styled.div<{ isOpen: boolean }>`
 
   position: absolute;
   top: 0;
+  left: 0;
 
-  width: 100vw;
+  width: 100%;
   height: 100vh;
 
   backdrop-filter: blur(10px);

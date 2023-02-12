@@ -33,6 +33,7 @@ export const projectListHandlers = [
       }),
     );
   }),
+
   rest.get('/project/detail/:id', async (req, res, ctx) => {
     await waitLikeServer(2000);
 

@@ -7,6 +7,8 @@ import styled from 'styled-components';
 import { LoadingDots } from '../LoadingDots';
 import { Carousel } from './Carousel';
 
+import { ReactComponent as SearchBarIcon } from '@/assets/search-icon.svg';
+
 interface IProject {
   projectTitle: string;
   projectDescription: string;
@@ -63,8 +65,8 @@ export function ProjectCardList() {
   }, []);
 
   return (
-    <Background>
-      <CardListNavigationBarWrapper>
+    <ProjectCardListWrapper>
+      <NavigationBarWrapper>
         <NavigationBar>
           <NavigationItemWrapper>
             <NavigationItem onClick={() => setParams((prev) => ({ ...prev, type: 'latest' }))}>
@@ -82,68 +84,68 @@ export function ProjectCardList() {
             </NavigationItem>
           </NavigationItemWrapper>
         </NavigationBar>
-      </CardListNavigationBarWrapper>
-      <CardListContainer>
-        <CardListWrapper>
-          {data?.pages.map((group) =>
-            group.data.map((item: IProject, index: number) => {
-              return (
-                <CardWrapper key={index + 1}>
-                  <Carousel projectImages={item.projectImages} />
-                  <ProjectInfoWrapper onClick={() => navigate(`/project/detail/${index + 1}`)}>
-                    <ProjectTitle>{item.projectTitle}</ProjectTitle>
-                    <ProjectDescription>{item.projectDescription}</ProjectDescription>
-                    <ProjectHashtagsWrapper>
-                      {item.projectHashtags.map((item, index) => {
-                        if (index < 3) return <Hashtag key={index}>{item}</Hashtag>;
-                      })}
-                      {item.projectHashtags.length > 3 && (
-                        <Hashtag>{`+ ${item.projectHashtags.length - 3}`}</Hashtag>
-                      )}
-                    </ProjectHashtagsWrapper>
-                  </ProjectInfoWrapper>
-                </CardWrapper>
-              );
-            }),
-          )}
-        </CardListWrapper>
+        <SearchBarWrapper>
+          <SearchBarIcon />
+          <SearchBar
+            placeholder="어떤 프로젝트 찾으시나요?"
+            onChange={(event) => setParams((prev) => ({ ...prev, search: event.target.value }))}
+          />
+        </SearchBarWrapper>
+      </NavigationBarWrapper>
 
-        <LoadingCatcher ref={target}>
-          {isFetchingNextPage || status === 'loading' ? <LoadingDots /> : null}
-          {!isFetching && !hasNextPage ? (
-            <NoMoreProject>공유하고 싶은 프로젝트를 업로드 해주세요!</NoMoreProject>
-          ) : null}
-        </LoadingCatcher>
-      </CardListContainer>
-    </Background>
+      <CardListWrapper>
+        {data?.pages.map((group) =>
+          group.data.map((item: IProject, index: number) => {
+            return (
+              <CardWrapper key={index + 1}>
+                <Carousel projectImages={item.projectImages} />
+                <ProjectInfoWrapper onClick={() => navigate(`/project/detail/${index + 1}`)}>
+                  <ProjectTitle>{item.projectTitle}</ProjectTitle>
+                  <ProjectDescription>{item.projectDescription}</ProjectDescription>
+                  <ProjectHashtagsWrapper>
+                    {item.projectHashtags.map((item, index) => {
+                      if (index < 3) return <Hashtag key={index}>{item}</Hashtag>;
+                    })}
+                    {item.projectHashtags.length > 3 && (
+                      <Hashtag>{`+ ${item.projectHashtags.length - 3}`}</Hashtag>
+                    )}
+                  </ProjectHashtagsWrapper>
+                </ProjectInfoWrapper>
+              </CardWrapper>
+            );
+          }),
+        )}
+      </CardListWrapper>
+
+      <LoadingCatcher ref={target}>
+        {isFetchingNextPage || status === 'loading' ? <LoadingDots /> : null}
+        {!isFetching && !hasNextPage ? (
+          <NoMoreProject>공유하고 싶은 프로젝트를 업로드 해주세요!</NoMoreProject>
+        ) : null}
+      </LoadingCatcher>
+    </ProjectCardListWrapper>
   );
 }
 
-const Background = styled.article``;
+const ProjectCardListWrapper = styled.article`
+  padding: 30px;
 
-const CardListContainer = styled.div`
-  max-width: 1280px;
-
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 90vw;
 `;
 
 const CardListWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 60px;
-  align-items: center;
-  justify-content: center;
+  gap: 30px;
 
-  padding: 64px;
+  padding: 30px;
 
-  /* Extra small devices (phones, 600px and down) */
-  @media only screen and (max-width: 900px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
-  /* Small devices (portrait tablets and large phones, 600px and up) */
   @media only screen and (min-width: 900px) and (max-width: 1200px) {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media only screen and (max-width: 900px) {
+    grid-template-columns: repeat(1, 1fr);
   }
 `;
 
@@ -152,10 +154,7 @@ const CardWrapper = styled.div`
   flex-direction: column;
   gap: 12px;
 
-  width: 28vw;
   height: 500px;
-
-  margin: 0 auto;
 
   border: 1px solid #bcbcbc;
   border-radius: 24px;
@@ -163,14 +162,6 @@ const CardWrapper = styled.div`
   box-shadow: 5px 10px 10px rgb(0 0 0 / 20%);
 
   cursor: pointer;
-
-  @media only screen and (max-width: 900px) {
-    width: 70vw;
-  }
-  /* Small devices (portrait tablets and large phones, 600px and up) */
-  @media only screen and (min-width: 900px) and (max-width: 1200px) {
-    width: 40vw;
-  }
 `;
 
 const ProjectInfoWrapper = styled.div`
@@ -190,8 +181,6 @@ const ProjectTitle = styled.h1`
 `;
 
 const ProjectDescription = styled.p`
-  flex: 0 1 30%;
-
   font-weight: var(--base-text-weight-normal);
   font-size: var(--base-text-size-medium);
 
@@ -200,11 +189,11 @@ const ProjectDescription = styled.p`
 
 const ProjectHashtagsWrapper = styled.div`
   display: flex;
-  gap: 12px;
+  gap: 8px;
 
   flex-wrap: wrap;
 
-  overflow: hidden;
+  /* overflow: hidden; */
 `;
 
 const Hashtag = styled.div`
@@ -229,13 +218,32 @@ const LoadingCatcher = styled.div`
 
 const NoMoreProject = styled.div``;
 
-const CardListNavigationBarWrapper = styled.div`
+const NavigationBarWrapper = styled.div`
   padding: 30px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media only screen and (max-width: 900px) {
+    flex-direction: column-reverse;
+    gap: 20px;
+  }
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 900px) and (max-width: 1200px) {
+  }
 `;
 
 const NavigationBar = styled.nav`
   display: flex;
-  gap: 30px;
+  gap: 20px;
+
+  @media only screen and (max-width: 900px) {
+    gap: 10px;
+  }
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 900px) and (max-width: 1200px) {
+  }
 `;
 
 const NavigationItemWrapper = styled.div`
@@ -250,4 +258,29 @@ const NavigationItem = styled.div`
   border-radius: 8px;
 
   padding: 10px 20px;
+`;
+
+const SearchBarWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 10px 16px;
+
+  min-width: 300px;
+
+  background-color: var(--mainpage-searchbar-background-color);
+
+  border-radius: 10px;
+`;
+const SearchBar = styled.input`
+  all: unset;
+
+  width: 100%;
+
+  color: var(--mainpage-searchbar-text-color);
+
+  ::placeholder {
+    color: var(--mainpage-searchbar-placeholder-text-color);
+  }
 `;

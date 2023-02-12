@@ -35,6 +35,7 @@ export function MainPage() {
 const MainPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 const DescriptionWrapper = styled.article`

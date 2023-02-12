@@ -117,6 +117,10 @@ body.light {
 
   --mainpage-cardlist-hashtag-text-color: #ffffff;
   --mainpage-cardlist-hashtag-background-color: var(--main-color-orange);
+
+  --mainpage-searchbar-background-color: #ebebeb;
+  --mainpage-searchbar-text-color: #9f9f9f;
+  --mainpage-searchbar-placeholder-text-color: #9f9f9f;
 }
 
 body.dark {
@@ -167,4 +171,8 @@ body.dark {
 
   --mainpage-cardlist-hashtag-text-color: #343434;
   --mainpage-cardlist-hashtag-background-color: var(--main-color-orange);
+
+  --mainpage-searchbar-background-color: #ebebeb;
+  --mainpage-searchbar-text-color: #9f9f9f;
+  --mainpage-searchbar-placeholder-text-color: #9f9f9f;
 }
