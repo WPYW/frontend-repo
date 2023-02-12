@@ -62,6 +62,7 @@ const ProjectUploadModalWrapper = styled.div`
 
   padding: 32px;
 
+  border: 0.5px solid;
   border-radius: 12px;
 
   background-color: var(--base-background-color);

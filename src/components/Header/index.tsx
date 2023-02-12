@@ -78,6 +78,8 @@ const HeaderWrapper = styled.header`
   padding: 16px 32px 16px 32px;
 
   background-color: var(--header-background-color);
+
+  z-index: 1000;
 `;
 
 const HeaderLogoWrapper = styled.div`
