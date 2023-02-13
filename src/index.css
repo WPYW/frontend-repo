@@ -121,6 +121,9 @@ body.light {
   --mainpage-searchbar-background-color: #ebebeb;
   --mainpage-searchbar-text-color: #9f9f9f;
   --mainpage-searchbar-placeholder-text-color: #9f9f9f;
+
+  --mainpge-cardlist-views-text-color: #bcbcbc;
+  --mainpge-cardlist-likes-text-color: #bcbcbc;
 }
 
 body.dark {
@@ -175,4 +178,7 @@ body.dark {
   --mainpage-searchbar-background-color: #ebebeb;
   --mainpage-searchbar-text-color: #9f9f9f;
   --mainpage-searchbar-placeholder-text-color: #9f9f9f;
+
+  --mainpge-cardlist-views-text-color: #bcbcbc;
+  --mainpge-cardlist-likes-text-color: #bcbcbc;
 }

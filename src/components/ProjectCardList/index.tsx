@@ -8,12 +8,16 @@ import { LoadingDots } from '../LoadingDots';
 import { Carousel } from './Carousel';
 
 import { ReactComponent as SearchBarIcon } from '@/assets/search-icon.svg';
+import { ReactComponent as ViewsIcon } from '@/assets/views-icon.svg';
+import { ReactComponent as LikesIcon } from '@/assets/likes-icon.svg';
 
 interface IProject {
   projectTitle: string;
   projectDescription: string;
   projectHashtags: string[];
   projectImages: string[];
+  views: number;
+  likes: number;
 }
 
 interface IParams {
@@ -100,6 +104,17 @@ export function ProjectCardList() {
               <CardWrapper key={index + 1}>
                 <Carousel projectImages={item.projectImages} />
                 <ProjectInfoWrapper onClick={() => navigate(`/project/detail/${index + 1}`)}>
+                  <ViewsAndLikesWrapper>
+                    <Views>
+                      <ViewsIcon style={{ objectFit: 'cover' }} />
+                      {item.views}
+                    </Views>
+                    <div style={{ border: '1px solid #BCBCBC', width: 0, height: '100%' }}></div>
+                    <Likes>
+                      <LikesIcon style={{ objectFit: 'cover' }} />
+                      {item.likes}
+                    </Likes>
+                  </ViewsAndLikesWrapper>
                   <ProjectTitle>{item.projectTitle}</ProjectTitle>
                   <ProjectDescription>{item.projectDescription}</ProjectDescription>
                   <ProjectHashtagsWrapper>
@@ -283,4 +298,24 @@ const SearchBar = styled.input`
   ::placeholder {
     color: var(--mainpage-searchbar-placeholder-text-color);
   }
+`;
+
+const ViewsAndLikesWrapper = styled.div`
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+`;
+
+const Views = styled.div`
+  display: flex;
+  align-items: center;
+
+  color: var(--mainpge-cardlist-views-text-color);
+`;
+
+const Likes = styled.div`
+  display: flex;
+  align-items: center;
+
+  color: var(--mainpge-cardlist-likes-text-color);
 `;
