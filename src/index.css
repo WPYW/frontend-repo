@@ -124,6 +124,25 @@ body.light {
 
   --mainpge-cardlist-views-text-color: #bcbcbc;
   --mainpge-cardlist-likes-text-color: #bcbcbc;
+
+  --detailpage-project-title-text-color: var(--main-color-orange);
+
+  --detailpage-project-readme-background-color: #fafafa;
+
+  --detailpage-button-text-color: var(--main-color-orange);
+  --detailpage-button-border-color: var(--main-color-orange);
+
+  --detailpage-comment-count-text-color: #656565;
+
+  --detailpage-comment-input-background-color: #ededed;
+  --detailpage-comment-input-border-color: #e0e0e0;
+  --detailpage-comment-input-placeholder-color: #878787;
+
+  --detailpage-comment-length-text-color: #9e9e9e;
+
+  --detailpage-commenter-name-text-color: #2c2c2c;
+
+  --detailpage-commenter-content-text-color: #2c2c2c;
 }
 
 body.dark {
@@ -179,6 +198,27 @@ body.dark {
   --mainpage-searchbar-text-color: #9f9f9f;
   --mainpage-searchbar-placeholder-text-color: #9f9f9f;
 
-  --mainpge-cardlist-views-text-color: #bcbcbc;
-  --mainpge-cardlist-likes-text-color: #bcbcbc;
+  --mainpage-cardlist-views-text-color: #bcbcbc;
+  --mainpage-cardlist-likes-text-color: #bcbcbc;
+
+  --detailpage-project-title-text-color: var(--main-color-orange);
+
+  --detailpage-project-readme-background-color: #fafafa;
+  --detailpage-project-readme-text-color: #343434;
+
+  --detailpage-button-text-color: var(--main-color-orange);
+  --detailpage-button-border-color: var(--main-color-orange);
+
+  --detailpage-comment-count-text-color: #dedede;
+
+  --detailpage-comment-input-background-color: #ededed;
+  --detailpage-comment-input-border-color: #e0e0e0;
+  --detailpage-comment-input-text-color: #343434;
+  --detailpage-comment-input-placeholder-color: #878787;
+
+  --detailpage-comment-length-text-color: #b1b1b1;
+
+  --detailpage-commenter-name-text-color: #dedede;
+
+  --detailpage-commenter-content-text-color: #dedede;
 }

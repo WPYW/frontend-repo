@@ -212,8 +212,6 @@ const ProjectHashtagsWrapper = styled.div`
 `;
 
 const Hashtag = styled.div`
-  background-color: #bcbcbc;
-
   padding: 4px 12px 4px 12px;
 
   border-radius: 12px;
@@ -310,12 +308,12 @@ const Views = styled.div`
   display: flex;
   align-items: center;
 
-  color: var(--mainpge-cardlist-views-text-color);
+  color: var(--mainpage-cardlist-views-text-color);
 `;
 
 const Likes = styled.div`
   display: flex;
   align-items: center;
 
-  color: var(--mainpge-cardlist-likes-text-color);
+  color: var(--mainpage-cardlist-likes-text-color);
 `;
