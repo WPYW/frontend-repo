@@ -8,8 +8,7 @@ import { Provider } from 'react-redux';
 
 import { worker } from '@/api/mocks/browser';
 
-import { ReactQueryDevtools } from 'react-query/devtools';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -26,7 +25,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <Router>
         <App />
       </Router>
-      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </Provider>,
   // </React.StrictMode>,

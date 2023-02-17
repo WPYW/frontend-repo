@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import { BACKEND_API_URL } from '@/common/url';
-import { useInfiniteQuery } from 'react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { LoadingDots } from '../LoadingDots';
@@ -12,9 +12,10 @@ import { ReactComponent as ViewsIcon } from '@/assets/views-icon.svg';
 import { ReactComponent as LikesIcon } from '@/assets/likes-icon.svg';
 
 interface IProject {
+  id: string;
   projectTitle: string;
   projectDescription: string;
-  projectHashtags: string[];
+  projectHashtag: string[];
   projectImages: string[];
   views: number;
   likes: number;
@@ -29,26 +30,25 @@ interface IParams {
 export function ProjectCardList() {
   const navigate = useNavigate();
 
-  const [params, setParams] = useState<IParams>({ type: 'latest', search: '', page: 1 });
+  const [params, setParams] = useState<IParams>({ type: 'created', search: '', page: 1 });
 
   const { data, isFetching, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
-    useInfiniteQuery(
-      'projectList',
-      ({ pageParam = 1 }) =>
-        fetch(
-          `${BACKEND_API_URL}/projects?type=${params.type}&search=${params.search}&page=${pageParam}`,
-        )
+    useInfiniteQuery({
+      queryKey: ['projectList'],
+      queryFn: ({
+        pageParam = `${BACKEND_API_URL}/projects?ordering=${params.type}&search=${params.search}&page=1`,
+      }) =>
+        fetch(pageParam)
           .then((res) => res.json())
           .then((res) => {
-            const { data, isLastPage } = res;
-            return { data, nextPage: pageParam + 1, isLastPage };
+            const { results, next } = res;
+            return { results, next };
           }),
-      {
-        getNextPageParam: (lastPage) => {
-          return !lastPage.isLastPage ? lastPage.nextPage : undefined;
-        },
+
+      getNextPageParam: (lastPage) => {
+        return lastPage.next === null ? undefined : lastPage.next;
       },
-    );
+    });
 
   const target = useRef(null);
 
@@ -73,7 +73,7 @@ export function ProjectCardList() {
       <NavigationBarWrapper>
         <NavigationBar>
           <NavigationItemWrapper>
-            <NavigationItem onClick={() => setParams((prev) => ({ ...prev, type: 'latest' }))}>
+            <NavigationItem onClick={() => setParams((prev) => ({ ...prev, type: 'created' }))}>
               최신순
             </NavigationItem>
           </NavigationItemWrapper>
@@ -99,11 +99,11 @@ export function ProjectCardList() {
 
       <CardListWrapper>
         {data?.pages.map((group) =>
-          group.data.map((item: IProject, index: number) => {
+          group.results.map((item: IProject, index: number) => {
             return (
-              <CardWrapper key={index + 1}>
+              <CardWrapper key={index}>
                 <Carousel projectImages={item.projectImages} />
-                <ProjectInfoWrapper onClick={() => navigate(`/project/detail/${index + 1}`)}>
+                <ProjectInfoWrapper onClick={() => navigate(`/project/detail/${item.id}`)}>
                   <ViewsAndLikesWrapper>
                     <Views>
                       <ViewsIcon style={{ objectFit: 'cover' }} />
@@ -118,11 +118,11 @@ export function ProjectCardList() {
                   <ProjectTitle>{item.projectTitle}</ProjectTitle>
                   <ProjectDescription>{item.projectDescription}</ProjectDescription>
                   <ProjectHashtagsWrapper>
-                    {item.projectHashtags.map((item, index) => {
+                    {item.projectHashtag.map((item, index) => {
                       if (index < 3) return <Hashtag key={index}>{item}</Hashtag>;
                     })}
-                    {item.projectHashtags.length > 3 && (
-                      <Hashtag>{`+ ${item.projectHashtags.length - 3}`}</Hashtag>
+                    {item.projectHashtag.length > 3 && (
+                      <Hashtag>{`+ ${item.projectHashtag.length - 3}`}</Hashtag>
                     )}
                   </ProjectHashtagsWrapper>
                 </ProjectInfoWrapper>
