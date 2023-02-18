@@ -70,8 +70,12 @@ const ProjectDetailHeaderWrapper = styled.div`
 
 const ProjectDetailHeaderSubWrapper1 = styled.div`
   display: flex;
-  align-items: center;
   justify-content: space-between;
+
+  @media only screen and (max-width: 1200px) {
+    flex-direction: column;
+    gap: 20px;
+  }
 `;
 
 const ProjectDetailHeaderSubWrapper2 = styled.div`

@@ -127,8 +127,6 @@ body.light {
 
   --detailpage-project-title-text-color: var(--main-color-orange);
 
-  --detailpage-project-readme-background-color: #fafafa;
-
   --detailpage-button-text-color: var(--main-color-orange);
   --detailpage-button-border-color: var(--main-color-orange);
 
@@ -203,7 +201,6 @@ body.dark {
 
   --detailpage-project-title-text-color: var(--main-color-orange);
 
-  --detailpage-project-readme-background-color: #fafafa;
   --detailpage-project-readme-text-color: #343434;
 
   --detailpage-button-text-color: var(--main-color-orange);
