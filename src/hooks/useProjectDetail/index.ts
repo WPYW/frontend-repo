@@ -15,27 +15,10 @@ interface IProjectDetail {
   comments: string[];
 }
 
-export function useProjectDetail(projectId: string) {
+export function useProjectDetail(projectId = '') {
   const { data: projectDetail } = useQuery<IProjectDetail>({
     queryKey: ['projectDetail'],
-    queryFn: () =>
-      fetch(`${BACKEND_API_URL}/projects/${projectId}`)
-        .then((res) => res.json())
-        .then((res) => {
-          const commentList = [];
-          for (const comment of res.comment) {
-            commentList.push(comment.content);
-          }
-          return {
-            projectTitle: res.projectTitle,
-            githubLink: res.githubLink,
-            demositeLink: res.demositeLink,
-            projectHashtags: res.projectHashtag,
-            views: res.views,
-            likes: res.likes,
-            comments: commentList,
-          };
-        }),
+    queryFn: () => fetchProjectDetail(projectId),
     initialData: {
       projectTitle: '',
       githubLink: '',
@@ -47,36 +30,43 @@ export function useProjectDetail(projectId: string) {
     },
   });
 
-  const githubLink = projectDetail?.githubLink || '';
-
   const { data: readmeOrigin } = useQuery({
     queryKey: ['readmeOrigin'],
-    queryFn: () =>
-      fetchEncodedReadme(githubLink)
-        .then((res) => res.json())
-        .then((res) => decodeBase64(res.content)),
-    enabled: !!githubLink,
+    queryFn: () => fetchReadme(projectDetail.githubLink),
+    enabled: !!projectDetail.githubLink,
   });
 
   const { data: readMe, isLoading } = useQuery({
     queryKey: ['readMeMarkdown'],
-    queryFn: () =>
-      fetch('https://api.github.com/markdown', {
-        headers: {
-          Authorization: `token ${GITHUB_TOKEN}`,
-        },
-        method: 'POST',
-        body: JSON.stringify({ text: readmeOrigin }),
-      })
-        .then((res) => res.text())
-        .then((res) => res),
+    queryFn: () => fetchReadMeMarkdown(readmeOrigin),
     enabled: !!readmeOrigin,
   });
 
   return { projectDetail, readMe, isLoading };
 }
 
-const fetchEncodedReadme = async (projectLink: string) => {
+const fetchProjectDetail = async (projectId: string) => {
+  const response = await fetch(`${BACKEND_API_URL}/projects/${projectId}`);
+
+  const projectDetail = await response.json();
+
+  const commentList = [];
+
+  for (const comment of projectDetail.comment) {
+    commentList.push(comment.content);
+  }
+  return {
+    projectTitle: projectDetail.projectTitle,
+    githubLink: projectDetail.githubLink,
+    demositeLink: projectDetail.demositeLink,
+    projectHashtags: projectDetail.projectHashtag,
+    views: projectDetail.views,
+    likes: projectDetail.likes,
+    comments: commentList,
+  };
+};
+
+const fetchReadme = async (projectLink: string) => {
   const [repoOwner, repoName] = projectLink.replace('https://github.com/', '').split('/');
 
   const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/readme`, {
@@ -87,5 +77,21 @@ const fetchEncodedReadme = async (projectLink: string) => {
 
   if (response.status !== 200) throw new Error(`리드미 fetch 에러 발생 코드 : ${response.status}`);
 
-  return response;
+  const encodedReadme = await response.json();
+
+  return decodeBase64(encodedReadme.content);
+};
+
+const fetchReadMeMarkdown = async (readmeOrigin = '') => {
+  const response = await fetch('https://api.github.com/markdown', {
+    headers: {
+      Authorization: `token ${GITHUB_TOKEN}`,
+    },
+    method: 'POST',
+    body: JSON.stringify({ text: readmeOrigin }),
+  });
+
+  const readMeMarkdown = await response.text();
+
+  return readMeMarkdown;
 };

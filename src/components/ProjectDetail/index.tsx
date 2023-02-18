@@ -11,7 +11,7 @@ import { ProjectDetailComment } from './ProjectDetailComment';
 export function ProjectDetail() {
   const params = useParams();
 
-  const { projectDetail, readMe, isLoading } = useProjectDetail(params.id || '');
+  const { projectDetail, readMe, isLoading } = useProjectDetail(params.id);
 
   if (isLoading) return <div>로딩중</div>;
 

@@ -1,6 +1,7 @@
-import { ProjectDetail } from '@/components';
 import React from 'react';
 import styled from 'styled-components';
+
+import { ProjectDetail } from '@/components';
 
 export function DetailPage() {
   return (
