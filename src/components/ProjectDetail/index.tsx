@@ -7,13 +7,19 @@ import { useProjectDetail } from '@/hooks/useProjectDetail';
 import { ProjectDetailHeader } from './ProjectDetailHeader';
 import { ProjectDetailReadMe } from './ProjectDetailReadMe';
 import { ProjectDetailComment } from './ProjectDetailComment';
+import { LoadingDots } from '../LoadingDots';
 
 export function ProjectDetail() {
   const params = useParams();
 
   const { projectDetail, readMe, isLoading } = useProjectDetail(params.id);
 
-  if (isLoading) return <div>로딩중</div>;
+  if (isLoading)
+    return (
+      <LoadingDotsWrapper>
+        <LoadingDots />
+      </LoadingDotsWrapper>
+    );
 
   return (
     <ProjectDetailWrapper>
@@ -30,4 +36,12 @@ const ProjectDetailWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 60px;
+`;
+
+const LoadingDotsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 50vh;
 `;

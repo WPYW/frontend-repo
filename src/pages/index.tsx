@@ -1,2 +1,2 @@
-export * from './MainPage';
+export * from './ProjectListPage';
 export * from './DetailPage';

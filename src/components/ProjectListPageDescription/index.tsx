@@ -1,42 +1,33 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { ProjectCardList } from '@/components';
-
 import { useDispatch } from 'react-redux';
 import { modalOpen } from '@/RTK/slices/modalSlice';
 
-import { ReactComponent as DescriptionImage } from '@/assets/main-page-image.svg';
+import { ReactComponent as DescriptionImage } from '@/assets/projectlist-page-description-image.svg';
 
-export function MainPage() {
+export function ProjectListPageDescription() {
   const dispatch = useDispatch();
 
+  const onModalOpenHandler = () => {
+    dispatch(modalOpen());
+  };
+
   return (
-    <MainPageWrapper>
-      <DescriptionWrapper>
-        <DescriptionImageWrapper>
-          <DescriptionImage style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-        </DescriptionImageWrapper>
-        <DescriptionTitleWrapper>
-          <DescriptionTitle>What Project You Want?</DescriptionTitle>
-          <DescriptionSubTitle>
-            프로젝트를 같이 진행하려는 팀원을 찾지 못해 고민중이신가요?
-          </DescriptionSubTitle>
-          <ModalButtonWrapper>
-            <ModalButton onClick={() => dispatch(modalOpen())}>프로젝트 공유</ModalButton>
-          </ModalButtonWrapper>
-        </DescriptionTitleWrapper>
-      </DescriptionWrapper>
-      <ProjectCardList />
-    </MainPageWrapper>
+    <DescriptionWrapper>
+      <DescriptionImageWrapper>
+        <DescriptionImage style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
+      </DescriptionImageWrapper>
+      <DescriptionTitleWrapper>
+        <DescriptionTitle>What Project You Want?</DescriptionTitle>
+        <DescriptionSubTitle>
+          프로젝트를 같이 진행하려는 팀원을 찾지 못해 고민중이신가요?
+        </DescriptionSubTitle>
+        <ModalButton onClick={onModalOpenHandler}>프로젝트 공유</ModalButton>
+      </DescriptionTitleWrapper>
+    </DescriptionWrapper>
   );
 }
-
-const MainPageWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 
 const DescriptionWrapper = styled.article`
   display: flex;
@@ -90,8 +81,6 @@ const DescriptionSubTitle = styled.h2`
   }
 `;
 
-const ModalButtonWrapper = styled.div``;
-
 const ModalButton = styled.button`
   all: unset;
 
@@ -102,8 +91,6 @@ const ModalButton = styled.button`
   border: 4px solid;
   border-color: var(--mainpage-modal-button-border-color);
   border-radius: 8px;
-
-  width: 100%;
 
   padding: 12px 0px;
 `;
