@@ -32,7 +32,7 @@ export function ProjectCardList() {
 
   const [params, setParams] = useState<IParams>({ type: 'created', search: '', page: 1 });
 
-  const { data, isFetching, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
+  const { data, isFetching, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
     useInfiniteQuery({
       queryKey: ['projectList'],
       queryFn: ({
@@ -66,27 +66,25 @@ export function ProjectCardList() {
     if (target.current !== null) {
       observer.observe(target.current);
     }
-  }, []);
+  }, [isFetching]);
+
+  if (isLoading) {
+    return <LoadingDots />;
+  }
 
   return (
     <ProjectCardListWrapper>
       <NavigationBarWrapper>
         <NavigationBar>
-          <NavigationItemWrapper>
-            <NavigationItem onClick={() => setParams((prev) => ({ ...prev, type: 'created' }))}>
-              최신순
-            </NavigationItem>
-          </NavigationItemWrapper>
-          <NavigationItemWrapper>
-            <NavigationItem onClick={() => setParams((prev) => ({ ...prev, type: 'views' }))}>
-              조회수순
-            </NavigationItem>
-          </NavigationItemWrapper>
-          <NavigationItemWrapper>
-            <NavigationItem onClick={() => setParams((prev) => ({ ...prev, type: 'like' }))}>
-              좋아요순
-            </NavigationItem>
-          </NavigationItemWrapper>
+          <NavigationItem onClick={() => setParams((prev) => ({ ...prev, type: 'created' }))}>
+            최신순
+          </NavigationItem>
+          <NavigationItem onClick={() => setParams((prev) => ({ ...prev, type: 'views' }))}>
+            조회수순
+          </NavigationItem>
+          <NavigationItem onClick={() => setParams((prev) => ({ ...prev, type: 'like' }))}>
+            좋아요순
+          </NavigationItem>
         </NavigationBar>
         <SearchBarWrapper>
           <SearchBarIcon />
@@ -133,7 +131,7 @@ export function ProjectCardList() {
       </CardListWrapper>
 
       <LoadingCatcher ref={target}>
-        {isFetchingNextPage || status === 'loading' ? <LoadingDots /> : null}
+        {isFetchingNextPage ? <LoadingDots /> : null}
         {!isFetching && !hasNextPage ? (
           <NoMoreProject>공유하고 싶은 프로젝트를 업로드 해주세요!</NoMoreProject>
         ) : null}
@@ -144,8 +142,6 @@ export function ProjectCardList() {
 
 const ProjectCardListWrapper = styled.article`
   padding: 30px;
-
-  max-width: 90vw;
 `;
 
 const CardListWrapper = styled.div`
@@ -248,6 +244,8 @@ const NavigationBarWrapper = styled.div`
 `;
 
 const NavigationBar = styled.nav`
+  width: 100%;
+
   display: flex;
   gap: 20px;
 
@@ -259,10 +257,6 @@ const NavigationBar = styled.nav`
   }
 `;
 
-const NavigationItemWrapper = styled.div`
-  cursor: pointer;
-`;
-
 const NavigationItem = styled.div`
   color: var(--mainpage-navigation-bar-item-text-color);
 
@@ -271,16 +265,18 @@ const NavigationItem = styled.div`
   border-radius: 8px;
 
   padding: 10px 20px;
+
+  cursor: pointer;
 `;
 
 const SearchBarWrapper = styled.div`
+  width: 100%;
+
   display: flex;
   align-items: center;
   gap: 12px;
 
   padding: 10px 16px;
-
-  min-width: 300px;
 
   background-color: var(--mainpage-searchbar-background-color);
 
@@ -288,8 +284,6 @@ const SearchBarWrapper = styled.div`
 `;
 const SearchBar = styled.input`
   all: unset;
-
-  width: 100%;
 
   color: var(--mainpage-searchbar-text-color);
 
