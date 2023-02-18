@@ -28,6 +28,4 @@ const ProjectReadMeWrapper = styled.div`
 
 const ProjectReadMe = styled.div`
   padding: 30px;
-
-  color: var(--detailpage-project-readme-text-color);
 `;
