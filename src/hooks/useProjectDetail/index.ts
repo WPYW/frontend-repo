@@ -50,11 +50,6 @@ const fetchProjectDetail = async (projectId: string) => {
 
   const projectDetail = await response.json();
 
-  const commentList = [];
-
-  for (const comment of projectDetail.comment) {
-    commentList.push(comment.content);
-  }
   return {
     projectTitle: projectDetail.projectTitle,
     githubLink: projectDetail.githubLink,
@@ -62,7 +57,7 @@ const fetchProjectDetail = async (projectId: string) => {
     projectHashtags: projectDetail.projectHashtag,
     views: projectDetail.views,
     likes: projectDetail.likes,
-    comments: commentList,
+    comments: projectDetail.comment,
   };
 };
 

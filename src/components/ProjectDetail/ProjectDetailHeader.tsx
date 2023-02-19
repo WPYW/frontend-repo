@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import { ReactComponent as ViewsIcon } from '@/assets/views-icon.svg';
 import { ReactComponent as LikesIcon } from '@/assets/likes-icon.svg';
+import { BACKEND_API_URL } from '@/common/url';
+import { useParams } from 'react-router-dom';
 
 interface IProjectDetailHeader {
   projectTitle: string;
@@ -21,6 +23,8 @@ export function ProjectDetailHeader({
   views,
   likes,
 }: IProjectDetailHeader) {
+  const params = useParams();
+
   return (
     <ProjectDetailHeaderWrapper>
       <ProjectDetailHeaderSubWrapper1>
@@ -52,7 +56,12 @@ export function ProjectDetailHeader({
             {views}
           </Views>
           <div style={{ border: '1px solid #BCBCBC', width: 0 }}></div>
-          <Likes>
+          <Likes
+            onClick={() => {
+              fetch(`${BACKEND_API_URL}/projects/${params.id}/likes/`, { method: 'PATCH' });
+              window.location.reload();
+            }}
+          >
             <LikesIcon style={{ objectFit: 'cover' }} />
             {likes}
           </Likes>
@@ -158,7 +167,7 @@ const Views = styled.div`
   color: var(--mainpage-cardlist-views-text-color);
 `;
 
-const Likes = styled.div`
+const Likes = styled.button`
   display: flex;
   align-items: center;
 

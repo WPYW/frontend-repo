@@ -13,7 +13,7 @@ interface IProject {
   projectTitle: string;
   projectDescription: string;
   projectHashtag: string[];
-  projectImages: string[];
+  previewImages: string[];
   views: number;
   likes: number;
 }
@@ -38,7 +38,7 @@ export function CardList({ projectList, isLoading }: CardList) {
       {projectList.map((project: IProject, index: number) => {
         return (
           <CardWrapper key={index}>
-            <Carousel projectImages={project.projectImages} />
+            <Carousel previewImages={project.previewImages} />
             <ProjectInfoWrapper onClick={() => navigate(`/project/detail/${project.id}`)}>
               <ViewsAndLikesWrapper>
                 <Views>

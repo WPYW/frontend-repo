@@ -1,3 +1,4 @@
+import { BACKEND_API_URL } from '@/common/url';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -11,7 +12,7 @@ export function FormSubmitButton({ projectUploadForm }: IFormSubmitButton) {
 
     try {
       projectUploadFormValidationCheck(projectUploadForm);
-      console.log(await uploadProject(projectUploadForm));
+      uploadProject(projectUploadForm);
     } catch (err) {
       console.log(err);
       return;
@@ -29,7 +30,7 @@ export function FormSubmitButton({ projectUploadForm }: IFormSubmitButton) {
 
 const uploadProject = async (projectUploadForm: IProject) => {
   await fetchEncodedReadme(projectUploadForm.projectLink); // 존재하는 리포지토리인지 확인
-  return await sendProjectToServer(projectUploadForm); //올바른 리포지토리 링크이면 프로젝트 업로드
+  sendProjectToServer(projectUploadForm); //올바른 리포지토리 링크이면 프로젝트 업로드
 };
 
 const fetchEncodedReadme = async (projectLink: string) => {
@@ -45,18 +46,31 @@ const fetchEncodedReadme = async (projectLink: string) => {
 };
 
 const sendProjectToServer = async (project: IProject) => {
+  const form = new FormData();
+
+  form.append('projectTitle', project.projectTitle);
+  form.append('projectDescription', project.projectDescription);
+  form.append('githubLink', project.projectLink);
+  form.append('demositeLink', project.demoSiteLink);
+  for (const file of project.thumbnailList) {
+    form.append('previewImages', file);
+  }
+  for (const hashtag of project.hashtagList) {
+    form.append('projectHashtag', hashtag);
+  }
+
   const response = await (
-    await fetch('/project', {
+    await fetch(`${BACKEND_API_URL}/projects/`, {
       method: 'POST',
-      body: JSON.stringify({ project: { ...project } }),
+      body: form,
     })
   )
     .json()
-    .catch(() => {
-      throw new Error(`POST 에러 : Project 프로젝트 서버(${response.status})`);
+    .catch((err) => {
+      throw new Error(err);
     });
 
-  return JSON.parse(response);
+  console.log(response);
 };
 
 // 유효성 검사 함수

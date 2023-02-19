@@ -13,7 +13,7 @@ export function useProjectList(params: IParams) {
     useInfiniteQuery({
       queryKey: ['projectList', params],
       queryFn: ({
-        pageParam = `${BACKEND_API_URL}/projects?ordering=${params.ordering}&search=${params.search}&page=${params.page}`,
+        pageParam = `${BACKEND_API_URL}/projects/?ordering=-${params.ordering}&search=${params.search}&page=${params.page}`,
       }) => {
         return fetch(pageParam)
           .then((res) => res.json())
@@ -24,7 +24,7 @@ export function useProjectList(params: IParams) {
       },
 
       getNextPageParam: (lastPage) => {
-        return lastPage.next === null ? undefined : lastPage.next;
+        return lastPage.next === null ? undefined : lastPage.next.replace('http://localhost', '');
       },
     });
 

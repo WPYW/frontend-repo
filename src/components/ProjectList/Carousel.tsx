@@ -5,14 +5,15 @@ import { ReactComponent as CarouselButtonLeft } from '@/assets/arrow-left.svg';
 import { ReactComponent as CarouselButtonRight } from '@/assets/arrow-right.svg';
 
 interface ICarousel {
-  projectImages: string[];
+  previewImages: string[];
 }
 
-export function Carousel({ projectImages }: ICarousel) {
+export function Carousel({ previewImages }: ICarousel) {
   const [index, setIndex] = useState(0);
+
   return (
     <CarouselWrapper>
-      {projectImages && (
+      {previewImages && previewImages.length > 1 && index !== 0 && (
         <CarouselButtonLeftWrapper
           onClick={() => {
             if (index <= 0) return;
@@ -23,12 +24,11 @@ export function Carousel({ projectImages }: ICarousel) {
         </CarouselButtonLeftWrapper>
       )}
 
-      <ProjectImage
-        src={typeof projectImages === 'undefined' ? '/alt-image.svg' : projectImages[index]}
-      />
-      {projectImages && (
+      <ProjectImage src={previewImages[index]} />
+      {previewImages && previewImages.length > 1 && index !== 2 && (
         <CarouselButtonRightWrapper
           onClick={() => {
+            if (previewImages.length - 1 === index) return;
             if (index >= 2) return;
             setIndex((prev) => prev + 1);
           }}

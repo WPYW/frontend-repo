@@ -2,13 +2,24 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { ReactComponent as CommenterImage } from '@/assets/commenter-image.svg';
+import { BACKEND_API_URL } from '@/common/url';
+import { useParams } from 'react-router-dom';
+
+interface Comment {
+  content: string;
+  created: string;
+  id: string;
+  nickname: string;
+}
 
 interface IProjectDetailComment {
-  comments: string[];
+  comments: Comment[];
 }
 
 export function ProjectDetailComment({ comments }: IProjectDetailComment) {
   const [comment, setComment] = useState('');
+
+  const params = useParams();
 
   return (
     <ProjectCommentWrapper>
@@ -23,6 +34,12 @@ export function ProjectDetailComment({ comments }: IProjectDetailComment) {
       <CommentLength>{`${comment.length}/100`}</CommentLength>
       <CommentButton
         onClick={() => {
+          const form = new FormData();
+          form.append('content', comment);
+          fetch(`${BACKEND_API_URL}/projects/${params.id}/comments/`, {
+            method: 'POST',
+            body: form,
+          });
           setComment('');
         }}
       >
@@ -36,8 +53,11 @@ export function ProjectDetailComment({ comments }: IProjectDetailComment) {
               <CommenterImage style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </CommenterImageWrapper>
             <CommentSubWrapper>
-              <CommenterName>랜덤 사용자 이름</CommenterName>
-              <CommentContent>{item}</CommentContent>
+              <div style={{ display: 'flex', gap: '10px' }}>
+                <CommenterName>랜덤 사용자 이름</CommenterName>
+                <CommentCreated>{item.created}</CommentCreated>
+              </div>
+              <CommentContent>{item.content}</CommentContent>
             </CommentSubWrapper>
           </Comment>
         ))}
@@ -137,5 +157,9 @@ const CommenterName = styled.div`
 `;
 
 const CommentContent = styled.div`
+  color: var(--detailpage-commenter-content-text-color);
+`;
+
+const CommentCreated = styled.div`
   color: var(--detailpage-commenter-content-text-color);
 `;
