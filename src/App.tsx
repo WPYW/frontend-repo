@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Header } from '@/components';
+import { Header, PortalModal } from '@/components';
 
 import { Route, Routes } from 'react-router-dom';
 import { DetailPage, ProjectListPage } from '@/pages';
@@ -14,6 +14,7 @@ export default function App() {
         <Route path="/" element={<ProjectListPage />} />
         <Route path="/project/detail/:id" element={<DetailPage />} />
       </Routes>
+      <PortalModal />
     </div>
   );
 }

@@ -27,8 +27,8 @@ export function useProjectUpload() {
 
 const uploadProject = async (projectUploadForm: IProjectUploadForm) => {
   projectUploadFormValidationCheck(projectUploadForm); // 업로드 폼 validation 체크
-  fetchEncodedReadme(projectUploadForm.githubLink); // 존재하는 리포지토리인지 확인
-  sendProjectToServer(projectUploadForm); //올바른 리포지토리 링크이면 프로젝트 업로드
+  await fetchEncodedReadme(projectUploadForm.githubLink); // 존재하는 리포지토리인지 확인
+  await sendProjectToServer(projectUploadForm); //올바른 리포지토리 링크이면 프로젝트 업로드
 };
 
 // 유효성 검사 함수

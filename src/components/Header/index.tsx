@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { css, keyframes } from 'styled-components';
 
-import { ProjectUploadModal } from '@/components';
-
 import { ReactComponent as HeaderLogoLight } from '@/assets/logo-light.svg';
 import { ReactComponent as HeaderLogodark } from '@/assets/logo-dark.svg';
 
@@ -62,7 +60,6 @@ export function Header() {
           )}
         </DarkModeToggleMoonWrapper>
       </DarkModeToggleWrapper>
-      <ProjectUploadModal />
     </HeaderWrapper>
   );
 }

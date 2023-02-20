@@ -52,9 +52,6 @@ const NavigationBar = styled.nav`
   @media only screen and (max-width: 900px) {
     gap: 10px;
   }
-  /* Small devices (portrait tablets and large phones, 600px and up) */
-  @media only screen and (min-width: 900px) and (max-width: 1200px) {
-  }
 `;
 
 const NavigationItem = styled.button`

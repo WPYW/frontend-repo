@@ -23,8 +23,13 @@ export function ModalButton({ projectUploadForm, uploadProject }: IModalbutton) 
 
   const onSubmitHandler = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    uploadProject(projectUploadForm);
-    dispatch(modalClose());
+
+    try {
+      await uploadProject(projectUploadForm);
+      dispatch(modalClose());
+    } catch (err) {
+      alert(err);
+    }
   };
 
   const onCloseHandler = () => dispatch(modalClose());
