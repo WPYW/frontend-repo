@@ -33,11 +33,11 @@ a {
   --base-text-weight-semibold: 600;
   --base-text-weight-bold: 700;
   --base-text-weight-extrabold: 800;
-  --base-text-weight-2extrabold: 800;
+  --base-text-weight-2extrabold: 900;
 
   /* 폰트 사이즈 */
   --base-text-size-xsmall: 0.5rem;
-  --base-text-size-small: 0.75rem;
+  --base-text-size-small: 0.9rem;
   --base-text-size-normal: 1rem;
   --base-text-size-medium: 1.25rem;
   --base-text-size-large: 1.5rem;
@@ -95,12 +95,9 @@ body.light {
   --project-upload-modal-hashtag-text-color: #f7f7f8;
 
   --project-upload-modal-image-input-label-text-color: var(--base-text-color-light);
-  --project-upload-modal-image-input-wrapper-background-color: #f6f6f6;
-  --project-upload-modal-image-input-wrapper-text-color: var(--main-color-orange);
 
-  --project-upload-modal-submit-button-background-color: var(--base-background-color-light);
-  --project-upload-modal-submit-button-text-color: var(--main-color-orange);
-  --project-upload-modal-submit-button-border-color: var(--main-color-orange);
+  --project-upload-modal-button-text-color: var(--main-color-orange);
+  --project-upload-modal-button-border-color: var(--main-color-orange);
 
   --mainpage-title-text-color: var(--main-color-orange);
   --mainpage-subtitle-text-color: #747474;
@@ -169,12 +166,9 @@ body.dark {
   --project-upload-modal-hashtag-text-color: #343434;
 
   --project-upload-modal-image-input-label-text-color: #f2f2f2;
-  --project-upload-modal-image-input-wrapper-background-color: #f6f6f6;
-  --project-upload-modal-image-input-wrapper-text-color: var(--main-color-orange);
 
-  --project-upload-modal-submit-button-background-color: var(--base-background-color-dark);
-  --project-upload-modal-submit-button-text-color: var(--main-color-orange);
-  --project-upload-modal-submit-button-border-color: var(--main-color-orange);
+  --project-upload-modal-button-text-color: var(--main-color-orange);
+  --project-upload-modal-button-border-color: var(--main-color-orange);
 
   --mainpage-title-text-color: var(--main-color-orange);
   --mainpage-subtitle-text-color: #dedede;

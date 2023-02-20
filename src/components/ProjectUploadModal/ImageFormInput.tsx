@@ -1,77 +1,102 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { IImageFormInput } from './index.types';
+import DeleteButtonImagePath from '@/assets/delete-button-circle.svg';
+
+import { ReactComponent as ImageInputButton } from '@/assets/image-input-button.svg';
+
+interface IProjectUploadForm {
+  projectTitle: string;
+  projectDescription: string;
+  githubLink: string;
+  demositeLink: string;
+  projectHashtag: string[];
+  previewImages: File[];
+}
+
+interface IImageFormInput {
+  label: string;
+  previewImages: File[];
+  setProjectUploadForm: React.Dispatch<React.SetStateAction<IProjectUploadForm>>;
+  required?: boolean;
+}
 
 export function ImageFormInput({
   label,
-  thumbnailList,
+  previewImages,
   setProjectUploadForm,
   ...props
 }: IImageFormInput) {
-  const [previewList, setPreviewList] = useState<string[]>([]);
-
-  const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onImageFormInputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files !== null) {
-      let imageList = [...thumbnailList];
-      let imageUrlList = [...previewList];
-      for (const file of event.target.files) {
-        imageList.push(file);
-        imageUrlList.push(URL.createObjectURL(file));
-      }
+      let imageList = [...previewImages, ...event.target.files];
 
       if (imageList.length > 3) {
         imageList = imageList.slice(0, 3);
-        imageUrlList = imageUrlList.slice(0, 3);
       }
-      setProjectUploadForm((prev) => ({ ...prev, thumbnailList: [...imageList] }));
-      setPreviewList(imageUrlList);
+      setProjectUploadForm((prev) => ({ ...prev, previewImages: [...imageList] }));
     }
   };
 
   const onDeleteImageHandler = (index: number) => {
-    const newImageList = thumbnailList;
-    const newImageUrlList = previewList;
+    const newImageList = previewImages;
     newImageList.splice(index, 1);
-    newImageUrlList.splice(index, 1);
-    setProjectUploadForm((prev) => ({ ...prev, thumbnailList: [...newImageList] }));
-    setPreviewList([...newImageUrlList]);
+    setProjectUploadForm((prev) => ({ ...prev, previewImages: [...newImageList] }));
   };
 
   return (
-    <FormInputWrapper>
+    <ImageFormInputWrapper>
       <LabelWrapper>
         <Required required={props.required}>*</Required>
         <Label>{label}</Label>
       </LabelWrapper>
-
-      <ImageInputWrapper>
-        {previewList.map((item, index) => {
+      <ImagesWrapper>
+        {previewImages.map((item, index) => {
           return (
-            <ImagePreviewWrapper key={index} onClick={() => onDeleteImageHandler(index)}>
-              <ImagePreview src={item} alt="" />
-              <CloseButton />
-            </ImagePreviewWrapper>
+            <PreviewImageWrapper key={index} onClick={() => onDeleteImageHandler(index)}>
+              <PreviewImage src={URL.createObjectURL(item)} alt={`preview-image-${index}`} />
+              <DeleteButton />
+            </PreviewImageWrapper>
           );
         })}
-        <ImageInputButton htmlFor="thumbnail">+</ImageInputButton>
+        <ImageInputButtonWrapper htmlFor="previewImages">
+          <ImageInputButton
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+              borderRadius: '8px',
+            }}
+          />
+        </ImageInputButtonWrapper>
         <ImageInput
           type="file"
-          id="thumbnail"
-          name="thumbnail"
+          id="previewImages"
+          name="previewImages"
           accept="image/png, image/jpeg, image/gif, image/svg"
           multiple
-          onChange={onChangeHandler}
+          onChange={onImageFormInputChangeHandler}
         />
-      </ImageInputWrapper>
-    </FormInputWrapper>
+      </ImagesWrapper>
+    </ImageFormInputWrapper>
   );
 }
 
-const FormInputWrapper = styled.div`
+const ImageFormInputWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 10px;
 
-  width: 100%;
+  &::after {
+    content: '추천 사이즈:\\A JPG, PNG, GIF, SVG. 최대 10MB';
+
+    font-size: var(--base-text-size-xsmall);
+    color: #878787;
+
+    text-align: end;
+
+    white-space: pre-wrap;
+  }
 `;
 
 const LabelWrapper = styled.div`
@@ -86,68 +111,46 @@ const Required = styled.div<{ required: boolean | undefined }>`
 `;
 
 const Label = styled.label`
+  font-weight: var(--base-text-weight-bold);
   font-size: var(--base-text-size-small);
-  font-weight: var(--base-text-weight-medium);
-  color: var(--project-upload-modal-image-input-label-text-color);
+  color: var(--project-upload-modal-input-label-text-color);
 `;
 
-const ImageInputWrapper = styled.div`
+const ImagesWrapper = styled.div`
   display: flex;
   gap: 10px;
 
-  margin: 0 auto;
-
-  width: 100%;
   height: 100px;
 `;
 
-const ImageInputButton = styled.label`
-  font-size: var(--base-text-size-3xlarge);
-  color: var(--project-upload-modal-image-input-wrapper-text-color);
-
-  background-color: var(--project-upload-modal-image-input-wrapper-background-color);
-
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 8px;
-
+const ImageInputButtonWrapper = styled.label`
   cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 25%;
 `;
 
 const ImageInput = styled.input`
   display: none;
 `;
 
-const ImagePreviewWrapper = styled.div`
-  font-size: var(--base-text-size-3xlarge);
-  color: var(--project-upload-modal-image-input-wrapper-text-color);
+const PreviewImageWrapper = styled.div`
+  position: relative;
 
-  background-color: var(--project-upload-modal-image-input-wrapper-background-color);
+  width: 25%;
 
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
 
   cursor: pointer;
-
-  overflow: hidden;
-
-  position: relative;
-
-  width: 25%;
 `;
 
-const ImagePreview = styled.img`
+const PreviewImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+
+  border-radius: 8px;
 `;
 
-const CloseButton = styled.div`
+const DeleteButton = styled.div`
   width: 20px;
   height: 20px;
 
@@ -155,7 +158,7 @@ const CloseButton = styled.div`
   top: 5px;
   right: 5px;
 
-  background-image: url('/close-circle.svg');
+  background-image: url(${DeleteButtonImagePath});
   background-repeat: no-repeat;
   background-size: cover;
 `;

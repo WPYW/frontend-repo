@@ -1,38 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-import type { RootState } from '@/RTK/stores/store';
 import { useSelector } from 'react-redux';
+import type { RootState } from '@/RTK/stores/store';
 
-import { IProject } from './index.types';
+import { useProjectUpload } from '@/hooks/useProjectUpload';
 
-import { UploadForm } from './UploadForm';
-import { FormSubmitButton } from './FormSubmitButton';
-import { ModalCloseButton } from './ModalCloseButton';
 import { ModalTitle } from './ModalTitle';
+import { UploadForm } from './UploadForm';
+import { ModalButton } from './ModalButton';
 
 export function ProjectUploadModal() {
   const isOpen = useSelector((state: RootState) => state.modal.isOpen);
 
-  const [projectUploadForm, setProjectUploadForm] = useState<IProject>({
-    projectTitle: '',
-    projectDescription: '',
-    projectLink: '',
-    demoSiteLink: '',
-    hashtagList: [],
-    thumbnailList: [],
-  });
+  const { projectUploadForm, setProjectUploadForm, uploadProject } = useProjectUpload();
 
   return (
     <ProjectUploadModalOverlay isOpen={isOpen}>
       <ProjectUploadModalWrapper>
-        <ModalCloseButton />
         <ModalTitle />
         <UploadForm
           projectUploadForm={projectUploadForm}
           setProjectUploadForm={setProjectUploadForm}
         />
-        <FormSubmitButton projectUploadForm={projectUploadForm} />
+        <ModalButton projectUploadForm={projectUploadForm} uploadProject={uploadProject} />
       </ProjectUploadModalWrapper>
     </ProjectUploadModalOverlay>
   );
@@ -50,6 +41,7 @@ const ProjectUploadModalOverlay = styled.div<{ isOpen: boolean }>`
   width: 100%;
   height: 100vh;
 
+  background-color: rgba(183, 183, 183, 0.7);
   backdrop-filter: blur(10px);
 `;
 
@@ -61,15 +53,14 @@ const ProjectUploadModalWrapper = styled.div`
 
   position: relative;
 
-  padding: 32px;
+  width: 600px;
+  max-height: 100vh;
 
-  border: 0.5px solid;
-  border-radius: 12px;
+  padding: 40px;
+
+  border-radius: 10px;
 
   background-color: var(--base-background-color);
-
-  width: 600px;
-  max-height: 80vh;
 
   overflow: scroll;
 `;

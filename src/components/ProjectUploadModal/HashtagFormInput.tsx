@@ -1,10 +1,24 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { IHashtagFormInput } from './index.types';
+interface IProjectUploadForm {
+  projectTitle: string;
+  projectDescription: string;
+  githubLink: string;
+  demositeLink: string;
+  projectHashtag: string[];
+  previewImages: File[];
+}
+
+export interface IHashtagFormInput {
+  label: string;
+  projectHashtag: string[];
+  required?: boolean;
+  setProjectUploadForm: React.Dispatch<React.SetStateAction<IProjectUploadForm>>;
+}
 
 export function HashtagFormInput({
-  hashtagList,
+  projectHashtag,
   setProjectUploadForm,
   ...props
 }: IHashtagFormInput) {
@@ -12,7 +26,7 @@ export function HashtagFormInput({
 
   // input onChange 핸들러
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (hashtagList.length >= 10) return;
+    if (projectHashtag.length >= 10) return;
 
     const elementName = event.target.name;
     const elementValue = event.target.value;
@@ -24,26 +38,29 @@ export function HashtagFormInput({
   const onAddHashtag = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (hashtag === '') return;
     if (event.key === 'Enter') {
-      setProjectUploadForm((prev) => ({ ...prev, hashtagList: [...prev.hashtagList, hashtag] }));
+      setProjectUploadForm((prev) => ({
+        ...prev,
+        projectHashtag: [...prev.projectHashtag, hashtag],
+      }));
       setHashtag('');
     }
   };
 
   // 해시태그 제거
   const onRemoveHashtag = (index: number) => {
-    const newHashtagList = hashtagList;
+    const newHashtagList = projectHashtag;
     newHashtagList.splice(index, 1);
-    setProjectUploadForm((prev) => ({ ...prev, hashtagList: [...newHashtagList] }));
+    setProjectUploadForm((prev) => ({ ...prev, projectHashtag: [...newHashtagList] }));
   };
 
   return (
-    <HashTagFormInputContainer>
+    <HashTagFormInputWrapper>
       <LabelWrapper>
         <Required required={props.required}>*</Required>
         <Label>{props.label}</Label>
       </LabelWrapper>
-      <HashtagFormInputWrapper>
-        {hashtagList?.map((item, index) => (
+      <HashtagsWrapper>
+        {projectHashtag?.map((item, index) => (
           <Hashtag key={index} onClick={() => onRemoveHashtag(index)}>
             {item}
           </Hashtag>
@@ -58,20 +75,18 @@ export function HashtagFormInput({
           autoComplete="false"
           {...props}
         />
-      </HashtagFormInputWrapper>
-    </HashTagFormInputContainer>
+      </HashtagsWrapper>
+    </HashTagFormInputWrapper>
   );
 }
 
-const HashTagFormInputContainer = styled.div`
+const HashTagFormInputWrapper = styled.div`
   display: flex;
   flex-direction: column;
 
   &::after {
     content: '';
-    display: block;
 
-    width: 100%;
     height: 2px;
 
     background-color: var(--project-upload-modal-input-underline-color);
@@ -81,27 +96,27 @@ const HashTagFormInputContainer = styled.div`
 const LabelWrapper = styled.div`
   display: flex;
   gap: 2px;
-
-  color: var(--project-upload-modal-input-required-color);
 `;
 
 const Required = styled.div<{ required: boolean | undefined }>`
+  color: var(--project-upload-modal-input-required-color);
+
   visibility: ${(props) => (!props.required ? 'hidden' : '')};
 `;
 
 const Label = styled.div`
+  font-weight: var(--base-text-weight-bold);
   font-size: var(--base-text-size-small);
-  font-weight: var(--base-text-weight-medium);
-  color: var(--project-upload-modal-hashtag-input-label-text-color);
+  color: var(--project-upload-modal-input-label-text-color);
 `;
 
-const HashtagFormInputWrapper = styled.div`
+const HashtagsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 
-  padding: 2px 8px;
+  padding: 12px 8px 6px 8px;
 `;
 
 const Hashtag = styled.div`
@@ -109,13 +124,11 @@ const Hashtag = styled.div`
   font-weight: var(--base-text-weight-normal);
   color: var(--project-upload-modal-hashtag-text-color);
 
-  padding: 8px 8px 8px 8px;
-
-  margin-bottom: 2px;
-
-  background-color: var(--project-upload-modal-hashtag-background-color);
+  padding: 8px 12px;
 
   border-radius: 8px;
+
+  background-color: var(--project-upload-modal-hashtag-background-color);
 
   cursor: pointer;
 `;
@@ -123,12 +136,8 @@ const Hashtag = styled.div`
 const Input = styled.input`
   all: unset;
 
-  font-size: var(--base-text-size-small);
-  color: var(--project-upload-modal-hashtag-input-text-color);
+  font-size: var(--base-text-size-normal);
+  color: var(--project-upload-modal-input-text-color);
 
-  padding: 8px 8px 8px 8px;
-
-  border: none;
-
-  outline: none;
+  padding-top: 6px;
 `;
