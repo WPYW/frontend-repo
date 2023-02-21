@@ -93,4 +93,6 @@ const ModalButton = styled.button`
   border-radius: 8px;
 
   padding: 12px 0px;
+
+  cursor: pointer;
 `;
