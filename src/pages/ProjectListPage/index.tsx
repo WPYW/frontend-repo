@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { ProjectListPageDescription, ProjectList } from '@/components';
 
-export function ProjectListPage() {
+export default function ProjectListPage() {
   return (
     <ProjectListPageWrapper>
       <ProjectListPageDescription />

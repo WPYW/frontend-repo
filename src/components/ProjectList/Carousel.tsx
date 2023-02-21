@@ -19,12 +19,15 @@ export function Carousel({ previewImages }: ICarousel) {
             if (index <= 0) return;
             setIndex((prev) => prev - 1);
           }}
+          role="button"
+          aria-label="preview-carousel-left-button"
+          tabIndex={-1}
         >
           <CarouselButtonLeft />
         </CarouselButtonLeftWrapper>
       )}
 
-      <ProjectImage src={previewImages[index]} />
+      <ProjectImage src={previewImages[index]} alt="carousel-preview-image" />
       {previewImages && previewImages.length > 1 && index !== 2 && (
         <CarouselButtonRightWrapper
           onClick={() => {
@@ -32,6 +35,9 @@ export function Carousel({ previewImages }: ICarousel) {
             if (index >= 2) return;
             setIndex((prev) => prev + 1);
           }}
+          role="button"
+          aria-label="preview-carousel-right-button"
+          tabIndex={-1}
         >
           <CarouselButtonRight />
         </CarouselButtonRightWrapper>

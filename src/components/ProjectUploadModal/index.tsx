@@ -11,13 +11,13 @@ import { ModalTitle } from './ModalTitle';
 import { UploadForm } from './UploadForm';
 import { ModalButton } from './ModalButton';
 
-export const PortalModal = () => {
+export function PortalModal() {
   const modalRoot = document.getElementById('modal-root');
 
   if (modalRoot !== null) return reactDom.createPortal(<ProjectUploadModal />, modalRoot);
 
   return null;
-};
+}
 
 function ProjectUploadModal() {
   const isOpen = useSelector((state: RootState) => state.modal.isOpen);

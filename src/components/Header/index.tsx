@@ -36,7 +36,7 @@ export function Header() {
 
   return (
     <HeaderWrapper>
-      <Link to="/">
+      <Link to="/" aria-label="Header logo link for mainpage">
         <HeaderLogoWrapper>
           {mode === 'light' && <HeaderLogoLight />}
           {mode === 'dark' && <HeaderLogodark />}

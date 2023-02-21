@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { ProjectDetail } from '@/components';
 
-export function DetailPage() {
+export default function DetailPage() {
   return (
     <DetailPageWrapper>
       <ProjectDetail />
