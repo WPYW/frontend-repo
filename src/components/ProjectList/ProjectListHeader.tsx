@@ -18,7 +18,7 @@ export function ProjectListHeader({ onSetOrdering, onSetSearch }: IProjectListHe
         <NavigationItem id="views" onClick={onSetOrdering}>
           조회수순
         </NavigationItem>
-        <NavigationItem id="like" onClick={onSetOrdering}>
+        <NavigationItem id="likes" onClick={onSetOrdering}>
           좋아요순
         </NavigationItem>
       </NavigationBar>
