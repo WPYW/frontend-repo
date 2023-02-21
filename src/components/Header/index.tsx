@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import styled, { css, keyframes } from 'styled-components';
 
 import { ReactComponent as HeaderLogoLight } from '@/assets/logo-light.svg';
@@ -36,12 +35,12 @@ export function Header() {
 
   return (
     <HeaderWrapper>
-      <Link to="/" aria-label="Header logo link for mainpage">
+      <a href="/" aria-label="Header logo link for mainpage">
         <HeaderLogoWrapper>
           {mode === 'light' && <HeaderLogoLight />}
           {mode === 'dark' && <HeaderLogodark />}
         </HeaderLogoWrapper>
-      </Link>
+      </a>
       <DarkModeToggleWrapper onClick={DarkModeHandler} data-mode={mode}>
         <DarkModeToggleSunWrapper>
           {mode === 'light' && (
