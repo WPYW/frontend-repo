@@ -12,7 +12,7 @@ import { LoadingDots } from '../LoadingDots';
 export function ProjectDetail() {
   const params = useParams();
 
-  const { projectDetail, readMe, isLoading } = useProjectDetail(params.id);
+  const { projectDetail, readMe, isLoading, refetch } = useProjectDetail(params.id);
 
   if (isLoading)
     return (
@@ -23,19 +23,24 @@ export function ProjectDetail() {
 
   return (
     <ProjectDetailWrapper>
-      <ProjectDetailHeader {...projectDetail} />
+      <ProjectDetailHeader {...projectDetail} refetch={refetch} />
       <ProjectDetailReadMe readMe={readMe} />
-      <ProjectDetailComment {...projectDetail} />
+      <ProjectDetailComment {...projectDetail} refetch={refetch} />
     </ProjectDetailWrapper>
   );
 }
 
 const ProjectDetailWrapper = styled.div`
-  padding: 100px;
+  padding: 80px;
 
   display: flex;
   flex-direction: column;
   gap: 60px;
+
+  @media only screen and (max-width: 700px) {
+    padding: 30px 20px 80px 20px;
+    gap: 40px;
+  }
 `;
 
 const LoadingDotsWrapper = styled.div`

@@ -33,6 +33,7 @@ const ScrollCatcherWrapper = styled.div`
   justify-content: center;
 
   height: 100px;
+  margin-top: 100px;
 `;
 
 const NoMoreProject = styled.div``;

@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import styled, { css, keyframes } from 'styled-components';
 
 import { ReactComponent as SearchBarIcon } from '@/assets/search-icon.svg';
 
@@ -9,16 +9,38 @@ interface IProjectListHeaderProps {
 }
 
 export function ProjectListHeader({ onSetOrdering, onSetSearch }: IProjectListHeaderProps) {
+  const [clickedNavigationItemId, setClickedNavigationItemId] = useState('created');
   return (
     <ProjectListHeaderWrapper>
       <NavigationBar>
-        <NavigationItem id="created" onClick={onSetOrdering}>
+        <NavigationItem
+          id="created"
+          onClick={(event) => {
+            onSetOrdering(event);
+            setClickedNavigationItemId((event.target as HTMLElement).id);
+          }}
+          data-clickednavigationitemid={clickedNavigationItemId}
+        >
           최신순
         </NavigationItem>
-        <NavigationItem id="views" onClick={onSetOrdering}>
+        <NavigationItem
+          id="views"
+          onClick={(event) => {
+            onSetOrdering(event);
+            setClickedNavigationItemId((event.target as HTMLElement).id);
+          }}
+          data-clickednavigationitemid={clickedNavigationItemId}
+        >
           조회수순
         </NavigationItem>
-        <NavigationItem id="likes" onClick={onSetOrdering}>
+        <NavigationItem
+          id="likes"
+          onClick={(event) => {
+            onSetOrdering(event);
+            setClickedNavigationItemId((event.target as HTMLElement).id);
+          }}
+          data-clickednavigationitemid={clickedNavigationItemId}
+        >
           좋아요순
         </NavigationItem>
       </NavigationBar>
@@ -31,14 +53,13 @@ export function ProjectListHeader({ onSetOrdering, onSetSearch }: IProjectListHe
 }
 
 const ProjectListHeaderWrapper = styled.div`
-  padding: 30px;
-
+  padding-bottom: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   @media only screen and (max-width: 900px) {
-    flex-direction: column-reverse;
+    flex-direction: column;
     gap: 20px;
   }
 `;
@@ -54,18 +75,47 @@ const NavigationBar = styled.nav`
   }
 `;
 
-const NavigationItem = styled.button`
+const NavigationItemUnderlineAnimation = keyframes`
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+`;
+
+const NavigationItem = styled.button<{ 'data-clickednavigationitemid': string }>`
   all: unset;
 
-  color: var(--mainpage-navigation-bar-item-text-color);
+  font-weight: var(--base-text-weight-bold);
+  font-size: var(--base-text-size-large);
+  color: #848484;
 
-  background-color: var(--mainpage-navigation-bar-item-background-color);
-
-  border-radius: 8px;
-
-  padding: 10px 20px;
+  padding: 16px;
 
   cursor: pointer;
+
+  @media only screen and (max-width: 600px) {
+    font-size: var(--base-text-size-medium);
+  }
+
+  ${(props) =>
+    props.id === props['data-clickednavigationitemid'] &&
+    css`
+      color: var(--mainpage-navigation-bar-clicked-item-text-color);
+
+      &::after {
+        content: '';
+
+        display: block;
+        width: 100%;
+        height: 4px;
+        background-color: var(--main-color-orange);
+
+        animation: ${NavigationItemUnderlineAnimation} 0.6s;
+      }
+    `}
 `;
 
 const SearchBarWrapper = styled.div`
@@ -84,7 +134,7 @@ const SearchBarWrapper = styled.div`
 const SearchBar = styled.input`
   all: unset;
 
-  color: var(--mainpage-searchbar-text-color);
+  color: #333333;
 
   ::placeholder {
     color: var(--mainpage-searchbar-placeholder-text-color);

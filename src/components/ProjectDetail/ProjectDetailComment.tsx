@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { ReactComponent as CommenterImage } from '@/assets/commenter-image.svg';
 import { BACKEND_API_URL } from '@/common/url';
 import { useParams } from 'react-router-dom';
+import { QueryObserverResult, RefetchOptions, RefetchQueryFilters } from '@tanstack/react-query';
 
 interface Comment {
   content: string;
@@ -12,11 +13,24 @@ interface Comment {
   nickname: string;
 }
 
-interface IProjectDetailComment {
+interface IProjectDetail {
+  projectTitle: string;
+  githubLink: string;
+  demositeLink: string;
+  projectHashtags: string[];
+  views: number;
+  likes: number;
   comments: Comment[];
 }
 
-export function ProjectDetailComment({ comments }: IProjectDetailComment) {
+interface IProjectDetailComment {
+  comments: Comment[];
+  refetch: <TPageData>(
+    options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined,
+  ) => Promise<QueryObserverResult<IProjectDetail, unknown>>;
+}
+
+export function ProjectDetailComment({ comments, refetch }: IProjectDetailComment) {
   const [comment, setComment] = useState('');
 
   const params = useParams();
@@ -33,14 +47,15 @@ export function ProjectDetailComment({ comments }: IProjectDetailComment) {
       />
       <CommentLength>{`${comment.length}/100`}</CommentLength>
       <CommentButton
-        onClick={() => {
+        onClick={async () => {
           const form = new FormData();
           form.append('content', comment);
-          fetch(`${BACKEND_API_URL}/projects/${params.id}/comments/`, {
+          await fetch(`${BACKEND_API_URL}/projects/${params.id}/comments/`, {
             method: 'POST',
             body: form,
           });
           setComment('');
+          refetch();
         }}
       >
         댓글 등록
@@ -49,16 +64,16 @@ export function ProjectDetailComment({ comments }: IProjectDetailComment) {
       <CommentListWrapper>
         {comments.map((item, index) => (
           <Comment key={index}>
-            <CommenterImageWrapper>
-              <CommenterImage style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-            </CommenterImageWrapper>
-            <CommentSubWrapper>
-              <div style={{ display: 'flex', gap: '10px' }}>
-                <CommenterName>랜덤 사용자 이름</CommenterName>
+            <CommentHeaderWrapper>
+              <CommenterImageWrapper>
+                <CommenterImage style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </CommenterImageWrapper>
+              <CommentHeaderSubWrapper>
+                <CommenterName>{item.nickname}</CommenterName>
                 <CommentCreated>{item.created}</CommentCreated>
-              </div>
-              <CommentContent>{item.content}</CommentContent>
-            </CommentSubWrapper>
+              </CommentHeaderSubWrapper>
+            </CommentHeaderWrapper>
+            <CommentContent>{item.content}</CommentContent>
           </Comment>
         ))}
       </CommentListWrapper>
@@ -109,6 +124,7 @@ const CommentLength = styled.div`
 `;
 
 const CommentButton = styled.button`
+  all: unset;
   margin-top: 20px;
 
   align-self: end;
@@ -123,43 +139,69 @@ const CommentButton = styled.button`
 
   padding: 8px 30px;
 
-  background: none;
-
   cursor: pointer;
+
+  &:hover {
+    color: #ffffff;
+    background-color: var(--detailpage-button-text-color);
+  }
+
+  @media only screen and (max-width: 700px) {
+    font-size: var(--base-text-size-small);
+  }
 `;
 
 const CommentListWrapper = styled.div`
-  margin-top: 20px;
-
   display: flex;
   flex-direction: column;
   gap: 50px;
+
+  padding-top: 30px;
 `;
 
 const Comment = styled.div`
   display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &::after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: #e1e1e1;
+  }
+`;
+
+const CommentHeaderWrapper = styled.div`
+  display: flex;
+  align-items: center;
   gap: 20px;
 `;
 
-const CommentSubWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+const CommenterImageWrapper = styled.div`
+  width: 30px;
+  height: 30px;
 `;
 
-const CommenterImageWrapper = styled.div`
-  width: 50px;
-  height: 50px;
+const CommentHeaderSubWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const CommenterName = styled.div`
   color: var(--detailpage-commenter-name-text-color);
 `;
 
-const CommentContent = styled.div`
-  color: var(--detailpage-commenter-content-text-color);
+const CommentCreated = styled.div`
+  font-size: var(--base-text-size-small);
+  color: var(--detailpage-commenter-created-text-color);
 `;
 
-const CommentCreated = styled.div`
+const CommentContent = styled.div`
+  font-size: var(--base-text-size-medium);
   color: var(--detailpage-commenter-content-text-color);
+
+  @media only screen and (max-width: 700px) {
+    font-size: var(--base-text-size-normal);
+  }
 `;

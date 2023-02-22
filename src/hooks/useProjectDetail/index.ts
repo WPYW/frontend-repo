@@ -5,6 +5,13 @@ import { BACKEND_API_URL } from '@/common/url';
 
 import { decodeBase64 } from '@/utils';
 
+interface Comment {
+  content: string;
+  created: string;
+  id: string;
+  nickname: string;
+}
+
 interface IProjectDetail {
   projectTitle: string;
   githubLink: string;
@@ -12,11 +19,12 @@ interface IProjectDetail {
   projectHashtags: string[];
   views: number;
   likes: number;
-  comments: string[];
+  comments: Comment[];
+  created: string;
 }
 
 export function useProjectDetail(projectId = '') {
-  const { data: projectDetail } = useQuery<IProjectDetail>({
+  const { data: projectDetail, refetch } = useQuery<IProjectDetail>({
     queryKey: ['projectDetail'],
     queryFn: () => fetchProjectDetail(projectId),
     initialData: {
@@ -27,6 +35,7 @@ export function useProjectDetail(projectId = '') {
       views: 0,
       likes: 0,
       comments: [],
+      created: '',
     },
   });
 
@@ -42,7 +51,7 @@ export function useProjectDetail(projectId = '') {
     enabled: !!readmeOrigin,
   });
 
-  return { projectDetail, readMe, isLoading };
+  return { projectDetail, readMe, isLoading, refetch };
 }
 
 const fetchProjectDetail = async (projectId: string) => {
@@ -58,6 +67,7 @@ const fetchProjectDetail = async (projectId: string) => {
     views: projectDetail.views,
     likes: projectDetail.likes,
     comments: projectDetail.comment,
+    created: projectDetail.created,
   };
 };
 

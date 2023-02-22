@@ -28,11 +28,13 @@ const SubTitle = styled.h2`
   font-size: var(--base-text-size-normal);
   color: var(--project-upload-modal-subtitle-color);
 
+  white-space: pre-wrap;
+
   &::after {
     content: '깃허브 링크를 등록해주세요 ❤️';
   }
 
-  @media only screen and (max-width: 520px) {
+  @media only screen and (max-width: 700px) {
     text-align: center;
 
     &::after {

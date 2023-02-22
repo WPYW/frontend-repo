@@ -31,6 +31,7 @@ export function HashtagFormInput({
     const elementName = event.target.name;
     const elementValue = event.target.value;
 
+    if (elementValue.includes(' ')) return;
     if (elementName === 'hashtag') setHashtag(elementValue);
   };
 
@@ -38,6 +39,13 @@ export function HashtagFormInput({
   const onAddHashtag = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (hashtag === '') return;
     if (event.key === 'Enter') {
+      setProjectUploadForm((prev) => ({
+        ...prev,
+        projectHashtag: [...prev.projectHashtag, hashtag],
+      }));
+      setHashtag('');
+    }
+    if (event.code === 'Space') {
       setProjectUploadForm((prev) => ({
         ...prev,
         projectHashtag: [...prev.projectHashtag, hashtag],
@@ -73,6 +81,7 @@ export function HashtagFormInput({
           placeholder="태그를 입력하세요"
           spellCheck={false}
           autoComplete="false"
+          maxLength={15}
           {...props}
         />
       </HashtagsWrapper>

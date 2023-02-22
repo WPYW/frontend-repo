@@ -45,6 +45,7 @@ export function UploadForm({ projectUploadForm, setProjectUploadForm }: IUploadF
         value={projectTitle}
         onChange={onFormInputChangeHandler}
         placeholder="예시 - WhatProjectYouWant"
+        maxLength={20}
         required
       />
       <FormInput
@@ -73,7 +74,7 @@ export function UploadForm({ projectUploadForm, setProjectUploadForm }: IUploadF
         placeholder="예시 - https://wpyw.io"
       />
       <HashtagFormInput
-        label="해시태크 (최대 10개)"
+        label="해시태그 (최대 10개)"
         projectHashtag={projectHashtag}
         setProjectUploadForm={setProjectUploadForm}
       />

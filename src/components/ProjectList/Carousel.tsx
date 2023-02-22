@@ -47,20 +47,19 @@ export function Carousel({ previewImages }: ICarousel) {
 }
 
 const CarouselWrapper = styled.div`
-  height: 50%;
-
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background-color: #bcbcbc;
+  position: relative;
+  height: 200px;
 
   border-top-left-radius: 24px;
   border-top-right-radius: 24px;
 
   overflow: hidden;
 
-  position: relative;
+  border-bottom: 2px solid #e5e5e5;
 `;
 
 const ProjectImage = styled.img`
@@ -71,13 +70,14 @@ const ProjectImage = styled.img`
 
 const CarouselButtonLeftWrapper = styled.button`
   all: unset;
+
+  display: flex;
+  align-items: center;
+
   position: absolute;
   left: 0;
 
   height: 100%;
-
-  display: flex;
-  align-items: center;
 
   padding-left: 20px;
 `;
@@ -85,13 +85,13 @@ const CarouselButtonLeftWrapper = styled.button`
 const CarouselButtonRightWrapper = styled.button`
   all: unset;
 
+  display: flex;
+  align-items: center;
+
   position: absolute;
   right: 0;
 
   height: 100%;
-
-  display: flex;
-  align-items: center;
 
   padding-right: 20px;
 `;

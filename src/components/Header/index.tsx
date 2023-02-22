@@ -80,6 +80,32 @@ const HeaderWrapper = styled.header`
 
 const HeaderLogoWrapper = styled.div`
   padding: 8px;
+
+  @media only screen and (max-width: 700px) {
+    width: 80px;
+
+    padding: 2px;
+  }
+`;
+
+const DarkToLight = keyframes`
+  0% {
+    transform: translateX(-50px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+`;
+
+const DarkToLightMobile = keyframes`
+  0% {
+    transform: translateX(-30px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
 `;
 
 const LightToDark = keyframes`
@@ -92,9 +118,9 @@ const LightToDark = keyframes`
   }
 `;
 
-const DarkToLight = keyframes`
+const LightToDarkMobile = keyframes`
   0% {
-    transform: translateX(-50px);
+    transform: translateX(30px);
   }
 
   100% {
@@ -116,6 +142,10 @@ const DarkModeToggleWrapper = styled.div<{ 'data-mode': string }>`
   position: relative;
 
   cursor: pointer;
+
+  @media only screen and (max-width: 700px) {
+    padding: 8px 10px;
+  }
 
   &::after {
     content: '';
@@ -141,19 +171,37 @@ const DarkModeToggleWrapper = styled.div<{ 'data-mode': string }>`
           `}
 
     z-index: -1;
+
+    @media only screen and (max-width: 700px) {
+      width: 20px;
+      height: 20px;
+
+      ${(props) =>
+        props['data-mode'] === 'light'
+          ? css`
+              left: 5px;
+              animation: ${LightToDarkMobile} 0.5s;
+            `
+          : css`
+              right: 5px;
+              animation: ${DarkToLightMobile} 0.5s;
+            `}
+    }
   }
 `;
 
 const DarkModeToggleSunWrapper = styled.div`
   width: 20px;
-  height: 20px;
 
-  object-fit: cover;
+  @media only screen and (max-width: 700px) {
+    width: 10px;
+  }
 `;
 
 const DarkModeToggleMoonWrapper = styled.div`
   width: 20px;
-  height: 20px;
 
-  object-fit: cover;
+  @media only screen and (max-width: 700px) {
+    width: 10px;
+  }
 `;

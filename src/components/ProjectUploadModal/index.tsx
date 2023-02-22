@@ -25,7 +25,7 @@ function ProjectUploadModal() {
   const { projectUploadForm, setProjectUploadForm, uploadProject } = useProjectUpload();
 
   return (
-    <ProjectUploadModalOverlay isOpen={isOpen}>
+    <ProjectUploadModalOverlay isOpen={isOpen} tabIndex={-1}>
       <ProjectUploadModalWrapper>
         <ModalTitle />
         <UploadForm
