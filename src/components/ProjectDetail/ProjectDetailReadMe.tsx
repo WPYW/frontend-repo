@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
-import './markdownCSS.css';
+import './index.css';
 
 interface IProjectDetailReadMe {
   readMe?: string;
