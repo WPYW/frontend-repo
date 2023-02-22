@@ -18,7 +18,7 @@ export default ({ mode }) => {
     server: {
       proxy: {
         '/api/v1': {
-          target: process.env.VITE_PROXY_BACKEND_API_URL,
+          target: 'http://3.38.213.179',
           changeOrigin: true,
         },
       },
