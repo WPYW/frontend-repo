@@ -28,23 +28,194 @@ a {
 
 :root {
   /* 폰트 두께 */
-  --base-text-weight-bold: 800;
-  --base-text-weight-semibold: 700;
+  --base-text-weight-normal: 400;
+  --base-text-weight-medium: 500;
+  --base-text-weight-semibold: 600;
+  --base-text-weight-bold: 700;
+  --base-text-weight-extrabold: 800;
+  --base-text-weight-2extrabold: 900;
 
   /* 폰트 사이즈 */
-  --base-text-size-large: 1.6rem;
-  --base-text-size-medium: 1.2rem;
+  --base-text-size-3xsmall: 0.6rem;
+  --base-text-size-2xsmall: 0.7rem;
+  --base-text-size-xsmall: 0.8rem;
+  --base-text-size-small: 0.9rem;
   --base-text-size-normal: 1rem;
+  --base-text-size-medium: 1.25rem;
+  --base-text-size-large: 1.5rem;
+  --base-text-size-xlarge: 2rem;
+  --base-text-size-2xlarge: 2.5rem;
+  --base-text-size-3xlarge: 3rem;
 
   /* 폰트 컬러 */
   --base-text-color-dark: rgb(255, 255, 255);
   --base-text-color-light: rgb(0, 0, 0);
 
-  /* 폰트 컬러 hover */
-  --base-text-color-hover-dark: rgba(255, 255, 255, 0.5);
-  --base-text-color-hover-light: rgba(0, 0, 0, 0.5);
-
   /* 배경색 */
-  --base-background-color-dark: rgb(15, 23, 42);
+  --base-background-color-dark: rgb(34, 34, 34);
   --base-background-color-light: rgb(255, 255, 255);
+
+  /* 토스 메인 컬러 */
+  --toss-main-color-blue-1: rgb(0, 100, 255);
+  --toss-main-color-blue-2: #4880ee;
+  --toss-main-color-blue-3: #83b4f9;
+
+  --toss-main-color-gray-1: rgb(32, 35, 50);
+  --toss-main-color-gray-2: #505866;
+  --toss-main-color-gray-3: #b1b8c0;
+
+  /* 토스 텍스트 컬러 */
+  --toss-text-color-1: #1a1e27;
+  --toss-text-color-2: #505866;
+  --toss-text-color-3: #b1b8c0;
+
+  /* 메인 컬러 */
+  --main-color-orange: #ff9b25;
+}
+
+body.light {
+  --base-text-color: var(--base-text-color-light);
+  --base-background-color: var(--base-background-color-light);
+
+  color: var(--base-text-color);
+  background-color: var(--base-background-color);
+
+  --header-background-color: var(--base-background-color-light);
+
+  --dark-mode-toggle-border-color: var(--main-color-orange);
+  --dark-mode-toggle-background-color: var(--main-color-orange);
+
+  --project-upload-modal-title-color: var(--main-color-orange);
+  --project-upload-modal-subtitle-color: #656565;
+
+  --project-upload-modal-input-label-text-color: var(--base-text-color-light);
+  --project-upload-modal-input-text-color: var(--base-text-color-light);
+  --project-upload-modal-input-underline-color: var(--main-color-orange);
+  --project-upload-modal-input-required-color: #ff0000;
+
+  --project-upload-modal-hashtag-background-color: var(--main-color-orange);
+  --project-upload-modal-hashtag-text-color: #f7f7f8;
+
+  --project-upload-modal-image-input-label-text-color: var(--base-text-color-light);
+
+  --project-upload-modal-button-text-color: var(--main-color-orange);
+  --project-upload-modal-button-border-color: var(--main-color-orange);
+
+  --mainpage-title-text-color: var(--main-color-orange);
+  --mainpage-subtitle-text-color: #747474;
+
+  --mainpage-modal-button-text-color: var(--main-color-orange);
+  --mainpage-modal-button-border-color: var(--main-color-orange);
+
+  --mainpage-navigation-bar-item-background-color: var(--main-color-orange);
+  --mainpage-navigation-bar-clicked-item-text-color: #333333;
+
+  --mainpage-cardlist-title-text-color: var(--main-color-orange);
+
+  --mainpage-cardlist-description-text-color: var(--base-text-color-light);
+
+  --mainpage-cardlist-hashtag-text-color: #ffffff;
+  --mainpage-cardlist-hashtag-background-color: var(--main-color-orange);
+
+  --mainpage-searchbar-background-color: #ebebeb;
+  --mainpage-searchbar-text-color: #9f9f9f;
+  --mainpage-searchbar-placeholder-text-color: #9f9f9f;
+
+  --mainpge-cardlist-views-text-color: #bcbcbc;
+  --mainpge-cardlist-likes-text-color: #bcbcbc;
+
+  --detailpage-project-title-text-color: var(--main-color-orange);
+  --detailpage-project-created-text-color: #656565;
+
+  --detailpage-button-text-color: var(--main-color-orange);
+  --detailpage-button-border-color: var(--main-color-orange);
+
+  --detailpage-comment-count-text-color: #656565;
+
+  --detailpage-comment-input-background-color: #ededed;
+  --detailpage-comment-input-border-color: #e0e0e0;
+  --detailpage-comment-input-placeholder-color: #878787;
+
+  --detailpage-comment-length-text-color: #9e9e9e;
+
+  --detailpage-commenter-name-text-color: #2c2c2c;
+  --detailpage-commenter-created-text-color: #656565;
+
+  --detailpage-commenter-content-text-color: #2c2c2c;
+}
+
+body.dark {
+  --base-text-color: var(--base-text-color-dark);
+  --base-background-color: var(--base-background-color-dark);
+
+  color: var(--base-text-color);
+  background-color: var(--base-background-color);
+
+  --header-background-color: var(--base-background-color-dark);
+
+  --dark-mode-toggle-border-color: var(--main-color-orange);
+  --dark-mode-toggle-background-color: var(--main-color-orange);
+
+  --project-upload-modal-title-color: var(--main-color-orange);
+  --project-upload-modal-subtitle-color: #dedede;
+
+  --project-upload-modal-input-label-text-color: #f2f2f2;
+  --project-upload-modal-input-text-color: #f2f2f2;
+  --project-upload-modal-input-underline-color: var(--main-color-orange);
+  --project-upload-modal-input-required-color: #ff0000;
+
+  --project-upload-modal-hashtag-input-label-text-color: #f2f2f2;
+  --project-upload-modal-hashtag-input-text-color: #f2f2f2;
+  --project-upload-modal-hashtag-background-color: var(--main-color-orange);
+  --project-upload-modal-hashtag-text-color: #343434;
+
+  --project-upload-modal-image-input-label-text-color: #f2f2f2;
+
+  --project-upload-modal-button-text-color: var(--main-color-orange);
+  --project-upload-modal-button-border-color: var(--main-color-orange);
+
+  --mainpage-title-text-color: var(--main-color-orange);
+  --mainpage-subtitle-text-color: #dedede;
+
+  --mainpage-modal-button-text-color: var(--main-color-orange);
+  --mainpage-modal-button-border-color: var(--main-color-orange);
+
+  --mainpage-navigation-bar-item-background-color: var(--main-color-orange);
+  --mainpage-navigation-bar-clicked-item-text-color: #FFFFFF;
+
+  --mainpage-cardlist-title-text-color: var(--main-color-orange);
+
+  --mainpage-cardlist-description-text-color: #f2f2f2;
+
+  --mainpage-cardlist-hashtag-text-color: #343434;
+  --mainpage-cardlist-hashtag-background-color: var(--main-color-orange);
+
+  --mainpage-searchbar-background-color: #ebebeb;
+  --mainpage-searchbar-text-color: #9f9f9f;
+  --mainpage-searchbar-placeholder-text-color: #9f9f9f;
+
+  --mainpage-cardlist-views-text-color: #bcbcbc;
+  --mainpage-cardlist-likes-text-color: #bcbcbc;
+
+  --detailpage-project-title-text-color: var(--main-color-orange);
+  --detailpage-project-created-text-color: #dedede;
+
+  --detailpage-project-readme-text-color: #343434;
+
+  --detailpage-button-text-color: var(--main-color-orange);
+  --detailpage-button-border-color: var(--main-color-orange);
+
+  --detailpage-comment-count-text-color: #dedede;
+
+  --detailpage-comment-input-background-color: #ededed;
+  --detailpage-comment-input-border-color: #e0e0e0;
+  --detailpage-comment-input-text-color: #343434;
+  --detailpage-comment-input-placeholder-color: #878787;
+
+  --detailpage-comment-length-text-color: #b1b1b1;
+
+  --detailpage-commenter-name-text-color: #dedede;
+  --detailpage-commenter-created-text-color: #b1b1b1;
+
+  --detailpage-commenter-content-text-color: #dedede;
 }
