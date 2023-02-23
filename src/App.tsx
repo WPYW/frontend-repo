@@ -15,7 +15,7 @@ export default function App() {
         <Routes>
           <Route path="*" element={<div>404 Not Found</div>} />
           <Route path="/" element={<ProjectListPage />} />
-          <Route path="/project/detail/:id" element={<DetailPage />} />
+          <Route path="/projects/:id" element={<DetailPage />} />
         </Routes>
         <PortalModal />
       </Suspense>
