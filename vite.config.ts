@@ -15,13 +15,13 @@ export default ({ mode }) => {
         '@': path.resolve(__dirname, './src'),
       },
     },
-    server: {
-      proxy: {
-        '/api/v1': {
-          target: 'http://3.38.213.179',
-          changeOrigin: true,
-        },
-      },
-    },
+    // server: {
+    //   proxy: {
+    //     '/api/v1': {
+    //       target: 'http://3.38.213.179',
+    //       changeOrigin: true,
+    //     },
+    //   },
+    // },
   });
 };
