@@ -15,5 +15,13 @@ export default ({ mode }) => {
         '@': path.resolve(__dirname, './src'),
       },
     },
+    // server: {
+    //   proxy: {
+    //     '/api/v1': {
+    //       target: process.env.VITE_PROXY_BACKEND_API_URL,
+    //       changeOrigin: true,
+    //     },
+    //   },
+    // },
   });
 };
