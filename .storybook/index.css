@@ -1,0 +1,71 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+body {
+  min-height: 100vh;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+:root {
+  /* 폰트 두께 */
+  --base-text-weight-normal: 400;
+  --base-text-weight-medium: 500;
+  --base-text-weight-semibold: 600;
+  --base-text-weight-bold: 700;
+  --base-text-weight-xbold: 800;
+  --base-text-weight-2xbold: 900;
+
+  /* 폰트 사이즈 */
+  --base-text-size-small: 0.75rem;
+  --base-text-size-normal: 1rem;
+  --base-text-size-large: 1.25rem;
+  --base-text-size-xlarge: 1.5rem;
+  --base-text-size-2xlarge: 1.75rem;
+  --base-text-size-3xlarge: 2rem;
+  --base-text-size-4xlarge: 2.5rem;
+  --base-text-size-5xlarge: 3rem;
+  --base-text-size-6xlarge: 4rem;
+
+  /* 폰트 컬러 */
+  --base-text-color-dark: rgb(255, 255, 255);
+  --base-text-color-light: rgb(0, 0, 0);
+
+  /* 배경색 */
+  --base-background-color-dark: rgb(34, 34, 34);
+  --base-background-color-light: rgb(255, 255, 255);
+
+  /* 메인 컬러 */
+  --main-color-orange: #ff9b25;
+}
+
+body.light {
+  background-color: var(--base-background-color-light);
+}
+
+body.dark {
+  background-color: var(--base-background-color-dark);
+}
