@@ -1,3 +1,4 @@
+const path = require('path');
 const { loadConfigFromFile, mergeConfig } = require('vite');
 
 module.exports = {
