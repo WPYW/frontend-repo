@@ -37,7 +37,7 @@ export function CardList({ projectList, isLoading }: CardList) {
         return (
           <CardWrapper key={index}>
             <Carousel previewImages={project.previewImages} />
-            <ProjectInfoWrapper href={`/project/detail/${project.id}`}>
+            <ProjectInfoWrapper href={`/projects/${project.id}`}>
               <ProjectTitleWrapper>
                 <ProjectCreated>{project.created}</ProjectCreated>
 

@@ -16,12 +16,7 @@ export default ({ mode }) => {
       },
     },
     server: {
-      proxy: {
-        '/api/v1': {
-          target: process.env.VITE_PROXY_BACKEND_API_URL,
-          changeOrigin: true,
-        },
-      },
+      host: true,
     },
   });
 };
