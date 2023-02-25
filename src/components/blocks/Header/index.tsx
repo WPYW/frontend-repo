@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 import * as S from './index.styles';
 
-import HeaderLogo from '@/components/atoms/HeaderLogo';
-import DarkModeToggle from '@/components/atoms/DarkModeToggle';
+import { HeaderLogo, DarkModeToggle } from '@/components/atoms';
 
-export default function Header() {
+export function Header() {
   const [mode, setMode] = useState(localStorage.getItem('theme') || 'light');
 
   useEffect(() => {

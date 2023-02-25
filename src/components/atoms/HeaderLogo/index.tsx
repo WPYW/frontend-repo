@@ -5,7 +5,7 @@ import { HeaderLogoProps } from './index.types';
 import lightHeaderLogoPath from '@/assets/logo-light.svg';
 import darkHeaderLogoPath from '@/assets/logo-dark.svg';
 
-export default function HeaderLogo({ mode }: HeaderLogoProps) {
+export function HeaderLogo({ mode }: HeaderLogoProps) {
   return (
     <S.Wrapper href="/" aria-label="Header logo link for mainpage">
       <S.Logo src={mode === 'light' ? lightHeaderLogoPath : darkHeaderLogoPath} alt="header logo" />
