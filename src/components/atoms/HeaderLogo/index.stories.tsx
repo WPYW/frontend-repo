@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import HeaderLogo from './index';
+import { HeaderLogo } from './index';
 
 export default {
   title: 'atoms/HeaderLogo',

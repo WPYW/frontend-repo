@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import DarkModeToggle from './index';
+import { DarkModeToggle } from './index';
 
 export default {
   title: 'atoms/DarkModeToggle',
