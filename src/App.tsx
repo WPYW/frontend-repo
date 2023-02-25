@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 
-import { Header, PortalModal } from '@/components';
+import { PortalModal } from '@/components';
+import { Header } from '@/components/blocks';
 
 import { Route, Routes } from 'react-router-dom';
 
