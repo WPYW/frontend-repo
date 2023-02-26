@@ -66,10 +66,12 @@ body.light {
   background-color: var(--base-background-color-light);
 
   --base-description-text-color: #747474;
+  --card-description-text-color: #181818;
 }
 
 body.dark {
   background-color: var(--base-background-color-dark);
 
   --base-description-text-color: #dedede;
+  --card-description-text-color: #f2f2f2;
 }
