@@ -64,8 +64,12 @@ html {
 
 body.light {
   background-color: var(--base-background-color-light);
+
+  --base-description-text-color: #747474;
 }
 
 body.dark {
   background-color: var(--base-background-color-dark);
+
+  --base-description-text-color: #dedede;
 }
