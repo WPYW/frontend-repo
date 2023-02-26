@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.button`
-  all: unset;
+  background: none;
+
+  width: 100%;
 
   font-weight: var(--base-text-weight-bold);
   font-size: var(--base-text-size-2xlarge);
@@ -18,5 +20,9 @@ export const Wrapper = styled.button`
   &:hover {
     background-color: var(--main-color-orange);
     color: #ffffff;
+  }
+
+  @media screen and (max-width: 420px) {
+    font-size: var(--base-text-size-medium);
   }
 `;
