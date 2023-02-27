@@ -19,10 +19,3 @@ MainPageDescription.args = {
   children:
     '포트폴리오를 편하게 등록할 수 있는 사이트를 찾으시나요?\n프로젝트를 같이 진행하려는 팀원을 찾지 못해 고민중이신가요?\nWPYW가 당신의 고민을 해결해드립니다!',
 };
-
-export const CardDescription = Template.bind({});
-CardDescription.args = {
-  children:
-    '포트폴리오를 편하게 등록할 수 있는 사이트를 찾으시나요? 또는 프로젝트를 같이 진행하려는 팀원을 찾지 못해 고민중이시라면 WPYW가 당신의 고민을 해결해드립니다!',
-  type: 'card',
-};
