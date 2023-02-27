@@ -5,3 +5,4 @@ export * from './BaseTitle';
 export * from './BaseDescription';
 export * from './BaseImage';
 export * from './LodingDots';
+export * from './Hashtag';
