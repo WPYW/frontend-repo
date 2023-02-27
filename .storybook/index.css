@@ -40,15 +40,16 @@ html {
   --base-text-weight-2xbold: 900;
 
   /* 폰트 사이즈 */
-  --base-text-size-small: 0.75rem;
-  --base-text-size-normal: 1rem;
-  --base-text-size-large: 1.25rem;
-  --base-text-size-xlarge: 1.5rem;
-  --base-text-size-2xlarge: 1.75rem;
-  --base-text-size-3xlarge: 2rem;
-  --base-text-size-4xlarge: 2.5rem;
-  --base-text-size-5xlarge: 3rem;
-  --base-text-size-6xlarge: 4rem;
+  --base-text-size-xsmall: 1.1rem;
+  --base-text-size-small: 1.3rem;
+  --base-text-size-normal: 1.4rem;
+  --base-text-size-medium: 1.5rem;
+  --base-text-size-large: 1.6rem;
+  --base-text-size-xlarge: 1.7rem;
+  --base-text-size-2xlarge: 2.4rem;
+  --base-text-size-3xlarge: 2.8rem;
+  --base-text-size-4xlarge: 3rem;
+  --base-text-size-5xlarge: 4rem;
 
   /* 폰트 컬러 */
   --base-text-color-dark: rgb(255, 255, 255);
@@ -71,7 +72,7 @@ body.light {
   --base-description-text-color: #747474;
 
   --card-created-text-color: #afafaf;
-  --card-description-text-color: #181818;
+  --card-description-text-color: #333333;
 }
 
 body.dark {
