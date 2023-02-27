@@ -33,8 +33,10 @@ export function Header() {
   };
   return (
     <S.Wrapper>
-      <HeaderLogo mode={mode} />
-      <DarkModeToggle mode={mode} onClick={onClickHandler} />
+      <S.SubWrapper>
+        <HeaderLogo mode={mode} />
+        <DarkModeToggle mode={mode} onClick={onClickHandler} />
+      </S.SubWrapper>
     </S.Wrapper>
   );
 }

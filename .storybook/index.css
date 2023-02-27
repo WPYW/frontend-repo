@@ -65,13 +65,23 @@ html {
 body.light {
   background-color: var(--base-background-color-light);
 
+  --header-background-color: rgba(255, 255, 255, 0.72);
+  --header-shadow-color: rgb(234 234 236);
+
   --base-description-text-color: #747474;
+
+  --card-created-text-color: #afafaf;
   --card-description-text-color: #181818;
 }
 
 body.dark {
   background-color: var(--base-background-color-dark);
 
+  --header-background-color: rgba(34, 34, 34, 0.72);
+  --header-shadow-color: rgb(2 1 1);
+
   --base-description-text-color: #dedede;
+
+  --card-created-text-color: #bcbcbc;
   --card-description-text-color: #f2f2f2;
 }

@@ -6,9 +6,5 @@ export const Wrapper = styled.a`
 
 export const Logo = styled.img`
   width: 100%;
-  height: auto;
-
-  @media only screen and (max-width: 420px) {
-    width: 70%;
-  }
+  height: 2rem;
 `;

@@ -18,6 +18,8 @@ export const Wrapper = styled.div<Pick<DarkModeToggleProps, 'mode'>>`
 
   cursor: pointer;
 
+  z-index: 1000;
+
   &::after {
     content: '';
 
