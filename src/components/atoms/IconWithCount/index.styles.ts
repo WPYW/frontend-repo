@@ -17,6 +17,4 @@ export const Icon = styled.img`
   height: 20px;
 `;
 
-export const Count = styled.span`
-  margin-top: 2px;
-`;
+export const Count = styled.span``;
