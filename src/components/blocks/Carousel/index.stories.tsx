@@ -7,7 +7,7 @@ import TempImagePath2 from '@/assets/temp2.jpg';
 import TempImagePath3 from '@/assets/temp3.jpg';
 
 export default {
-  title: 'atoms/Carousel',
+  title: 'blocks/Carousel',
   component: Carousel,
 } as ComponentMeta<typeof Carousel>;
 
