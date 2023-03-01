@@ -8,9 +8,9 @@ export default {
   component: ProjectCardListHeader,
 } as ComponentMeta<typeof ProjectCardListHeader>;
 
-const Template: ComponentStory<typeof ProjectCardListHeader> = (args) => {
-  const [, setParams] = useState<IParams>({ ordering: 'created', search: '', page: 1 });
-  return <ProjectCardListHeader {...args} setParams={setParams} />;
+const Template: ComponentStory<typeof ProjectCardListHeader> = () => {
+  const [params, setParams] = useState<IParams>({ ordering: 'created', search: '', page: 1 });
+  return <ProjectCardListHeader ordering={params.ordering} setParams={setParams} />;
 };
 
 export const DefaultProjectCardListHeader = Template.bind({});

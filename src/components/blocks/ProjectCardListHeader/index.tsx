@@ -4,43 +4,28 @@ import { ProjectCardListHeaderProps } from './index.types';
 
 import { NavigationItem, SearchBar } from '@/components/atoms';
 
-export function ProjectCardListHeader({ setParams }: ProjectCardListHeaderProps) {
-  const [activatedItem, setActivatedItem] = useState('');
-
+export function ProjectCardListHeader({ ordering, setParams }: ProjectCardListHeaderProps) {
   const [value, setValue] = useState('');
+
+  const onClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setParams((prev) => ({ ...prev, ordering: (event.target as HTMLElement).id }));
+  };
 
   return (
     <S.Wrapper>
       <S.NavigationWrapper>
-        <NavigationItem
-          clicked={activatedItem === '최신순'}
-          onClick={(event) => {
-            setActivatedItem((event.target as HTMLElement).innerHTML);
-            setParams((prev) => ({ ...prev, ordering: 'created' }));
-          }}
-        >
+        <NavigationItem id="created" clicked={ordering === 'created'} onClick={onClickHandler}>
           최신순
         </NavigationItem>
-        <NavigationItem
-          clicked={activatedItem === '조회수순'}
-          onClick={(event) => {
-            setActivatedItem((event.target as HTMLElement).innerHTML);
-            setParams((prev) => ({ ...prev, ordering: 'views' }));
-          }}
-        >
+        <NavigationItem id="views" clicked={ordering === 'views'} onClick={onClickHandler}>
           조회수순
         </NavigationItem>
-        <NavigationItem
-          clicked={activatedItem === '좋아요순'}
-          onClick={(event) => {
-            setActivatedItem((event.target as HTMLElement).innerHTML);
-            setParams((prev) => ({ ...prev, ordering: 'likes' }));
-          }}
-        >
+        <NavigationItem id="likes" clicked={ordering === 'likes'} onClick={onClickHandler}>
           좋아요순
         </NavigationItem>
       </S.NavigationWrapper>
       <SearchBar
+        placeholder="어떤 프로젝트를 찾으시나요?"
         value={value}
         onChange={(event) => {
           setValue(event.target.value);

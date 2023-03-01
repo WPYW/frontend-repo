@@ -4,6 +4,5 @@ export * from './MainPageDescription';
 export * from './ProjectCard';
 export * from './Hashtags';
 export * from './Carousel';
-export * from './NavigationBar';
 export * from './ProjectCardList';
 export * from './ProjectCardListHeader';
