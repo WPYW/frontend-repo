@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  width: 600px;
+  width: 400px;
 
   @media screen and (max-width: 420px) {
-    width: 300px;
+    width: 200px;
   }
 `;
 
