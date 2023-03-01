@@ -59,32 +59,28 @@ export const Description = styled.p<Pick<DescriptionProps, 'overlay'>>`
 
   overflow: hidden;
 
-  ${(props) => {
-    console.log(props);
-    return (
-      props.overlay &&
-      css`
-        max-height: 288px;
+  ${(props) =>
+    props.overlay &&
+    css`
+      max-height: 288px;
 
-        ::after {
-          content: '';
+      ::after {
+        content: '';
 
-          display: block;
-          width: 100%;
-          height: 72px;
+        display: block;
+        width: 100%;
+        height: 72px;
 
-          position: absolute;
-          bottom: 0px;
+        position: absolute;
+        bottom: 0px;
 
-          background-image: linear-gradient(
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0.8) 60%,
-            rgb(255, 255, 255) 100%
-          );
-        }
-      `
-    );
-  }}
+        background-image: linear-gradient(
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.8) 60%,
+          rgb(255, 255, 255) 100%
+        );
+      }
+    `}
 `;
 
 export const CardFooterWrapper = styled.div`
