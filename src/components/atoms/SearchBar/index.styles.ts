@@ -6,7 +6,7 @@ export const Wrapper = styled.form`
   display: flex;
   gap: 6px;
 
-  height: fit-content;
+  width: 100%;
 
   border: 1px solid rgb(245, 245, 247);
   border-radius: 1rem;

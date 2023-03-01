@@ -18,7 +18,7 @@ export const Wrapper = styled.button<Pick<NavigationItemProps, 'clicked'>>`
   font-size: var(--base-text-size-large);
   color: #848484;
 
-  padding: 16px;
+  padding: 6px 10px;
 
   cursor: pointer;
 
