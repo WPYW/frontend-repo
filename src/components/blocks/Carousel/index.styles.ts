@@ -50,15 +50,6 @@ export const Button = styled.button<Pick<CarouselButtonProps, 'direction'>>`
   cursor: pointer;
 `;
 
-export const ButtonImage = styled.img`
-  max-width: 30px;
-
-  &:hover {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    transform: translateY(-2px);
-  }
-`;
-
 export const ButtonLeftImage = styled(CarouselButtonLeft)`
   width: 30px;
   height: 30px;
