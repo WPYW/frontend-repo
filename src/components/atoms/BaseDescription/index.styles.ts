@@ -9,6 +9,6 @@ export const Description = styled.p`
   white-space: pre-wrap;
 
   @media only screen and (max-width: 420px) {
-    font-size: var(--base-text-size-normal);
+    font-size: var(--base-text-size-small);
   }
 `;
