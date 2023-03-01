@@ -9,7 +9,7 @@ import { Hashtags } from '../Hashtags';
 import { Carousel } from '../Carousel';
 import { IconWithCount } from '@/components/atoms';
 
-export function Card({ project }: CardProps) {
+export function ProjectCard({ project }: CardProps) {
   const { projectTitle, projectDescription, previewImages, projectHashtag, views, likes, created } =
     project;
 

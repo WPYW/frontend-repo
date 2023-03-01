@@ -1,17 +1,17 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Card } from './index';
+import { ProjectCard } from './index';
 
 import TempImagePath1 from '@/assets/temp1.png';
 import TempImagePath2 from '@/assets/temp2.jpg';
 import TempImagePath3 from '@/assets/temp3.jpg';
 
 export default {
-  title: 'blocks/Card',
-  component: Card,
-} as ComponentMeta<typeof Card>;
+  title: 'blocks/ProjectCard',
+  component: ProjectCard,
+} as ComponentMeta<typeof ProjectCard>;
 
-const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
+const Template: ComponentStory<typeof ProjectCard> = (args) => <ProjectCard {...args} />;
 
 export const DefaultCard = Template.bind({});
 DefaultCard.args = {

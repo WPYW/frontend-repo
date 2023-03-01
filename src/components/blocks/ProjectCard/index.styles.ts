@@ -2,9 +2,6 @@ import styled, { css } from 'styled-components';
 import { DescriptionProps } from './index.types';
 
 export const Wrapper = styled.div`
-  /* max-width 지울것 */
-  max-width: 500px;
-
   display: flex;
   flex-direction: column;
   gap: 16px;
