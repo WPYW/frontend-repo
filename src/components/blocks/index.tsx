@@ -6,3 +6,4 @@ export * from './Hashtags';
 export * from './Carousel';
 export * from './ProjectCardList';
 export * from './ProjectCardListHeader';
+export * from './ScrollCatcher';
