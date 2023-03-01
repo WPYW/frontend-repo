@@ -6,7 +6,7 @@ export const Wrapper = styled.button`
   width: 100%;
 
   font-weight: var(--base-text-weight-bold);
-  font-size: var(--base-text-size-2xlarge);
+  font-size: var(--base-text-size-xlarge);
   color: var(--main-color-orange);
 
   border: 4px solid;
@@ -23,6 +23,6 @@ export const Wrapper = styled.button`
   }
 
   @media screen and (max-width: 420px) {
-    font-size: var(--base-text-size-medium);
+    font-size: var(--base-text-size-normal);
   }
 `;
