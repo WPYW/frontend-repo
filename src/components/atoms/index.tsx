@@ -7,3 +7,4 @@ export * from './BaseImage';
 export * from './LodingDots';
 export * from './Hashtag';
 export * from './IconWithCount';
+export * from './NavigationItem';
