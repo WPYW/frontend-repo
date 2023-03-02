@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.a`
   all: unset;
+
+  cursor: pointer;
 `;
 
 export const Logo = styled.img`
