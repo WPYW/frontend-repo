@@ -4,14 +4,14 @@ import { ReactComponent as Icon } from '@/assets/search-icon.svg';
 
 export const Wrapper = styled.form`
   display: flex;
-  gap: 6px;
+  gap: 8px;
 
   width: 100%;
 
-  border: 1px solid rgb(245, 245, 247);
+  border: 1px solid var(--search-bar-border-color);
   border-radius: 1rem;
 
-  background-color: rgb(245, 245, 247);
+  background-color: var(--search-bar-background-color);
 
   padding: 6px 12px 6px 8px;
 `;
@@ -23,13 +23,13 @@ export const Input = styled.input`
   width: 100%;
 
   font-size: var(--base-text-size-normal);
-  color: rgb(0, 0, 0);
+  color: var(--search-bar-text-color);
 
   background-color: transparent;
 `;
 
 export const InputIcon = styled(Icon)`
   /* fill: rgb(142, 142, 142); */
-  min-width: 15px;
-  min-height: 15px;
+  max-width: 15px;
+  max-height: 15px;
 `;

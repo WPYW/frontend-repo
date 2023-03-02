@@ -71,10 +71,20 @@ body.light {
 
   --base-description-text-color: #747474;
 
+  --card-background-color: #ffffff;
+  --card-background-color-hover: rgb(253, 253, 255);
+  --card-background-box-shadow-color: 0, 0, 0;
+  --card-background-box-shadow: 6px 8px 16px rgba(var(--card-background-box-shadow-color), 0.12);
+
+  --card-title-text-color: #000000;
   --card-created-text-color: #afafaf;
-  --card-description-text-color: #333333;
+  --card-description-text-color: #000000;
 
   --navigation-item-clicked-text-color: #333333;
+
+  --search-bar-background-color: #ffffff68;
+  --search-bar-border-color: #ffffff68;
+  --search-bar-text-color: #000000;
 }
 
 body.dark {
@@ -85,8 +95,18 @@ body.dark {
 
   --base-description-text-color: #dedede;
 
+  --card-background-color: rgb(49, 49, 49);
+  --card-background-color-hover: #343434;
+  --card-background-box-shadow-color: 255, 255, 255;
+  --card-background-box-shadow: 6px 8px 16px rgba(var(--card-background-box-shadow-color), 0.12);
+
+  --card-title-text-color: #ffffff;
   --card-created-text-color: #bcbcbc;
-  --card-description-text-color: #333333;
+  --card-description-text-color: #ffffff;
 
   --navigation-item-clicked-text-color: #ffffff;
+
+  --search-bar-background-color: #ffffff18;
+  --search-bar-border-color: #ffffff18;
+  --search-bar-text-color: #ffffff;
 }

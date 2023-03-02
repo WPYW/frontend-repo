@@ -10,7 +10,7 @@ export const Wrapper = styled.a`
 
   padding: 20px 20px 16px;
 
-  background-color: rgb(255, 255, 255);
+  background-color: var(--card-background-color);
 
   border-radius: 24px;
 
@@ -19,8 +19,8 @@ export const Wrapper = styled.a`
   cursor: pointer;
 
   &:hover {
-    background-color: rgb(253, 253, 255);
-    box-shadow: rgb(0 0 0 / 12%) 6px 8px 16px;
+    background-color: var(--card-background-color-hover);
+    box-shadow: var(--card-background-box-shadow);
     transform: translateY(-2px);
   }
 `;
@@ -44,7 +44,7 @@ export const Created = styled.span`
 export const Title = styled.h1`
   font-weight: var(--base-text-weight-bold);
   font-size: var(--base-text-size-3xlarge);
-  /* color: var(--main-color-orange); */
+  color: var(--card-title-text-color);
 `;
 
 export const Description = styled.p<Pick<DescriptionProps, 'overlay'>>`
