@@ -6,13 +6,13 @@ export const Wrapper = styled.div<Pick<DarkModeToggleProps, 'mode'>>`
 
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
 
   position: relative;
 
-  padding: 8px 10px;
+  padding: 6px 8px;
 
-  border: 4px solid;
+  border: 3px solid;
   border-color: var(--main-color-orange);
   border-radius: 100px;
 
@@ -24,8 +24,8 @@ export const Wrapper = styled.div<Pick<DarkModeToggleProps, 'mode'>>`
     content: '';
 
     display: block;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
 
     background-color: var(--main-color-orange);
     border-radius: 50%;
@@ -37,23 +37,23 @@ export const Wrapper = styled.div<Pick<DarkModeToggleProps, 'mode'>>`
     ${(props) =>
       props['mode'] === 'light'
         ? css`
-            left: 5px;
+            left: 4px;
             animation: ${DarkToLight} 0.5s;
           `
         : css`
-            right: 5px;
+            right: 4px;
             animation: ${LightToDark} 0.5s;
           `}
   }
 
   @media only screen and (max-width: 420px) {
-    gap: 15px;
+    gap: 12px;
 
-    padding: 6px 8px;
+    padding: 4px 6px;
 
     &::after {
-      width: 25px;
-      height: 25px;
+      width: 16px;
+      height: 16px;
 
       ${(props) =>
         props['mode'] === 'light'
@@ -70,22 +70,22 @@ export const Wrapper = styled.div<Pick<DarkModeToggleProps, 'mode'>>`
 `;
 
 export const Sun = styled.img`
-  width: 20px;
-  height: 20px;
+  width: 12px;
+  height: 12px;
 
   @media only screen and (max-width: 420px) {
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
   }
 `;
 
 export const Moon = styled.img`
-  width: 20px;
-  height: 20px;
+  width: 12px;
+  height: 12px;
 
   @media only screen and (max-width: 420px) {
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
   }
 `;
 

@@ -10,4 +10,6 @@ export const SubWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 20px;
+
+  text-align: center;
 `;
