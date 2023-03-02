@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import * as S from './index.styles';
 import { IParams } from './index.types';
 
+import { LoadingDots } from '@/components/atoms';
 import {
   MainPageDescription,
   ProjectCardList,
   ProjectCardListHeader,
   ScrollCatcher,
 } from '@/components/blocks';
+
 import { useGetProjectList } from './useGetProjectList';
-import { LoadingDots } from '@/components';
 
 export default function MainPage() {
   const [params, setParams] = useState<IParams>({ ordering: 'created', search: '', page: 1 });

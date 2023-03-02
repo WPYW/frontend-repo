@@ -28,16 +28,16 @@ const Dot = styled.div`
 `;
 
 export const DotLeft = styled(Dot)`
-  background: #83b4f9;
+  background: #ffe0bc;
   animation-delay: 0.1s;
 `;
 
 export const DotMid = styled(Dot)`
-  background: #4880ee;
+  background: #ffc47f;
   animation-delay: 0.2s;
 `;
 
 export const DotRight = styled(Dot)`
-  background: #1f4ef5;
+  background: #ff9b25;
   animation-delay: 0.3s;
 `;

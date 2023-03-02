@@ -1,4 +1,5 @@
 interface project {
+  id: string;
   projectTitle: string;
   projectDescription: string;
   previewImages: string[];

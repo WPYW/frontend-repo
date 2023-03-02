@@ -30,7 +30,7 @@ export const CardHeaderWrapper = styled.div``;
 export const CardBodyWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 16px;
 `;
 
 export const Created = styled.span`
@@ -42,8 +42,8 @@ export const Created = styled.span`
 `;
 
 export const Title = styled.h1`
-  font-weight: var(--base-text-weight-medium);
-  font-size: var(--base-text-size-2xlarge);
+  font-weight: var(--base-text-weight-bold);
+  font-size: var(--base-text-size-3xlarge);
   /* color: var(--main-color-orange); */
 `;
 
@@ -64,7 +64,7 @@ export const Description = styled.p<Pick<DescriptionProps, 'overlay'>>`
   ${(props) =>
     props.overlay &&
     css`
-      max-height: 288px;
+      max-height: 108px;
 
       ::after {
         content: '';

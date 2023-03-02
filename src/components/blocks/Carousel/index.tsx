@@ -17,7 +17,7 @@ export function Carousel({ imgUrlList }: CarouselProps) {
   };
 
   return (
-    <S.Wrapper>
+    <S.Wrapper onClick={(event) => event.preventDefault()}>
       {imgUrlList.length >= 1 && index !== 0 && (
         <S.Button
           direction="left"
@@ -32,7 +32,7 @@ export function Carousel({ imgUrlList }: CarouselProps) {
 
       <S.Image src={imgUrlList[index]} alt="carousel image" />
 
-      {imgUrlList.length >= 1 && index !== 2 && (
+      {imgUrlList.length >= 1 && index !== imgUrlList.length - 1 && (
         <S.Button
           direction="right"
           role="button"

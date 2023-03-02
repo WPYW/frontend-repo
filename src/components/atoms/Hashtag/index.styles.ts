@@ -6,11 +6,11 @@ export const Wrapper = styled.div`
   padding: 5px 7px;
 
   font-size: var(--base-text-size-xsmall);
-  color: rgb(109, 85, 255);
+  color: #ff9b25;
 
-  background-color: rgb(241, 238, 252);
+  background-color: #fff4e6;
 
-  border: 1px solid rgb(241, 238, 252);
+  border: 1px solid #fff4e6;
   border-radius: 8px;
 
   white-space: nowrap;
@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
   transition: all 0.2s ease-in-out 0s;
 
   &:hover {
-    border: 1px solid rgb(255, 116, 156);
-    box-shadow: rgb(255 137 171 / 40%) 0px 0px 0px 3px;
+    border: 1px solid #ff8f00;
+    box-shadow: rgb(255 143 0 / 40%) 0px 0px 0px 3px;
   }
 `;

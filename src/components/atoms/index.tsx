@@ -4,7 +4,7 @@ export * from './HeaderLogo';
 export * from './BaseTitle';
 export * from './BaseDescription';
 export * from './BaseImage';
-export * from './LodingDots';
+export * from './LoadingDots';
 export * from './Hashtag';
 export * from './IconWithCount';
 export * from './NavigationItem';

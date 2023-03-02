@@ -26,7 +26,7 @@ export function ProjectCard({ project }: CardProps) {
   const [overlay, setOverlay] = useState(false);
 
   useEffect(() => {
-    if (ref.current && ref.current.clientHeight > 288) {
+    if (ref.current && ref.current.clientHeight > 108) {
       setOverlay(true);
     }
   }, []);
