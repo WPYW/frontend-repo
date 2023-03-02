@@ -212,7 +212,9 @@ body.light {
   --base-description-text-color: #747474;
 
   --card-created-text-color: #afafaf;
-  --card-description-text-color: #181818;
+  --card-description-text-color: #333333;
+
+  --navigation-item-clicked-text-color: #333333;
 }
 
 body.dark {
@@ -224,5 +226,7 @@ body.dark {
   --base-description-text-color: #dedede;
 
   --card-created-text-color: #bcbcbc;
-  --card-description-text-color: #f2f2f2;
+  --card-description-text-color: #333333;
+
+  --navigation-item-clicked-text-color: #ffffff;
 }

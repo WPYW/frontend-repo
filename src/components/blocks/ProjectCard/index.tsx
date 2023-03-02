@@ -10,8 +10,16 @@ import { Carousel } from '../Carousel';
 import { IconWithCount } from '@/components/atoms';
 
 export function ProjectCard({ project }: CardProps) {
-  const { projectTitle, projectDescription, previewImages, projectHashtag, views, likes, created } =
-    project;
+  const {
+    id,
+    projectTitle,
+    projectDescription,
+    previewImages,
+    projectHashtag,
+    views,
+    likes,
+    created,
+  } = project;
 
   const ref = useRef<HTMLParagraphElement>(null);
 
@@ -24,7 +32,7 @@ export function ProjectCard({ project }: CardProps) {
   }, []);
 
   return (
-    <S.Wrapper>
+    <S.Wrapper href={`/projects/${id}`}>
       <S.CardHeaderWrapper>
         <Hashtags hashtags={projectHashtag} />
       </S.CardHeaderWrapper>

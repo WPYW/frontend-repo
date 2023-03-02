@@ -1,7 +1,9 @@
 import styled, { css } from 'styled-components';
 import { DescriptionProps } from './index.types';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.a`
+  all: unset;
+
   display: flex;
   flex-direction: column;
   gap: 16px;

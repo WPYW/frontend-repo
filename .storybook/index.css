@@ -86,7 +86,7 @@ body.dark {
   --base-description-text-color: #dedede;
 
   --card-created-text-color: #bcbcbc;
-  --card-description-text-color: #f2f2f2;
+  --card-description-text-color: #333333;
 
   --navigation-item-clicked-text-color: #ffffff;
 }

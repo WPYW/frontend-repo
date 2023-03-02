@@ -1,7 +1,8 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, AnchorHTMLAttributes } from 'react';
 
-export interface CardProps {
+export interface CardProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   project: {
+    id: string;
     projectTitle: string;
     projectDescription: string;
     previewImages: string[];
