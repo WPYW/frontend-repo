@@ -9,7 +9,7 @@ export const Wrapper = styled.main`
 
   margin: 0 auto;
 
-  max-width: 1120px;
+  max-width: 1128px;
 
   @media screen and (max-width: 420px) {
     display: flex;
@@ -19,7 +19,7 @@ export const Wrapper = styled.main`
 
 export const ColumnLeft = styled.aside`
   margin-top: 32px;
-  min-width: 428px;
+  min-width: 468px;
   min-height: 100vh;
 
   @media screen and (max-width: 420px) {
@@ -30,7 +30,7 @@ export const ColumnLeft = styled.aside`
 
 export const ColumnRight = styled.aside`
   margin-top: 30px;
-  max-width: 692px;
+  max-width: 648px;
 
   display: flex;
   flex-direction: column;

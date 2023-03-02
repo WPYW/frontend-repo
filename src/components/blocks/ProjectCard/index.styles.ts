@@ -76,11 +76,7 @@ export const Description = styled.p<Pick<DescriptionProps, 'overlay'>>`
         position: absolute;
         bottom: 0px;
 
-        background-image: linear-gradient(
-          rgba(255, 255, 255, 0) 0%,
-          rgba(255, 255, 255, 0.8) 60%,
-          rgb(255, 255, 255) 100%
-        );
+        background-image: var(--card-overlay-layer);
       }
     `}
 `;

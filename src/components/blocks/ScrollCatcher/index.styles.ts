@@ -5,6 +5,8 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
 
+  color: var(--scroll-catcher-text-color);
+
   height: 100px;
 `;
 

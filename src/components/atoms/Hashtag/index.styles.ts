@@ -5,8 +5,8 @@ export const Wrapper = styled.div`
 
   padding: 5px 7px;
 
-  font-size: var(--base-text-size-xsmall);
-  color: #ff9b25;
+  font-size: var(--base-text-size-small);
+  color: #dc7700;
 
   background-color: #fff4e6;
 
