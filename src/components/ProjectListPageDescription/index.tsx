@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { modalOpen } from '@/RTK/slices/modalSlice';
 
-import { ReactComponent as DescriptionImage } from '@/assets/projectlist-page-description-image.svg';
+import { ReactComponent as DescriptionImage } from '@/assets/mainpage-description-image.svg';
 
 export function ProjectListPageDescription() {
   const dispatch = useDispatch();
