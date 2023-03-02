@@ -220,11 +220,19 @@ body.light {
   --card-created-text-color: #afafaf;
   --card-description-text-color: #000000;
 
+  --card-overlay-layer: linear-gradient(
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.8) 60%,
+    rgb(255, 255, 255) 100%
+  );
+
   --navigation-item-clicked-text-color: #333333;
 
   --search-bar-background-color: #ffffff68;
   --search-bar-border-color: #ffffff68;
   --search-bar-text-color: #000000;
+
+  --scroll-catcher-text-color: #000000;
 }
 
 body.dark {
@@ -244,9 +252,17 @@ body.dark {
   --card-created-text-color: #bcbcbc;
   --card-description-text-color: #ffffff;
 
+  --card-overlay-layer: linear-gradient(
+    rgba(49, 49, 49, 0) 0%,
+    rgba(49, 49, 49, 0.8) 60%,
+    rgb(49, 49, 49) 100%
+  );
+
   --navigation-item-clicked-text-color: #ffffff;
 
   --search-bar-background-color: #ffffff18;
   --search-bar-border-color: #ffffff18;
   --search-bar-text-color: #ffffff;
+
+  --scroll-catcher-text-color: #ffffff;
 }
