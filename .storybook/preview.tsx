@@ -1,6 +1,9 @@
 import React from 'react';
 import './index.css';
 
+import { Provider } from 'react-redux';
+import { store } from '../src/RTK/stores/store';
+
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 export const parameters = {
@@ -22,5 +25,9 @@ const queryClient = new QueryClient({
 });
 
 export const decorators = [
-  (story) => <QueryClientProvider client={queryClient}>{story()}</QueryClientProvider>,
+  (story) => (
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>{story()}</QueryClientProvider>
+    </Provider>
+  ),
 ];
