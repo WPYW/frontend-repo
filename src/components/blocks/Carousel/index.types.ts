@@ -6,3 +6,7 @@ export interface CarouselProps {
 export interface CarouselButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   direction: string;
 }
+
+export interface DotProps {
+  active: boolean;
+}
