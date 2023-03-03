@@ -233,6 +233,11 @@ body.light {
   --search-bar-text-color: #000000;
 
   --scroll-catcher-text-color: #000000;
+
+  --side-bar-item-text-color: rgb(112, 112, 112);
+  --side-bar-item-background-color-hover: #ffffff;
+
+  --side-bar-border-bottom-color: rgb(234, 234, 236);
 }
 
 body.dark {
@@ -265,4 +270,9 @@ body.dark {
   --search-bar-text-color: #ffffff;
 
   --scroll-catcher-text-color: #ffffff;
+
+  --side-bar-item-text-color: #848484;
+  --side-bar-item-background-color-hover: rgb(72, 72, 72);
+
+  --side-bar-border-bottom-color: rgb(21, 21, 19);
 }
