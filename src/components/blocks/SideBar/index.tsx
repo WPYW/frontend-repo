@@ -6,7 +6,7 @@ import { SideBarItem } from '@/components/atoms';
 
 export function SideBar() {
   const [$headerClicked, setHeaderClicked] = useState(false);
-  const [clickedSideBarItem, setClickedSideBarItem] = useState('');
+  const [clickedSideBarItem, setClickedSideBarItem] = useState('promote');
 
   const navigate = useNavigate();
 
