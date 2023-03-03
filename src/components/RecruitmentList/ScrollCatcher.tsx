@@ -21,7 +21,7 @@ export function ScrollCatcher({
     <ScrollCatcherWrapper ref={target}>
       {isFetchingNextPage ? <LoadingDots /> : null}
       {!isFetching && !hasNextPage ? (
-        <NoMoreProject>공유하고 싶은 프로젝트를 업로드 해주세요!</NoMoreProject>
+        <NoMoreProject>진행하고 싶은 내용을 업로드 해주세요!</NoMoreProject>
       ) : null}
     </ScrollCatcherWrapper>
   );

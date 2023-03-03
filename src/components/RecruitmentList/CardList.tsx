@@ -1,29 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Carousel } from './Carousel';
-
 import { ReactComponent as ViewsIcon } from '@/assets/views-icon.svg';
 import { ReactComponent as LikesIcon } from '@/assets/likes-icon.svg';
 import { LoadingDots } from '../LoadingDots';
 
-interface IProject {
+interface IRecruit {
   id: string;
-  projectTitle: string;
-  projectDescription: string;
-  projectHashtag: string[];
-  previewImages: string[];
+  password: number;
+  recruitHashtag: [];
+  recruitTech: [];
+  recruitTitle: string;
+  recruitDescription: string;
+  recruitMember: number;
+  chatLink: string;
   views: number;
   likes: number;
   created: string;
 }
 
 interface CardList {
-  projectList: IProject[];
+  recruitList: IRecruit[];
   isLoading: boolean;
 }
 
-export function CardList({ projectList, isLoading }: CardList) {
+export function CardList({ recruitList, isLoading }: CardList) {
   if (isLoading)
     return (
       <LoadingDotsWrapper>
@@ -33,40 +34,41 @@ export function CardList({ projectList, isLoading }: CardList) {
 
   return (
     <CardListWrapper>
-      {projectList.map((project: IProject, index: number) => {
+      {recruitList.map((recruit: IRecruit, index: number) => {
         return (
           <CardWrapper key={index}>
-            <Carousel previewImages={project.previewImages} />
-            <ProjectInfoWrapper href={`/project/detail/${project.id}`}>
-              <ProjectTitleWrapper>
-                <ProjectCreated>{project.created}</ProjectCreated>
-
-                <ProjectTitle>{project.projectTitle}</ProjectTitle>
-              </ProjectTitleWrapper>
-              <ProjectDescription>{project.projectDescription}</ProjectDescription>
-              <ProjectHashtagsWrapper>
-                {project.projectHashtag.map((project, index) => {
-                  if (index < 3) return <Hashtag key={index}>{project}</Hashtag>;
+            <RecruitInfoWrapper href={`/recruit/detail/${recruit.id}`}>
+              <RecruitTechWrapper>
+                <RecruitTech>{recruit.recruitTech}</RecruitTech>
+              </RecruitTechWrapper>
+              <RecruitTitleWrapper>
+                <RecruitCreated>{recruit.created}</RecruitCreated>
+                <RecruitTitle>{recruit.recruitTitle}|</RecruitTitle>
+              </RecruitTitleWrapper>
+              <RecruitDescription>{recruit.recruitDescription}</RecruitDescription>
+              <RecruitHashtagsWrapper>
+                {recruit.recruitHashtag.map((recruit, index) => {
+                  if (index < 3) return <Hashtag key={index}>{recruit}</Hashtag>;
                 })}
-                {project.projectHashtag.length > 3 && (
-                  <Hashtag>{`+ ${project.projectHashtag.length - 3}`}</Hashtag>
+                {recruit.recruitHashtag.length > 3 && (
+                  <Hashtag>{`+ ${recruit.recruitHashtag.length - 3}`}</Hashtag>
                 )}
-              </ProjectHashtagsWrapper>
+              </RecruitHashtagsWrapper>
               <ViewsAndLikesWrapper>
                 <Views>
                   <ViewsIconWrapper>
                     <ViewsIcon style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
                   </ViewsIconWrapper>
-                  {project.views}
+                  {recruit.views}
                 </Views>
                 <Likes>
                   <LikesIconWrapper>
                     <LikesIcon style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
                   </LikesIconWrapper>
-                  {project.likes}
+                  {recruit.likes}
                 </Likes>
               </ViewsAndLikesWrapper>
-            </ProjectInfoWrapper>
+            </RecruitInfoWrapper>
           </CardWrapper>
         );
       })}
@@ -101,7 +103,7 @@ const CardWrapper = styled.div`
   cursor: pointer;
 `;
 
-const ProjectInfoWrapper = styled.a`
+const RecruitInfoWrapper = styled.a`
   all: unset;
 
   flex: 1 1 50%;
@@ -118,13 +120,21 @@ const ProjectInfoWrapper = styled.a`
   }
 `;
 
-const ProjectTitleWrapper = styled.div`
+const RecruitTechWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+`;
+
+const RecruitTech = styled.input``;
+
+const RecruitTitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
 `;
 
-const ProjectTitle = styled.h1`
+const RecruitTitle = styled.h1`
   font-weight: var(--base-text-weight-bold);
   font-size: var(--base-text-size-large);
   color: var(--mainpage-cardlist-title-text-color);
@@ -134,12 +144,12 @@ const ProjectTitle = styled.h1`
   }
 `;
 
-const ProjectCreated = styled.div`
+const RecruitCreated = styled.div`
   font-size: var(--base-text-size-small);
   color: #999999;
 `;
 
-const ProjectDescription = styled.p`
+const RecruitDescription = styled.p`
   font-size: var(--base-text-size-normal);
 
   display: -webkit-box;
@@ -156,7 +166,7 @@ const ProjectDescription = styled.p`
   }
 `;
 
-const ProjectHashtagsWrapper = styled.div`
+const RecruitHashtagsWrapper = styled.div`
   display: flex;
   gap: 8px;
 

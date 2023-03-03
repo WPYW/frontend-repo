@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { useProjectList, useProjectListLoading } from '@/hooks';
+import { useRecruitList, useProjectListLoading } from '@/hooks';
 
 import { RecruitmentListHeader } from './RecruitmentListHeader';
 import { CardList } from './CardList';
@@ -16,7 +16,7 @@ interface IParams {
 export function RecruitmentList() {
   const [params, setParams] = useState<IParams>({ ordering: 'created', search: '', page: 1 });
 
-  const projectListHeaderProps = {
+  const recruitListHeaderProps = {
     onSetOrdering: (event: React.MouseEvent<HTMLButtonElement>) => {
       setParams((prev) => ({ ...prev, ordering: (event.target as HTMLElement).id }));
     },
@@ -25,11 +25,11 @@ export function RecruitmentList() {
     },
   };
 
-  const { projectList, isLoading, isFetching, isFetchingNextPage, hasNextPage, fetchNextPage } =
-    useProjectList(params);
+  const { recruitList, isLoading, isFetching, isFetchingNextPage, hasNextPage, fetchNextPage } =
+    useRecruitList(params);
 
-  const projectCardListProps = {
-    projectList,
+  const recruitCardListProps = {
+    recruitList,
     isLoading,
   };
 
@@ -43,14 +43,14 @@ export function RecruitmentList() {
   };
 
   return (
-    <ProjectListWrapper>
-      <RecruitmentListHeader {...projectListHeaderProps} />
-      <CardList {...projectCardListProps} />
+    <RecruitListWrapper>
+      <RecruitmentListHeader {...recruitListHeaderProps} />
+      <CardList {...recruitCardListProps} />
       <ScrollCatcher {...scrollCatcherProps} />
-    </ProjectListWrapper>
+    </RecruitListWrapper>
   );
 }
 
-const ProjectListWrapper = styled.article`
+const RecruitListWrapper = styled.article`
   padding: 30px;
 `;
