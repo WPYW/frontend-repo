@@ -4,10 +4,10 @@ import { IParams } from './index.types';
 
 import { LoadingDots } from '@/components/atoms';
 import {
-  MainPageDescription,
   ProjectCardList,
   ProjectCardListHeader,
   ScrollCatcher,
+  SideBar,
 } from '@/components/blocks';
 
 import { useGetProjectList } from './useGetProjectList';
@@ -20,7 +20,7 @@ export default function MainPage() {
   return (
     <S.Wrapper>
       <S.ColumnLeft>
-        <MainPageDescription />
+        <SideBar />
       </S.ColumnLeft>
       <S.ColumnRight>
         <ProjectCardListHeader ordering={params.ordering} setParams={setParams} />

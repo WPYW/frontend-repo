@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 
 import { Provider } from 'react-redux';
@@ -27,7 +28,9 @@ const queryClient = new QueryClient({
 export const decorators = [
   (story) => (
     <Provider store={store}>
-      <QueryClientProvider client={queryClient}>{story()}</QueryClientProvider>
+      <QueryClientProvider client={queryClient}>
+        <Router>{story()}</Router>
+      </QueryClientProvider>
     </Provider>
   ),
 ];
