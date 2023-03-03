@@ -17,10 +17,12 @@ const getRecruitmentListResponse = [
     results: [
       {
         id: 'f31473c9-2362-4ddd-8b83-6283f35f54ef',
+        password: '$2y$10$G3ULI99JX27ZtQrLYBSzout7vALMkXyzxRuEiEbIxEYS70tLb6cKe',
         recruitHashtag: ['프론트엔드', '백엔드', '모바일', '기타'],
         recruitTech: ['react', 'spring', 'aws'],
         recruitTitle: 'PRP(for your portrait right protection)',
         recruitDescription: '프로젝트 같이 할 백엔드 모집합니다.',
+        recruitMember: '2',
         chatLink: 'https://github.com/PRP-for-your-portrait-right-protection/.github',
         views: 0,
         likes: 0,
@@ -28,10 +30,12 @@ const getRecruitmentListResponse = [
       },
       {
         id: 'f31473c9-2362-4ddd-8b83-6283f35f54ef',
+        password: '$2y$10$G3ULI99JX27ZtQrLYBSzout7vALMkXyzxRuEiEbIxEYS70tLb6cKe',
         recruitHashtag: ['프론트엔드', '백엔드', '모바일', '기타'],
         recruitTech: ['react', 'spring', 'aws'],
         recruitTitle: 'PRP(for your portrait right protection)',
         recruitDescription: '프로젝트 같이 할 백엔드 모집합니다.',
+        recruitMember: '2',
         chatLink: 'https://github.com/PRP-for-your-portrait-right-protection/.github',
         views: 0,
         likes: 0,
@@ -39,10 +43,12 @@ const getRecruitmentListResponse = [
       },
       {
         id: 'f31473c9-2362-4ddd-8b83-6283f35f54ef',
+        password: '$2y$10$G3ULI99JX27ZtQrLYBSzout7vALMkXyzxRuEiEbIxEYS70tLb6cKe',
         recruitHashtag: ['프론트엔드', '백엔드', '모바일', '기타'],
         recruitTech: ['react', 'spring', 'aws'],
         recruitTitle: 'PRP(for your portrait right protection)',
         recruitDescription: '프로젝트 같이 할 백엔드 모집합니다.',
+        recruitMember: '2',
         chatLink: 'https://github.com/PRP-for-your-portrait-right-protection/.github',
         views: 0,
         likes: 0,
