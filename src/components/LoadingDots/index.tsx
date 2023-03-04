@@ -16,6 +16,8 @@ const LoadingDotsWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 16px;
+
+  margin-top: 30px;
 `;
 
 const bounce = keyframes`

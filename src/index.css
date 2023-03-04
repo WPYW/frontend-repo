@@ -26,26 +26,30 @@ a {
   text-decoration: none;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 :root {
   /* 폰트 두께 */
   --base-text-weight-normal: 400;
   --base-text-weight-medium: 500;
   --base-text-weight-semibold: 600;
   --base-text-weight-bold: 700;
-  --base-text-weight-extrabold: 800;
-  --base-text-weight-2extrabold: 900;
+  --base-text-weight-xbold: 800;
+  --base-text-weight-2xbold: 900;
 
   /* 폰트 사이즈 */
-  --base-text-size-3xsmall: 0.6rem;
-  --base-text-size-2xsmall: 0.7rem;
-  --base-text-size-xsmall: 0.8rem;
-  --base-text-size-small: 0.9rem;
-  --base-text-size-normal: 1rem;
-  --base-text-size-medium: 1.25rem;
-  --base-text-size-large: 1.5rem;
-  --base-text-size-xlarge: 2rem;
-  --base-text-size-2xlarge: 2.5rem;
-  --base-text-size-3xlarge: 3rem;
+  --base-text-size-xsmall: 1.1rem;
+  --base-text-size-small: 1.3rem;
+  --base-text-size-normal: 1.4rem;
+  --base-text-size-medium: 1.5rem;
+  --base-text-size-large: 1.6rem;
+  --base-text-size-xlarge: 1.7rem;
+  --base-text-size-2xlarge: 2.4rem;
+  --base-text-size-3xlarge: 2.8rem;
+  --base-text-size-4xlarge: 3rem;
+  --base-text-size-5xlarge: 4rem;
 
   /* 폰트 컬러 */
   --base-text-color-dark: rgb(255, 255, 255);
@@ -53,32 +57,14 @@ a {
 
   /* 배경색 */
   --base-background-color-dark: rgb(34, 34, 34);
-  --base-background-color-light: rgb(255, 255, 255);
-
-  /* 토스 메인 컬러 */
-  --toss-main-color-blue-1: rgb(0, 100, 255);
-  --toss-main-color-blue-2: #4880ee;
-  --toss-main-color-blue-3: #83b4f9;
-
-  --toss-main-color-gray-1: rgb(32, 35, 50);
-  --toss-main-color-gray-2: #505866;
-  --toss-main-color-gray-3: #b1b8c0;
-
-  /* 토스 텍스트 컬러 */
-  --toss-text-color-1: #1a1e27;
-  --toss-text-color-2: #505866;
-  --toss-text-color-3: #b1b8c0;
+  --base-background-color-light: rgb(245, 245, 245);
 
   /* 메인 컬러 */
   --main-color-orange: #ff9b25;
 }
 
 body.light {
-  --base-text-color: var(--base-text-color-light);
-  --base-background-color: var(--base-background-color-light);
-
-  color: var(--base-text-color);
-  background-color: var(--base-background-color);
+  background-color: var(--base-background-color-light);
 
   --header-background-color: var(--base-background-color-light);
 
@@ -145,11 +131,7 @@ body.light {
 }
 
 body.dark {
-  --base-text-color: var(--base-text-color-dark);
-  --base-background-color: var(--base-background-color-dark);
-
-  color: var(--base-text-color);
-  background-color: var(--base-background-color);
+  background-color: var(--base-background-color-dark);
 
   --header-background-color: var(--base-background-color-dark);
 
@@ -181,7 +163,7 @@ body.dark {
   --mainpage-modal-button-border-color: var(--main-color-orange);
 
   --mainpage-navigation-bar-item-background-color: var(--main-color-orange);
-  --mainpage-navigation-bar-clicked-item-text-color: #FFFFFF;
+  --mainpage-navigation-bar-clicked-item-text-color: #ffffff;
 
   --mainpage-cardlist-title-text-color: var(--main-color-orange);
 
@@ -218,4 +200,79 @@ body.dark {
   --detailpage-commenter-created-text-color: #b1b1b1;
 
   --detailpage-commenter-content-text-color: #dedede;
+}
+
+/* 새로 변경될 css */
+body.light {
+  background-color: var(--base-background-color-light);
+
+  --header-background-color: rgba(255, 255, 255, 0.72);
+  --header-shadow-color: rgb(234 234 236);
+
+  --base-description-text-color: #747474;
+
+  --card-background-color: #ffffff;
+  --card-background-color-hover: rgb(253, 253, 255);
+  --card-background-box-shadow-color: 0, 0, 0;
+  --card-background-box-shadow: 6px 8px 16px rgba(var(--card-background-box-shadow-color), 0.12);
+
+  --card-title-text-color: #000000;
+  --card-created-text-color: #afafaf;
+  --card-description-text-color: #000000;
+
+  --card-overlay-layer: linear-gradient(
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.8) 60%,
+    rgb(255, 255, 255) 100%
+  );
+
+  --navigation-item-clicked-text-color: #333333;
+
+  --search-bar-background-color: #ffffff68;
+  --search-bar-border-color: #ffffff68;
+  --search-bar-text-color: #000000;
+
+  --scroll-catcher-text-color: #000000;
+
+  --side-bar-item-text-color: rgb(112, 112, 112);
+  --side-bar-item-background-color-hover: #ffffff;
+
+  --side-bar-border-bottom-color: rgb(234, 234, 236);
+}
+
+body.dark {
+  background-color: var(--base-background-color-dark);
+
+  --header-background-color: rgba(34, 34, 34, 0.72);
+  --header-shadow-color: rgb(2 1 1);
+
+  --base-description-text-color: #dedede;
+
+  --card-background-color: rgb(49, 49, 49);
+  --card-background-color-hover: #343434;
+  --card-background-box-shadow-color: 255, 255, 255;
+  --card-background-box-shadow: 6px 8px 16px rgba(var(--card-background-box-shadow-color), 0.12);
+
+  --card-title-text-color: #ffffff;
+  --card-created-text-color: #bcbcbc;
+  --card-description-text-color: #ffffff;
+
+  --card-overlay-layer: linear-gradient(
+    rgba(49, 49, 49, 0) 0%,
+    rgba(49, 49, 49, 0.8) 60%,
+    rgb(49, 49, 49) 100%
+  );
+
+  --navigation-item-clicked-text-color: #ffffff;
+
+  --search-bar-background-color: #ffffff18;
+  --search-bar-border-color: #ffffff18;
+  --search-bar-text-color: #ffffff;
+
+  --scroll-catcher-text-color: #ffffff;
+
+  --side-bar-item-text-color: #848484;
+  --side-bar-item-background-color-hover: rgb(72, 72, 72);
+
+  --side-bar-border-bottom-color: rgb(21, 21, 19);
 }

@@ -55,7 +55,7 @@ export function useProjectDetail(projectId = '') {
 }
 
 const fetchProjectDetail = async (projectId: string) => {
-  const response = await fetch(`${BACKEND_API_URL}/projects/${projectId}`);
+  const response = await fetch(`${BACKEND_API_URL}/projects/${projectId}/`);
 
   const projectDetail = await response.json();
 
