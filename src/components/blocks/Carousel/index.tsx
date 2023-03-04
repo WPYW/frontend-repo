@@ -18,31 +18,67 @@ export function Carousel({ imgUrlList }: CarouselProps) {
 
   return (
     <S.Wrapper onClick={(event) => event.preventDefault()}>
-      {imgUrlList.length >= 1 && index !== 0 && (
-        <S.Button
-          direction="left"
-          role="button"
-          aria-label="carousel-left-button"
-          tabIndex={-1}
-          onClick={onButtonLeftOnClick}
-        >
-          <S.ButtonLeftImage />
-        </S.Button>
-      )}
+      <S.SubWrapper>
+        <S.ImageWrapper>
+          <S.Image
+            src={imgUrlList[index]}
+            alt="carousel image"
+            draggable={false}
+            onMouseDown={(event) => {
+              event.preventDefault();
 
-      <S.Image src={imgUrlList[index]} alt="carousel image" />
+              const slide = event.target as HTMLElement;
 
-      {imgUrlList.length >= 1 && index !== imgUrlList.length - 1 && (
-        <S.Button
-          direction="right"
-          role="button"
-          aria-label="carousel-right-button"
-          tabIndex={-1}
-          onClick={onButtonRightOnClick}
-        >
-          <S.ButtonRightImage />
-        </S.Button>
-      )}
+              const shiftX = event.clientX - slide.getBoundingClientRect().left;
+
+              slide.style.position = 'relative';
+
+              document.addEventListener('mousemove', onMouseMove);
+              document.addEventListener('mouseup', onMouseUp);
+
+              function onMouseMove(event) {
+                let newLeft =
+                  event.clientX -
+                  shiftX -
+                  (slide.parentNode as HTMLElement).getBoundingClientRect().left;
+
+                if (newLeft < 0) {
+                  slide.style.left = newLeft + 'px';
+                }
+
+                const rightEdge = slide.offsetWidth;
+
+                if (newLeft > rightEdge) {
+                  newLeft = rightEdge;
+                }
+
+                slide.style.left = newLeft + 'px';
+              }
+
+              function onMouseUp() {
+                if (parseInt(slide.style.left) >= 200) {
+                  onButtonLeftOnClick();
+                }
+
+                if (parseInt(slide.style.left) <= -200) {
+                  onButtonRightOnClick();
+                }
+
+                slide.style.position = '';
+                slide.style.left = '';
+
+                document.removeEventListener('mouseup', onMouseUp);
+                document.removeEventListener('mousemove', onMouseMove);
+              }
+            }}
+          />
+        </S.ImageWrapper>
+      </S.SubWrapper>
+      <S.DotsWrapper>
+        {imgUrlList.map((_, imgIndex) => (
+          <S.Dot key={imgIndex} active={imgIndex === index} onClick={() => setIndex(imgIndex)} />
+        ))}
+      </S.DotsWrapper>
     </S.Wrapper>
   );
 }

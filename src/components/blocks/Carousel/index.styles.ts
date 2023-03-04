@@ -1,75 +1,58 @@
 import styled, { css } from 'styled-components';
 
-import { CarouselButtonProps } from './index.types';
-
-import { ReactComponent as CarouselButtonLeft } from '@/assets/arrow-left.svg';
-import { ReactComponent as CarouselButtonRight } from '@/assets/arrow-right.svg';
+import { DotProps } from './index.types';
 
 export const Wrapper = styled.div`
-  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
+
+export const SubWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  width: 100%;
+  height: 400px;
 
   overflow: hidden;
 
-  position: relative;
-
-  display: flex;
-  align-items: center;
+  @media screen and (max-width: 420px) {
+    height: 180px;
+  }
 `;
 
-export const Image = styled.img`
-  display: block;
+export const ImageWrapper = styled.div`
+  border-radius: 10px;
+
   width: 100%;
 `;
 
-export const Button = styled.button<Pick<CarouselButtonProps, 'direction'>>`
-  all: unset;
-
-  display: flex;
-  align-items: center;
-
-  position: absolute;
-
+export const Image = styled.img`
+  width: 100%;
   height: 100%;
-
-  ${(props) => {
-    if (props.direction === 'left') {
-      return css`
-        left: 0;
-        padding-left: 20px;
-      `;
-    }
-
-    if (props.direction === 'right') {
-      return css`
-        right: 0;
-        padding-right: 20px;
-      `;
-    }
-  }}
-
-  cursor: pointer;
+  object-fit: cover;
 `;
 
-export const ButtonLeftImage = styled(CarouselButtonLeft)`
-  width: 30px;
-  height: 30px;
-
-  transition: all 0.2s ease-in-out 0s;
-
-  &:hover {
-    fill: var(--main-color-orange);
-    transform: translateY(-2px);
-  }
+export const DotsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 `;
 
-export const ButtonRightImage = styled(CarouselButtonRight)`
-  width: 30px;
-  height: 30px;
+export const Dot = styled.div<DotProps>`
+  width: 16px;
+  height: 16px;
 
-  transition: all 0.2s ease-in-out 0s;
+  background-color: #6a6a6a69;
 
-  &:hover {
-    fill: var(--main-color-orange);
-    transform: translateY(-2px);
-  }
+  border-radius: 50%;
+
+  ${(props) =>
+    props.active &&
+    css`
+      background-color: var(--main-color-orange);
+    `}
 `;
