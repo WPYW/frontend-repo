@@ -16,7 +16,7 @@ const Template: ComponentStory<typeof ProjectCard> = (args) => <ProjectCard {...
 export const DefaultCard = Template.bind({});
 DefaultCard.args = {
   project: {
-    id: ',',
+    id: '',
     projectTitle: 'PRP(for your portrait right protection)',
     projectDescription:
       '업로드 할 당신의 영상 속 인물들의 초상권을 보호할 수 있도록 이 서비스를 이용해보세요!',
