@@ -4,8 +4,6 @@ import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { modalOpen } from '@/RTK/slices/modalSlice';
 
-import { ReactComponent as DescriptionImage } from '@/assets/projectlist-page-description-image.svg';
-
 export function RecruitmentListPageDescription() {
   const dispatch = useDispatch();
 
@@ -15,9 +13,7 @@ export function RecruitmentListPageDescription() {
 
   return (
     <DescriptionWrapper>
-      <DescriptionImageWrapper>
-        <DescriptionImage style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
-      </DescriptionImageWrapper>
+      <DescriptionImageWrapper></DescriptionImageWrapper>
       <DescriptionTitleWrapper>
         <DescriptionTitle>What Project You Want?</DescriptionTitle>
         <DescriptionSubTitle>
