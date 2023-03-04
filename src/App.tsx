@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import RecruitmentListPage from './pages/RecruitmentListPage';
 
 import { PortalModal } from '@/components';
 import { Header } from '@/components/blocks';
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="*" element={<div>404 Not Found</div>} />
           <Route path="/" element={<MainPage />} />
           <Route path="/projects/:id" element={<DetailPage />} />
+          <Route path="/recruit" element={<RecruitmentListPage />} />
         </Routes>
         <PortalModal />
       </Suspense>

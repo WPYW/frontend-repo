@@ -6,6 +6,7 @@ import { useRecruitList, useProjectListLoading } from '@/hooks';
 import { RecruitmentListHeader } from './RecruitmentListHeader';
 import { CardList } from './CardList';
 import { ScrollCatcher } from './ScrollCatcher';
+import TestCard from './TestCard';
 
 interface IParams {
   ordering: string;
@@ -25,11 +26,10 @@ export function RecruitmentList() {
     },
   };
 
-  const { recruitList, isLoading, isFetching, isFetchingNextPage, hasNextPage, fetchNextPage } =
+  const { isLoading, isFetching, isFetchingNextPage, hasNextPage, fetchNextPage } =
     useRecruitList(params);
 
   const recruitCardListProps = {
-    recruitList,
     isLoading,
   };
 
@@ -44,9 +44,9 @@ export function RecruitmentList() {
 
   return (
     <RecruitListWrapper>
-      <RecruitmentListHeader {...recruitListHeaderProps} />
-      <CardList {...recruitCardListProps} />
-      <ScrollCatcher {...scrollCatcherProps} />
+      {/* <RecruitmentListHeader {...recruitListHeaderProps} />
+      <ScrollCatcher {...scrollCatcherProps} /> */}
+      <TestCard />
     </RecruitListWrapper>
   );
 }
