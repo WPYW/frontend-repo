@@ -1,8 +1,8 @@
 import { rest } from 'msw';
-// import { BACKEND_API_URL } from '@/common/url';
+import { BACKEND_API_URL } from '@/common/url';
 
 export const recuritmentListHandlers = [
-  rest.get(`/recruit`, async (req, res, ctx) => {
+  rest.get(`${BACKEND_API_URL}/recruit`, async (req, res, ctx) => {
     const pageNum = Number(req.url.searchParams.get('page')) || 1;
 
     return res(ctx.status(200), ctx.delay(4000), ctx.json(getRecruitmentListResponse[pageNum - 1]));
@@ -12,7 +12,7 @@ export const recuritmentListHandlers = [
 const getRecruitmentListResponse = [
   {
     // count: 87, //number of current data
-    next: 'http://localhost:8000/api/v1/projects/?page=2', //next page url
+    next: 'http://localhost:8000/api/v1/recruit/?page=2', //next page url
     // previous: null, //previous page url
     results: [
       {
