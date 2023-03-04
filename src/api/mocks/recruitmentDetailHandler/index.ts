@@ -11,10 +11,7 @@ export const recruitmentDetailHandlers = [
 const getRecruitDetailResponse = {
   //Need to add comment section .
   id: 'f31473c9-2362-4ddd-8b83-6283f35f54ef',
-  //   previewImages: [
-  //     'https://whatprojectyouwant.s3.amazonaws.com/project_image/%7Bproject.id%7D/prp.gif',
-  //     'https://whatprojectyouwant.s3.amazonaws.com/project_image/%7Bproject.id%7D/default_profile.png',
-  //   ],
+  password: '$2y$10$G3ULI99JX27ZtQrLYBSzout7vALMkXyzxRuEiEbIxEYS70tLb6cKe',
   comment: [
     {
       id: 'c2265d31-9d52-44e2-afd4-4beb933626f5',
@@ -46,6 +43,7 @@ const getRecruitDetailResponse = {
   recruitTech: ['react', 'spring', 'aws'],
   recruitDescription:
     '업로드 할 당신의 영상 속 인물들의 초상권을 보호할 수 있도록 이 서비스를 이용해보세요',
+  recruitMember: '2',
   chatLink: 'https://github.com/PRP-for-your-portrait-right-protection/.github',
   views: 0,
   likes: 0,
