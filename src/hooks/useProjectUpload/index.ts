@@ -35,7 +35,7 @@ const uploadProject = async (projectUploadForm: IProjectUploadForm) => {
 const projectUploadFormValidationCheck = (projectUploadForm: IProjectUploadForm) => {
   if (projectUploadForm.projectTitle === '') throw new Error('프로젝트 제목을 입력해주세요');
   if (projectUploadForm.projectDescription === '') throw Error('프로젝트 설명을 입력해주세요');
-  if (projectUploadForm.githubLink === '') throw Error('깃허브 리포지토리을 입력해주세요');
+  if (projectUploadForm.githubLink === '') throw Error('깃허브 링크를 입력해주세요');
   if (projectUploadForm.previewImages.length === 0) throw Error('썸네일 이미지를 업로드해주세요');
 };
 
@@ -48,7 +48,8 @@ const fetchEncodedReadme = async (githubLink: string) => {
     },
   });
 
-  if (response.status !== 200) throw new Error(`리드미 fetch 에러 발생 코드 : ${response.status}`);
+  if (response.status !== 200)
+    throw new Error(`리드미가 있는 올바른 깃허브 링크인지 확인해주세요!`);
 };
 
 const sendProjectToServer = async (project: IProjectUploadForm) => {

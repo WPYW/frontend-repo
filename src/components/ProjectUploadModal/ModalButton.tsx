@@ -27,8 +27,10 @@ export function ModalButton({ projectUploadForm, uploadProject }: IModalbutton) 
     try {
       await uploadProject(projectUploadForm);
       dispatch(modalClose());
-    } catch (err) {
-      alert(err);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: { message: string } | any) {
+      // err 타입 지정 필요
+      alert(err.message);
     }
   };
 
