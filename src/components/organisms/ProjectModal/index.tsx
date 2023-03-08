@@ -13,6 +13,7 @@ import { useProjectUpload } from './useProjectUpload';
 
 import { useDispatch } from 'react-redux';
 import { modalClose } from '@/RTK/slices/modalSlice';
+import { ModalFooter } from '@/components/blocks/Modal/ModalFooter';
 
 export function PortalProjectModal() {
   const modalRoot = document.getElementById('modal-root');
@@ -34,6 +35,19 @@ export function ProjectModal() {
     setImages,
     uploadProject,
   } = useProjectUpload();
+
+  const submitProject = async () => {
+    try {
+      await uploadProject();
+      dispatch(modalClose());
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: { message: string } | any) {
+      // err 타입 지정 필요
+      alert(err.message);
+    }
+  };
+
+  const closeModal = () => dispatch(modalClose());
 
   return (
     <Modal>
@@ -65,21 +79,12 @@ export function ProjectModal() {
           <HashtagInput placeholder="태그를 입력해주세요" setHashtagInput={setHashtags} />
         </ModalInputLabel>
 
-        <ModalButton
-          type="button"
-          onClick={async () => {
-            try {
-              await uploadProject();
-              dispatch(modalClose());
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            } catch (err: { message: string } | any) {
-              // err 타입 지정 필요
-              alert(err.message);
-            }
-          }}
-        >
-          업로드
-        </ModalButton>
+        <ModalFooter>
+          <ModalButton onClick={submitProject}>업로드</ModalButton>
+          <ModalButton id="close" onClick={closeModal} style={{ width: '50%' }}>
+            닫기
+          </ModalButton>
+        </ModalFooter>
       </ModalForm>
     </Modal>
   );
