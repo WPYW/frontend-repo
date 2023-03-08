@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
 
+import { PortalProjectModal } from '@/components/organisms';
+
 import { store } from '@/RTK/stores/store';
 import { Provider } from 'react-redux';
 
@@ -29,6 +31,18 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <QueryClientProvider client={queryClient}>
       <Router>
         <App />
+      </Router>
+    </QueryClientProvider>
+  </Provider>,
+  // </React.StrictMode>,
+);
+
+ReactDOM.createRoot(document.getElementById('modal-root') as HTMLElement).render(
+  // <React.StrictMode>
+  <Provider store={store}>
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <PortalProjectModal />
       </Router>
     </QueryClientProvider>
   </Provider>,
