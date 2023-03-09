@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { useRecruitList, useProjectListLoading } from '@/hooks';
+import { useRecruitList } from '@/hooks';
 
 import { RecruitmentListHeader } from './RecruitmentListHeader';
 import { CardList } from './CardList';

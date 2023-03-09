@@ -7,3 +7,4 @@ export * from './ProjectCardList';
 export * from './ProjectCardListHeader';
 export * from './ScrollCatcher';
 export * from './SideBar';
+export * from './Modal';

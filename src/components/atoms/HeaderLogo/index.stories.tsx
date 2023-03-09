@@ -7,14 +7,6 @@ export default {
   component: HeaderLogo,
 } as ComponentMeta<typeof HeaderLogo>;
 
-const Template: ComponentStory<typeof HeaderLogo> = (args) => <HeaderLogo {...args} />;
+const Template: ComponentStory<typeof HeaderLogo> = () => <HeaderLogo />;
 
-export const HeaderLogoLight = Template.bind({});
-HeaderLogoLight.args = {
-  mode: 'light',
-};
-
-export const HeaderLogoDark = Template.bind({});
-HeaderLogoDark.args = {
-  mode: 'dark',
-};
+export const DefaultHeaderLogo = Template.bind({});

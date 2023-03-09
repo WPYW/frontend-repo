@@ -238,6 +238,16 @@ body.light {
   --side-bar-item-background-color-hover: #ffffff;
 
   --side-bar-border-bottom-color: rgb(234, 234, 236);
+
+  --modal-header-description-text-color: #747474;
+
+  --modal-background-color: var(--base-background-color-light);
+
+  --modal-input-text-color: #000000;
+
+  --modal-text-input-text-color: #000000;
+
+  --modal-button-text-color: #ffffff;
 }
 
 body.dark {
@@ -246,7 +256,7 @@ body.dark {
   --header-background-color: rgba(34, 34, 34, 0.72);
   --header-shadow-color: rgb(2 1 1);
 
-  --base-description-text-color: #dedede;
+  --base-description-text-color: #747474;
 
   --card-background-color: rgb(49, 49, 49);
   --card-background-color-hover: #343434;
@@ -275,4 +285,14 @@ body.dark {
   --side-bar-item-background-color-hover: rgb(72, 72, 72);
 
   --side-bar-border-bottom-color: rgb(21, 21, 19);
+
+  --modal-header-description-text-color: #747474;
+
+  --modal-background-color: var(--base-background-color-dark);
+
+  --modal-input-text-color: #ffffff;
+
+  --modal-text-input-text-color: #ffffff;
+
+  --modal-button-text-color: #343434;
 }

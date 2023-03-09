@@ -16,6 +16,52 @@ export function Carousel({ imgUrlList }: CarouselProps) {
     setIndex((prev) => prev + 1);
   };
 
+  const onMouseDownHandler = (event: React.MouseEvent) => {
+    event.preventDefault();
+
+    const slide = event.target as HTMLElement;
+
+    const shiftX = event.clientX - slide.getBoundingClientRect().left;
+
+    slide.style.position = 'relative';
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+
+    function onMouseMove(event: { clientX: number }) {
+      let newLeft =
+        event.clientX - shiftX - (slide.parentNode as HTMLElement).getBoundingClientRect().left;
+
+      if (newLeft < 0) {
+        slide.style.left = newLeft + 'px';
+      }
+
+      const rightEdge = slide.offsetWidth;
+
+      if (newLeft > rightEdge) {
+        newLeft = rightEdge;
+      }
+
+      slide.style.left = newLeft + 'px';
+    }
+
+    function onMouseUp() {
+      if (parseInt(slide.style.left) >= 200) {
+        onButtonLeftOnClick();
+      }
+
+      if (parseInt(slide.style.left) <= -200) {
+        onButtonRightOnClick();
+      }
+
+      slide.style.position = '';
+      slide.style.left = '';
+
+      document.removeEventListener('mouseup', onMouseUp);
+      document.removeEventListener('mousemove', onMouseMove);
+    }
+  };
+
   return (
     <S.Wrapper onClick={(event) => event.preventDefault()}>
       <S.SubWrapper>
@@ -24,53 +70,7 @@ export function Carousel({ imgUrlList }: CarouselProps) {
             src={imgUrlList[index]}
             alt="carousel image"
             draggable={false}
-            onMouseDown={(event) => {
-              event.preventDefault();
-
-              const slide = event.target as HTMLElement;
-
-              const shiftX = event.clientX - slide.getBoundingClientRect().left;
-
-              slide.style.position = 'relative';
-
-              document.addEventListener('mousemove', onMouseMove);
-              document.addEventListener('mouseup', onMouseUp);
-
-              function onMouseMove(event) {
-                let newLeft =
-                  event.clientX -
-                  shiftX -
-                  (slide.parentNode as HTMLElement).getBoundingClientRect().left;
-
-                if (newLeft < 0) {
-                  slide.style.left = newLeft + 'px';
-                }
-
-                const rightEdge = slide.offsetWidth;
-
-                if (newLeft > rightEdge) {
-                  newLeft = rightEdge;
-                }
-
-                slide.style.left = newLeft + 'px';
-              }
-
-              function onMouseUp() {
-                if (parseInt(slide.style.left) >= 200) {
-                  onButtonLeftOnClick();
-                }
-
-                if (parseInt(slide.style.left) <= -200) {
-                  onButtonRightOnClick();
-                }
-
-                slide.style.position = '';
-                slide.style.left = '';
-
-                document.removeEventListener('mouseup', onMouseUp);
-                document.removeEventListener('mousemove', onMouseMove);
-              }
-            }}
+            onMouseDown={onMouseDownHandler}
           />
         </S.ImageWrapper>
       </S.SubWrapper>
