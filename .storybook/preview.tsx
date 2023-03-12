@@ -3,9 +3,13 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 
 import { Provider } from 'react-redux';
-import { store } from '../src/RTK/stores/store';
+import { store } from '../src/stores/store';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+import { initialize, mswDecorator } from 'msw-storybook-addon';
+
+initialize();
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -33,4 +37,5 @@ export const decorators = [
       </QueryClientProvider>
     </Provider>
   ),
+  mswDecorator,
 ];
