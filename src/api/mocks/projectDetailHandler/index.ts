@@ -9,45 +9,30 @@ export const projectDetailHandlers = [
 ];
 
 const getProjectDetailResponse = {
-  //Need to add comment section .
-  id: 'f31473c9-2362-4ddd-8b83-6283f35f54ef',
+  id: 'f2b0e579-a669-4cd8-9d13-5173d66671a7',
+  comment: [],
   previewImages: [
-    'https://whatprojectyouwant.s3.amazonaws.com/project_image/%7Bproject.id%7D/prp.gif',
-    'https://whatprojectyouwant.s3.amazonaws.com/project_image/%7Bproject.id%7D/default_profile.png',
+    'https://wpyw-bucket.s3.amazonaws.com/media/project/images/f2b0e579-a669-4cd8-9d13-5173d66671a7/%EC%A7%80%EA%B5%AC%EB%A9%8D-1.gif',
+    'https://wpyw-bucket.s3.amazonaws.com/media/project/images/f2b0e579-a669-4cd8-9d13-5173d66671a7/%EC%A7%80%EA%B5%AC%EB%A9%8D-2.gif',
+    'https://wpyw-bucket.s3.amazonaws.com/media/project/images/f2b0e579-a669-4cd8-9d13-5173d66671a7/%EC%A7%80%EA%B5%AC%EB%A9%8D-3.gif',
   ],
-  comment: [
-    {
-      id: 'c2265d31-9d52-44e2-afd4-4beb933626f5',
-      content: 'I love this project!',
-      created: '2023-02-14T09:55:39.503102Z',
-      status: 1,
-      activate_date: '2023-02-14T09:55:39.502862Z',
-      deactivate_date: null,
-    },
-    {
-      id: '6fda5e13-0cde-4772-bb33-3f126ceb48c0',
-      content: 'Good job!',
-      created: '2023-02-14T09:55:37.319294Z',
-      status: 1,
-      activate_date: '2023-02-14T09:55:37.318894Z',
-      deactivate_date: null,
-    },
-    {
-      id: '2e7db03b-acf4-4a19-8423-fe1651b773d6',
-      content: 'Nice work!',
-      created: '2023-02-14T09:54:36.939222Z',
-      status: 1,
-      activate_date: '2023-02-14T09:54:36.938863Z',
-      deactivate_date: null,
-    },
+  projectHashtag: [
+    'flask',
+    'gunicorn',
+    'nginx',
+    'mysql',
+    'react',
+    'celery',
+    'rabbitMQ',
+    'pyTorch',
+    'docker',
   ],
-  projectHashtag: ['project', 'flask', 'react', 'docker'],
-  projectTitle: 'PRP(for your portrait right protection)',
+  projectTitle: '지구멍',
   projectDescription:
-    '업로드 할 당신의 영상 속 인물들의 초상권을 보호할 수 있도록 이 서비스를 이용해보세요',
-  githubLink: 'https://github.com/PRP-for-your-portrait-right-protection/.github',
-  demositeLink: 'https://github.com/PRP-for-your-portrait-right-protection/.github',
-  views: 0,
-  likes: 0,
-  created: '2023-02-14T05:39:39.958595Z',
+    '지구에 사는 멍멍이들, 지구멍! 🐶🐾! 강아지 견종 분류 및 정보 제공 서비스입니다.',
+  githubLink: 'https://github.com/2022-Summer-Bootcamp-teamG/puppy-classification',
+  demositeLink: null,
+  views: 11,
+  likes: 4,
+  created: '2023-03-02',
 };

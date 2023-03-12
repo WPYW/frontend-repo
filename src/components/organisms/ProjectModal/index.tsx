@@ -11,12 +11,13 @@ import { HashtagInput } from '../../blocks/Modal/HashtagInput';
 import { ImageInput } from '../../blocks/Modal/ImageInput';
 import { useProjectUpload } from './useProjectUpload';
 
-import { useDispatch } from 'react-redux';
-import { modalClose } from '@/RTK/slices/modalSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/stores/store';
+import { uploadModalClose } from '@/stores/slices/uploadModalSlice';
 import { ModalFooter } from '@/components/blocks/Modal/ModalFooter';
 
 export function PortalProjectModal() {
-  const modalRoot = document.getElementById('modal-root');
+  const modalRoot = document.getElementById('upload-root');
 
   if (modalRoot !== null) return reactDom.createPortal(<ProjectModal />, modalRoot);
 
@@ -24,6 +25,8 @@ export function PortalProjectModal() {
 }
 
 export function ProjectModal() {
+  const isOpen = useSelector((state: RootState) => state.uploadModal.isOpen);
+
   const dispatch = useDispatch();
 
   const {
@@ -39,7 +42,7 @@ export function ProjectModal() {
   const submitProject = async () => {
     try {
       await uploadProject();
-      dispatch(modalClose());
+      dispatch(uploadModalClose());
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: { message: string } | any) {
       // err 타입 지정 필요
@@ -47,10 +50,10 @@ export function ProjectModal() {
     }
   };
 
-  const closeModal = () => dispatch(modalClose());
+  const closeModal = () => dispatch(uploadModalClose());
 
   return (
-    <Modal>
+    <Modal isOpen={isOpen}>
       <ModalHeader
         title="프로젝트 공유"
         description="아래에 있는 양식에 따라 깃허브 링크를 등록해주세요 ❤️"

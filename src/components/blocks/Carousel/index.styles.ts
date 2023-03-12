@@ -15,7 +15,7 @@ export const SubWrapper = styled.div`
   gap: 20px;
 
   width: 100%;
-  height: 400px;
+  min-height: 400px;
 
   overflow: hidden;
 

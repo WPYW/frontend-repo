@@ -108,6 +108,8 @@ body.light {
   --modal-text-input-text-color: #000000;
 
   --modal-button-text-color: #ffffff;
+
+  --project-created-text-color: #656565;
 }
 
 body.dark {
@@ -155,4 +157,6 @@ body.dark {
   --modal-text-input-text-color: #ffffff;
 
   --modal-button-text-color: #343434;
+
+  --project-created-text-color: #dedede;
 }

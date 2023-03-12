@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { ModalOverlayProps } from './index.types';
+import { ModalProps } from './index.types';
 
-export const ModalOverlay = styled.div<ModalOverlayProps>`
+export const ModalOverlay = styled.div<Pick<ModalProps, 'isOpen'>>`
   display: ${(props) => (props.isOpen ? 'flex' : 'none')};
   align-items: center;
   justify-content: center;
@@ -11,12 +11,14 @@ export const ModalOverlay = styled.div<ModalOverlayProps>`
   left: 0;
 
   width: 100%;
-  height: 100%;
+  height: 100vh;
 
   background-color: rgba(183, 183, 183, 0.7);
   backdrop-filter: blur(10px);
 
   z-index: 1000;
+
+  overflow: auto;
 `;
 
 export const Wrapper = styled.div`
@@ -34,4 +36,8 @@ export const Wrapper = styled.div`
   border-radius: 2rem;
 
   background-color: var(--modal-background-color);
+
+  @media screen and (max-width: 420px) {
+    border-radius: 0;
+  }
 `;
