@@ -30,6 +30,7 @@ const queryClient = new QueryClient({
 });
 
 export const decorators = [
+  mswDecorator,
   (story) => (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
@@ -37,5 +38,4 @@ export const decorators = [
       </QueryClientProvider>
     </Provider>
   ),
-  mswDecorator,
 ];

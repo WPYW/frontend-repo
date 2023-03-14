@@ -110,6 +110,16 @@ body.light {
   --modal-button-text-color: #ffffff;
 
   --project-created-text-color: #656565;
+
+  --created-text-color: #656565;
+
+  --comment-text-color: #000000;
+
+  --comment-count-text-color: #656565;
+
+  --comment-input-background-color: #ededed;
+  --comment-input-text-color: #000000;
+  --comment-input-placeholder-text-color: #878787;
 }
 
 body.dark {
@@ -159,4 +169,14 @@ body.dark {
   --modal-button-text-color: #343434;
 
   --project-created-text-color: #dedede;
+
+  --created-text-color: #dedede;
+
+  --comment-text-color: #ffffff;
+
+  --comment-count-text-color: #dedede;
+
+  --comment-input-background-color: #ededed;
+  --comment-input-text-color: #000000;
+  --comment-input-placeholder-text-color: #878787;
 }
