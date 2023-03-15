@@ -5,21 +5,15 @@ import { CardProps } from './index.types';
 import viewsIconPath from '@/assets/views-icon.svg';
 import likesIconPath from '@/assets/likes-icon.svg';
 
-import { Hashtags } from '../Hashtags';
 import { Carousel } from '../Carousel';
 import { IconWithCount } from '@/components/atoms';
+import { useDispatch } from 'react-redux';
+import { promoteProjectDetailModalOpen } from '@/stores/slices/promoteProjectDetailModal';
+import { Link, useLocation } from 'react-router-dom';
+import { Hashtags } from '../Hashtags';
 
 export function ProjectCard({ project }: CardProps) {
-  const {
-    id,
-    projectTitle,
-    projectDescription,
-    previewImages,
-    projectHashtag,
-    views,
-    likes,
-    created,
-  } = project;
+  const { id, title, description, thumbnails, hashtags, views, likes, created } = project;
 
   const ref = useRef<HTMLParagraphElement>(null);
 
@@ -31,27 +25,37 @@ export function ProjectCard({ project }: CardProps) {
     }
   }, []);
 
+  const dispatch = useDispatch();
+
+  const location = useLocation();
+
   return (
-    <S.Wrapper href={`/projects/${id}`}>
-      <S.CardHeaderWrapper>
-        <Hashtags hashtags={projectHashtag} />
-      </S.CardHeaderWrapper>
+    <Link to={`/projects/${id}`} state={{ background: location }} preventScrollReset={true}>
+      <S.Wrapper
+        onClick={() => {
+          dispatch(promoteProjectDetailModalOpen());
+        }}
+      >
+        <S.CardHeaderWrapper>
+          <Hashtags hashtags={hashtags} />
+        </S.CardHeaderWrapper>
 
-      <S.CardBodyWrapper>
-        <S.Title>{projectTitle}</S.Title>
-        <Carousel imgUrlList={previewImages} />
-        <S.Description ref={ref} overlay={overlay}>
-          {projectDescription}
-        </S.Description>
-      </S.CardBodyWrapper>
+        <S.CardBodyWrapper>
+          <S.Title>{title}</S.Title>
+          <Carousel imgUrlList={thumbnails} />
+          <S.Description ref={ref} overlay={overlay}>
+            {description}
+          </S.Description>
+        </S.CardBodyWrapper>
 
-      <S.CardFooterWrapper>
-        <S.Created>{created}</S.Created>
-        <div style={{ display: 'flex', gap: '10px' }}>
-          <IconWithCount iconSrc={viewsIconPath} count={views} />
-          <IconWithCount iconSrc={likesIconPath} count={likes} />
-        </div>
-      </S.CardFooterWrapper>
-    </S.Wrapper>
+        <S.CardFooterWrapper>
+          <S.Created>{created}</S.Created>
+          <div style={{ display: 'flex', gap: '10px' }}>
+            <IconWithCount iconSrc={viewsIconPath} count={views} />
+            <IconWithCount iconSrc={likesIconPath} count={likes} />
+          </div>
+        </S.CardFooterWrapper>
+      </S.Wrapper>
+    </Link>
   );
 }
