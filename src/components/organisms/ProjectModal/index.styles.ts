@@ -1,12 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-  padding-top: 50px;
-
-  @media screen and (max-width: 420px) {
-    padding-top: 150px;
-  }
-`;
+export const Wrapper = styled.div``;
 
 export const SubWrapper = styled.div`
   display: flex;

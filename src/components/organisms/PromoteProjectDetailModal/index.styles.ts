@@ -1,12 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-  padding: 100px 0px;
-
-  @media screen and (max-width: 420px) {
-    padding: 100px;
-  }
-`;
+export const Wrapper = styled.div``;
 
 export const SubWrapper = styled.div`
   display: flex;
@@ -19,10 +13,13 @@ export const SubWrapper = styled.div`
 
   background-color: var(--modal-background-color);
 
-  padding: 80px 64px;
+  padding: 60px 64px;
 
   @media screen and (max-width: 420px) {
-    width: 400px;
+    width: 100%;
+    border-radius: 0px;
+
+    padding: 30px 32px;
   }
 `;
 

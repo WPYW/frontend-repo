@@ -21,6 +21,7 @@ export function Modal({ children, isOpen, modalCloseHandler }: ModalProps) {
 
   return (
     <S.ModalOverlay isOpen={isOpen} onClick={modalCloseHandler}>
+      <S.CloseButton />
       <S.Wrapper onClick={(event) => event.stopPropagation()}>{children}</S.Wrapper>
     </S.ModalOverlay>
   );
