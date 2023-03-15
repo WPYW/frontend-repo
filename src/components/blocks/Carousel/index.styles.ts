@@ -21,6 +21,7 @@ export const SubWrapper = styled.div`
 
   @media screen and (max-width: 420px) {
     height: 180px;
+    min-height: 0px;
   }
 `;
 

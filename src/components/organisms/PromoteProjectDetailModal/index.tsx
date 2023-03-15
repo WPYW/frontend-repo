@@ -14,6 +14,7 @@ import { promoteProjectDetailModalClose } from '@/stores/slices/promoteProjectDe
 import { CommentForm } from '@/components/blocks/CommentForm';
 import { BACKEND_API_URL } from '@/common/url';
 import { useNavigate, useParams } from 'react-router-dom';
+import { LoadingDots } from '@/components/atoms';
 
 export function PortalPromoteProjectdetailModal() {
   const modalRoot = document.getElementById('upload-root');
@@ -28,7 +29,7 @@ export function PromoteProjectDetailModal() {
   const isOpen = useSelector((state: RootState) => state.promoteProjectDetailModal.isOpen);
 
   const params = useParams();
-  const { projectDetail, readMe, refetch } = usePromoteProjectDetail(params.id);
+  const { projectDetail, readMe, refetch, isLoading } = usePromoteProjectDetail(params.id);
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -62,7 +63,7 @@ export function PromoteProjectDetailModal() {
           <S.Created>{projectDetail.created}</S.Created>
           <S.Title>{projectDetail.title}</S.Title>
           <S.Description>{projectDetail.description}</S.Description>
-          <S.ReadMe ref={ref} className="markdown-body"></S.ReadMe>
+          {isLoading ? <LoadingDots /> : <S.ReadMe ref={ref} className="markdown-body"></S.ReadMe>}
           <CommentForm comments={projectDetail.comments} addComment={addComment} />
           <SideBar
             githubLink={projectDetail.githubLink}

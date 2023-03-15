@@ -48,13 +48,13 @@ export function usePromoteProjectDetail(projectId = '') {
     enabled: !!projectDetail.githubLink,
   });
 
-  const { data: readMe = '' } = useQuery({
+  const { data: readMe = '', isLoading } = useQuery({
     queryKey: [`readMeMarkdown-${projectId}`],
     queryFn: () => fetchReadMeMarkdown(readmeOrigin),
     enabled: !!readmeOrigin,
   });
 
-  return { projectDetail, readMe, refetch };
+  return { projectDetail, readMe, refetch, isLoading };
 }
 
 const fetchProjectDetail = async (projectId: string) => {

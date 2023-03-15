@@ -33,7 +33,7 @@ const addCommentHandler = rest.post<PostAddCommentReqBody>(
         comments = project.comments;
     }
 
-    comments.push({
+    comments.unshift({
       nickName: '물에 빠진 너구리',
       created: '2023-02-23',
       content: req.body.content,
