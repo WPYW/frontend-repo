@@ -101,6 +101,7 @@ body.light {
 
   --modal-header-description-text-color: #747474;
 
+  --modal-text-color: #000000;
   --modal-background-color: var(--base-background-color-light);
 
   --modal-input-text-color: #000000;
@@ -160,6 +161,7 @@ body.dark {
 
   --modal-header-description-text-color: #747474;
 
+  --modal-text-color: #ffffff;
   --modal-background-color: var(--base-background-color-dark);
 
   --modal-input-text-color: #ffffff;
