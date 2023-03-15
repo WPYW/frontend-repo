@@ -3,7 +3,7 @@ import { ModalProps } from './index.types';
 
 export const ModalOverlay = styled.div<Pick<ModalProps, 'isOpen'>>`
   display: ${(props) => (props.isOpen ? 'flex' : 'none')};
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 
   position: fixed;
@@ -13,31 +13,15 @@ export const ModalOverlay = styled.div<Pick<ModalProps, 'isOpen'>>`
   width: 100%;
   height: 100vh;
 
-  background-color: rgba(183, 183, 183, 0.7);
-  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.84);
 
-  z-index: 1000;
+  z-index: 100;
 
   overflow: auto;
-`;
-
-export const Wrapper = styled.div`
-  width: 528px;
-  max-height: 100%;
-
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-
-  overflow: scroll;
-
-  padding: 30px 40px;
-
-  border-radius: 2rem;
-
-  background-color: var(--modal-background-color);
 
   @media screen and (max-width: 420px) {
-    border-radius: 0;
+    align-items: center;
   }
 `;
+
+export const Wrapper = styled.div``;

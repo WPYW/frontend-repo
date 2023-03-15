@@ -2,18 +2,13 @@ import React, { useEffect } from 'react';
 import * as S from './index.styles';
 import { ModalProps } from './index.types';
 
-import { useDispatch } from 'react-redux';
-import { uploadModalClose } from '@/stores/slices/uploadModalSlice';
-
-export function Modal({ children, isOpen }: ModalProps) {
-  const dispatch = useDispatch();
-
+export function Modal({ children, isOpen, modalCloseHandler }: ModalProps) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.cssText = `
       position: fixed; 
       top: -${window.scrollY}px;
-      overflow-y: scroll;
+      overflow: hidden;
       width: 100%;`;
     }
 
@@ -25,7 +20,7 @@ export function Modal({ children, isOpen }: ModalProps) {
   }, [isOpen]);
 
   return (
-    <S.ModalOverlay isOpen={isOpen} onClick={() => dispatch(uploadModalClose())}>
+    <S.ModalOverlay isOpen={isOpen} onClick={modalCloseHandler}>
       <S.Wrapper onClick={(event) => event.stopPropagation()}>{children}</S.Wrapper>
     </S.ModalOverlay>
   );
