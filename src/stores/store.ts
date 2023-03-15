@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import uploadmModalReducer from './slices/uploadModalSlice';
+import promoteProjectDetailModalReducer from './slices/promoteProjectDetailModal';
 
 export const store = configureStore({
   reducer: {
     uploadModal: uploadmModalReducer,
+    promoteProjectDetailModal: promoteProjectDetailModalReducer,
   },
 });
 
