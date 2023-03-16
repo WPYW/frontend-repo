@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
 
   position: fixed;
   top: 0px;
-  right: 174px;
+  right: 2vw;
 
   height: 100%;
 

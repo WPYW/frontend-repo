@@ -11,6 +11,11 @@ export function CommentForm({ comments, addComment }: CommentFormProps) {
   const [comment, setComment] = useState('');
 
   const addCommentHandler = () => {
+    if (comment.length < 2) {
+      alert('최소 2글자 이상 입력해주세요');
+      return;
+    }
+
     const form = new FormData();
     form.append('content', comment);
     addComment(form);
