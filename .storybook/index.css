@@ -101,6 +101,7 @@ body.light {
 
   --modal-header-description-text-color: #747474;
 
+  --modal-text-color: #000000;
   --modal-background-color: var(--base-background-color-light);
 
   --modal-input-text-color: #000000;
@@ -108,6 +109,18 @@ body.light {
   --modal-text-input-text-color: #000000;
 
   --modal-button-text-color: #ffffff;
+
+  --project-created-text-color: #656565;
+
+  --created-text-color: #656565;
+
+  --comment-text-color: #000000;
+
+  --comment-count-text-color: #656565;
+
+  --comment-input-background-color: #ededed;
+  --comment-input-text-color: #000000;
+  --comment-input-placeholder-text-color: #878787;
 }
 
 body.dark {
@@ -148,6 +161,7 @@ body.dark {
 
   --modal-header-description-text-color: #747474;
 
+  --modal-text-color: #ffffff;
   --modal-background-color: var(--base-background-color-dark);
 
   --modal-input-text-color: #ffffff;
@@ -155,4 +169,16 @@ body.dark {
   --modal-text-input-text-color: #ffffff;
 
   --modal-button-text-color: #343434;
+
+  --project-created-text-color: #dedede;
+
+  --created-text-color: #dedede;
+
+  --comment-text-color: #ffffff;
+
+  --comment-count-text-color: #dedede;
+
+  --comment-input-background-color: #ededed;
+  --comment-input-text-color: #000000;
+  --comment-input-placeholder-text-color: #878787;
 }

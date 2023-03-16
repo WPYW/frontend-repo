@@ -8,7 +8,7 @@ import { ModalForm } from './ModalForm';
 import { ModalButton } from './ModalButton';
 
 export default {
-  title: 'blocks/Modal/Modal',
+  title: 'blocks/Modal',
   component: Modal,
 } as ComponentMeta<typeof Modal>;
 

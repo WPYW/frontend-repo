@@ -1,9 +1,11 @@
 import styled from 'styled-components';
-import { ModalOverlayProps } from './index.types';
+import { ModalProps } from './index.types';
 
-export const ModalOverlay = styled.div<ModalOverlayProps>`
+import { ReactComponent as CloseButtonImage } from '@/assets/close-x.svg';
+
+export const ModalOverlay = styled.div<Pick<ModalProps, 'isOpen'>>`
   display: ${(props) => (props.isOpen ? 'flex' : 'none')};
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 
   position: fixed;
@@ -11,27 +13,46 @@ export const ModalOverlay = styled.div<ModalOverlayProps>`
   left: 0;
 
   width: 100%;
-  height: 100%;
+  height: 100vh;
 
-  background-color: rgba(183, 183, 183, 0.7);
-  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.84);
 
-  z-index: 1000;
+  z-index: 100;
+
+  overflow: auto;
+`;
+
+export const CloseButton = styled(CloseButtonImage)`
+  position: fixed;
+  top: 30px;
+  right: 30px;
+
+  width: 40px;
+  height: 40px;
+
+  padding: 10px 10px;
+
+  cursor: pointer;
+
+  &:hover {
+    stroke: red;
+  }
+
+  @media screen and (max-width: 420px) {
+    top: 2px;
+    right: 2px;
+  }
 `;
 
 export const Wrapper = styled.div`
-  width: 528px;
-  max-height: 100%;
+  margin-top: 50px;
+  margin-bottom: 20px;
 
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+  @media screen and (max-width: 420px) {
+    margin-top: 0px;
+    margin-bottom: 0px;
 
-  overflow: scroll;
-
-  padding: 30px 40px;
-
-  border-radius: 2rem;
-
-  background-color: var(--modal-background-color);
+    width: 100%;
+    height: 100%;
+  }
 `;

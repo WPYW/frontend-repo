@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { DescriptionProps } from './index.types';
 
-export const Wrapper = styled.a`
+export const Wrapper = styled.div`
   all: unset;
 
   display: flex;

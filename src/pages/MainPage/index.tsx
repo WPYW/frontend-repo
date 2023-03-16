@@ -11,6 +11,7 @@ import {
 } from '@/components/blocks';
 
 import { useGetProjectList } from './useGetProjectList';
+import { Outlet } from 'react-router-dom';
 
 export default function MainPage() {
   const [params, setParams] = useState<IParams>({ ordering: 'created', search: '', page: 1 });
@@ -27,6 +28,7 @@ export default function MainPage() {
         {isLoading ? <LoadingDots /> : <ProjectCardList projects={projects} />}
         <ScrollCatcher getNextPageDetector={getNextPageDetector} />
       </S.ColumnRight>
+      <Outlet />
     </S.Wrapper>
   );
 }

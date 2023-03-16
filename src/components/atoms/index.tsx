@@ -10,3 +10,4 @@ export * from './IconWithCount';
 export * from './NavigationItem';
 export * from './SearchBar';
 export * from './SideBarItem';
+export * from './AnchorWithIcon';
