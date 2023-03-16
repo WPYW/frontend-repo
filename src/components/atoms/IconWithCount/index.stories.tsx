@@ -2,8 +2,8 @@ import React from 'react';
 import { IconWithCount } from './index';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import viewsIconPath from '@/assets/views-icon.svg';
-import likesIconPath from '@/assets/likes-icon.svg';
+import { ReactComponent as ViewsIcon } from '@/assets/views-icon.svg';
+import { ReactComponent as LikesIcon } from '@/assets/likes-icon.svg';
 
 export default {
   title: 'atoms/IconWithCount',
@@ -14,12 +14,12 @@ const Template: ComponentStory<typeof IconWithCount> = (args) => <IconWithCount 
 
 export const ViewsIconWithCount = Template.bind({});
 ViewsIconWithCount.args = {
-  iconSrc: viewsIconPath,
+  children: <ViewsIcon />,
   count: 320,
 };
 
 export const LikesIconWithCount = Template.bind({});
 LikesIconWithCount.args = {
-  iconSrc: likesIconPath,
+  children: <LikesIcon />,
   count: 25,
 };

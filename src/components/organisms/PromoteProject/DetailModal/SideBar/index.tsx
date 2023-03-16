@@ -14,6 +14,9 @@ export function SideBar({ githubLink, demoSiteLink }: SideBarProps) {
         <AnchorWithIcon href={demoSiteLink} target="_blank">
           <S.DemoSite />
         </AnchorWithIcon>
+        <S.LikeButton>
+          <S.LikeIcon />
+        </S.LikeButton>
       </S.SubWrapper>
     </S.Wrapper>
   );

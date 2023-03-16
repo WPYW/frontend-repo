@@ -2,9 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as S from './index.styles';
 import { CardProps } from './index.types';
 
-import viewsIconPath from '@/assets/views-icon.svg';
-import likesIconPath from '@/assets/likes-icon.svg';
-
 import { Carousel } from '../Carousel';
 import { IconWithCount } from '@/components/atoms';
 import { useDispatch } from 'react-redux';
@@ -51,8 +48,12 @@ export function ProjectCard({ project }: CardProps) {
         <S.CardFooterWrapper>
           <S.Created>{created}</S.Created>
           <div style={{ display: 'flex', gap: '10px' }}>
-            <IconWithCount iconSrc={viewsIconPath} count={views} />
-            <IconWithCount iconSrc={likesIconPath} count={likes} />
+            <IconWithCount count={views}>
+              <S.Views />
+            </IconWithCount>
+            <IconWithCount count={likes}>
+              <S.Likes />
+            </IconWithCount>
           </div>
         </S.CardFooterWrapper>
       </S.Wrapper>

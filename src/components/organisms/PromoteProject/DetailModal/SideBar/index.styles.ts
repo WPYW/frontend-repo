@@ -2,10 +2,12 @@ import styled from 'styled-components';
 
 import { ReactComponent as GitHubLogo } from '@/assets/github-mark.svg';
 import { ReactComponent as DemoSiteIcon } from '@/assets/demosite-icon.svg';
+import { ReactComponent as Like } from '@/assets/likes-icon.svg';
 
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
 
   position: fixed;
   top: 0px;
@@ -58,5 +60,32 @@ export const DemoSite = styled(DemoSiteIcon)`
 
   &:hover {
     fill: rgba(0, 0, 0, 0.5);
+  }
+`;
+
+export const LikeButton = styled.button`
+  background: none;
+  border: none;
+
+  width: 40px;
+  height: 40px;
+
+  cursor: pointer;
+
+  @media screen and (max-width: 420px) {
+    width: 20px;
+    height: 20px;
+  }
+`;
+
+export const LikeIcon = styled(Like)`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  fill: #ec5354;
+
+  &:hover {
+    fill: #df7c7d;
   }
 `;

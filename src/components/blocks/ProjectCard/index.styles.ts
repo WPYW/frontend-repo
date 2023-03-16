@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components';
 import { DescriptionProps } from './index.types';
 
+import { ReactComponent as ViewsIcon } from '@/assets/views-icon.svg';
+import { ReactComponent as LikesIcon } from '@/assets/likes-icon.svg';
+
 export const Wrapper = styled.div`
   all: unset;
 
@@ -87,4 +90,16 @@ export const CardFooterWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 10px;
+`;
+
+export const Views = styled(ViewsIcon)`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+export const Likes = styled(LikesIcon)`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
