@@ -3,7 +3,7 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 
 import { Header } from '@/components/blocks';
 import { LoadingDots } from '@/components/atoms';
-import { PortalPromoteProjectdetailModal } from './components/organisms/PromoteProjectDetailModal';
+import { DetailModal as PromoteProjectDetailModal } from '@/components/organisms/PromoteProject';
 
 const MainPage = lazy(() => import('@/pages/MainPage'));
 
@@ -21,14 +21,12 @@ export default function App() {
         <Routes location={location}>
           <Route path="*" element={<div>404 Not Found</div>} />
           <Route path="/" element={<MainPage />}>
-            {background && (
-              <Route path="/projects/:id" element={<PortalPromoteProjectdetailModal />} />
-            )}
+            {background && <Route path="/projects/:id" element={<PromoteProjectDetailModal />} />}
           </Route>
         </Routes>
         {state?.backgroundLocation && (
           <Routes>
-            <Route path="/projects/:id" element={<PortalPromoteProjectdetailModal />} />
+            <Route path="/projects/:id" element={<PromoteProjectDetailModal />} />
           </Routes>
         )}
       </Suspense>

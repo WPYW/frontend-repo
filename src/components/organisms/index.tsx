@@ -1,2 +1,1 @@
-export * from './ProjectModal';
-export * from './PromoteProjectDetailModal';
+export * from './PromoteProject/index';

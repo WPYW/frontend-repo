@@ -1,6 +1,15 @@
 import React, { useEffect } from 'react';
+import reactDom from 'react-dom';
 import * as S from './index.styles';
-import { ModalProps } from './index.types';
+import { ModalProps, PortalModalProps } from './index.types';
+
+function PortalModal({ children }: PortalModalProps) {
+  const modalRoot = document.getElementById('portal-root');
+
+  if (modalRoot !== null) return reactDom.createPortal(children, modalRoot);
+
+  return null;
+}
 
 export function Modal({ children, isOpen, modalCloseHandler }: ModalProps) {
   useEffect(() => {
@@ -20,9 +29,11 @@ export function Modal({ children, isOpen, modalCloseHandler }: ModalProps) {
   }, [isOpen]);
 
   return (
-    <S.ModalOverlay isOpen={isOpen} onClick={modalCloseHandler}>
-      <S.CloseButton />
-      <S.Wrapper onClick={(event) => event.stopPropagation()}>{children}</S.Wrapper>
-    </S.ModalOverlay>
+    <PortalModal>
+      <S.ModalOverlay isOpen={isOpen} onClick={modalCloseHandler}>
+        <S.CloseButton />
+        <S.Wrapper onClick={(event) => event.stopPropagation()}>{children}</S.Wrapper>
+      </S.ModalOverlay>
+    </PortalModal>
   );
 }

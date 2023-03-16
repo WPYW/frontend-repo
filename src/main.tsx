@@ -1,10 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
+
 import App from './App';
 import './index.css';
 
-import { PortalProjectModal } from '@/components/organisms';
+import { UploadModal as PromoteProjectUploadModal } from '@/components/organisms/PromoteProject';
 
 import { store } from '@/stores/store';
 import { Provider } from 'react-redux';
@@ -31,7 +32,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <QueryClientProvider client={queryClient}>
       <Router>
         <App />
-        <PortalProjectModal />
+        <PromoteProjectUploadModal />
       </Router>
     </QueryClientProvider>
   </Provider>,

@@ -24,7 +24,7 @@ interface IProjectDetail {
   created: string;
 }
 
-export function usePromoteProjectDetail(projectId = '') {
+export function useProjectDetail(projectId = '') {
   const { data: projectDetail, refetch } = useQuery<IProjectDetail>({
     queryKey: [`projectDetail-${projectId}`],
     queryFn: async () => await fetchProjectDetail(projectId),

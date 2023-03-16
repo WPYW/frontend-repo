@@ -1,35 +1,27 @@
 import React, { useEffect, useRef } from 'react';
-import reactDom from 'react-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import * as S from './index.styles';
 
-import { usePromoteProjectDetail } from './usePromoteProjectDetail';
+import { useProjectDetail } from './useProjectDetail';
 
 import './index.css';
 
-import { Hashtags, Modal } from '@/components/blocks';
 import { SideBar } from './SideBar';
+
+import { LoadingDots } from '@/components/atoms';
+import { Hashtags, Modal, CommentForm } from '@/components/blocks';
+import { BACKEND_API_URL } from '@/common/url';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/stores/store';
 import { promoteProjectDetailModalClose } from '@/stores/slices/promoteProjectDetailModal';
-import { CommentForm } from '@/components/blocks/CommentForm';
-import { BACKEND_API_URL } from '@/common/url';
-import { useNavigate, useParams } from 'react-router-dom';
-import { LoadingDots } from '@/components/atoms';
 
-export function PortalPromoteProjectdetailModal() {
-  const modalRoot = document.getElementById('upload-root');
-
-  if (modalRoot !== null) return reactDom.createPortal(<PromoteProjectDetailModal />, modalRoot);
-
-  return null;
-}
-
-export function PromoteProjectDetailModal() {
+export function DetailModal() {
   const dispatch = useDispatch();
   const isOpen = useSelector((state: RootState) => state.promoteProjectDetailModal.isOpen);
 
   const params = useParams();
-  const { projectDetail, readMe, refetch, isLoading } = usePromoteProjectDetail(params.id);
+  const { projectDetail, readMe, refetch, isLoading } = useProjectDetail(params.id);
 
   const ref = useRef<HTMLDivElement>(null);
 

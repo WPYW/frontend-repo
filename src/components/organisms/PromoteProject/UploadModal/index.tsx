@@ -1,15 +1,14 @@
 import React from 'react';
-import reactDom from 'react-dom';
 import * as S from './index.styles';
 
-import { Modal } from '../../blocks/Modal';
-import { ModalButton } from '../../blocks/Modal/ModalButton';
-import { ModalForm } from '../../blocks/Modal/ModalForm';
-import { ModalHeader } from '../../blocks/Modal/ModalHeader';
-import { ModalInputLabel } from '../../blocks/Modal/ModalInputLabel';
-import { TextInput } from '../../blocks/Modal/TextInput';
-import { HashtagInput } from '../../blocks/Modal/HashtagInput';
-import { ImageInput } from '../../blocks/Modal/ImageInput';
+import { Modal } from '../../../blocks/Modal';
+import { ModalButton } from '../../../blocks/Modal/ModalButton';
+import { ModalForm } from '../../../blocks/Modal/ModalForm';
+import { ModalHeader } from '../../../blocks/Modal/ModalHeader';
+import { ModalInputLabel } from '../../../blocks/Modal/ModalInputLabel';
+import { TextInput } from '../../../blocks/Modal/TextInput';
+import { HashtagInput } from '../../../blocks/Modal/HashtagInput';
+import { ImageInput } from '../../../blocks/Modal/ImageInput';
 import { useProjectUpload } from './useProjectUpload';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,15 +16,7 @@ import { RootState } from '@/stores/store';
 import { uploadModalClose } from '@/stores/slices/uploadModalSlice';
 import { ModalFooter } from '@/components/blocks/Modal/ModalFooter';
 
-export function PortalProjectModal() {
-  const modalRoot = document.getElementById('upload-root');
-
-  if (modalRoot !== null) return reactDom.createPortal(<ProjectModal />, modalRoot);
-
-  return null;
-}
-
-export function ProjectModal() {
+export function UploadModal() {
   const isOpen = useSelector((state: RootState) => state.uploadModal.isOpen);
 
   const dispatch = useDispatch();

@@ -5,3 +5,7 @@ export interface ModalProps {
   isOpen: boolean;
   modalCloseHandler: () => void;
 }
+
+export interface PortalModalProps {
+  children: ReactNode;
+}
