@@ -60,6 +60,7 @@ export function DetailModal() {
           <SideBar
             githubLink={projectDetail.githubLink}
             demoSiteLink={projectDetail.demositeLink}
+            likes={projectDetail.likes}
           />
         </S.SubWrapper>
       </S.Wrapper>

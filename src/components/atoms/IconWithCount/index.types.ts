@@ -1,4 +1,6 @@
+import { ReactNode } from 'react';
+
 export interface IconWithCountProps {
-  iconSrc: string;
+  children: ReactNode;
   count: number;
 }
