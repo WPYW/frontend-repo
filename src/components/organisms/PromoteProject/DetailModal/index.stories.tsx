@@ -1,21 +1,19 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { PromoteProjectDetailModal } from './index';
+import { DetailModal } from './index';
 import { rest } from 'msw';
 import { BACKEND_API_URL } from '@/common/url';
 
 export default {
-  title: 'organisms/PromoteProjectDetailModal',
-  component: PromoteProjectDetailModal,
-} as ComponentMeta<typeof PromoteProjectDetailModal>;
+  title: 'organisms/DetailModal',
+  component: DetailModal,
+} as ComponentMeta<typeof DetailModal>;
 
-const Template: ComponentStory<typeof PromoteProjectDetailModal> = () => (
-  <PromoteProjectDetailModal />
-);
+const Template: ComponentStory<typeof DetailModal> = () => <DetailModal />;
 
-export const DefaultPromoteProjectDetailModal = Template.bind({});
+export const DefaultDetailModal = Template.bind({});
 
-DefaultPromoteProjectDetailModal.parameters = {
+DefaultDetailModal.parameters = {
   msw: {
     handlers: [
       rest.get(`${BACKEND_API_URL}/projects/:id`, async (req, res, ctx) => {
