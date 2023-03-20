@@ -5,15 +5,9 @@ import { ReactComponent as DemoSiteIcon } from '@/assets/demosite-icon.svg';
 import { ReactComponent as Like } from '@/assets/likes-icon.svg';
 
 export const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   position: fixed;
-  top: 0px;
+  top: 40vh;
   right: 2vw;
-
-  height: 100%;
 
   @media screen and (max-width: 420px) {
     height: auto;
@@ -29,7 +23,7 @@ export const SubWrapper = styled.div`
   flex-direction: column;
   gap: 20px;
 
-  padding: 10px 8px;
+  padding: 16px 8px;
   border-radius: 20px;
 
   background-color: #c4c4c4;
@@ -67,6 +61,11 @@ export const LikeButton = styled.button`
   background: none;
   border: none;
 
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  position: relative;
   width: 40px;
   height: 40px;
 
@@ -87,5 +86,17 @@ export const LikeIcon = styled(Like)`
 
   &:hover {
     fill: #df7c7d;
+  }
+`;
+
+export const LikeCount = styled.div`
+  position: absolute;
+  bottom: -12px;
+
+  font-weight: 500;
+  font-size: 1.2rem;
+
+  @media screen and (max-width: 420px) {
+    display: none;
   }
 `;
