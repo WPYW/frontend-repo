@@ -27,6 +27,7 @@ const getRecruitmentListResponse = [
         views: 0,
         likes: 0,
         created: '2023-02-14T05:39:39.958595Z',
+        deadline: 'D-Day 30',
       },
       {
         id: 'f31473c9-2362-4ddd-8b83-6283f35f54ef',
@@ -40,6 +41,7 @@ const getRecruitmentListResponse = [
         views: 0,
         likes: 0,
         created: '2023-02-14T05:39:39.958595Z',
+        deadline: 'D-Day 30',
       },
       {
         id: 'f31473c9-2362-4ddd-8b83-6283f35f54ef',
@@ -53,6 +55,7 @@ const getRecruitmentListResponse = [
         views: 0,
         likes: 0,
         created: '2023-02-14T05:39:39.958595Z',
+        deadline: 'D-Day 30',
       },
     ],
   },
