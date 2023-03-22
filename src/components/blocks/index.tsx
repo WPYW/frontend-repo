@@ -5,6 +5,8 @@ export * from './Hashtags';
 export * from './Carousel';
 export * from './ProjectCardList';
 export * from './ProjectCardListHeader';
+export * from './RecruitmentCardList';
+export * from './RecruitMentListHeader';
 export * from './ScrollCatcher';
 export * from './SideBar';
 export * from './Modal';
