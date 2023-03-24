@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ReactComponent as LogoImage } from '@/assets/header-logo.svg';
 
 export const Wrapper = styled.header`
   display: block;
@@ -38,4 +39,19 @@ export const SubWrapper = styled.div`
   min-height: 3rem;
 
   position: relative;
+`;
+
+export const LogoWrapper = styled.a`
+  all: unset;
+
+  cursor: pointer;
+`;
+
+export const Logo = styled(LogoImage)`
+  width: 100%;
+  height: 2rem;
+
+  @media screen and (max-width: 420px) {
+    height: 1.5rem;
+  }
 `;
