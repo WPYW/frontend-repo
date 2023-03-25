@@ -1,12 +1,9 @@
 import { setupWorker } from 'msw';
-import { recuritmentListHandlers } from './recruitmentListHandler';
-import { recruitmentDetailHandlers } from './recruitmentDetailHandler';
-import { recruitmentUploadHandlers } from './recruitmentUploadHandler';
 import { promoteProjectHandlers } from './promoteProject';
-
+import { recruitProjectHandlers } from './recruitProject';
+import { studyProjectHandlers } from './studyProject';
 export const worker = setupWorker(
   ...promoteProjectHandlers,
-  ...recuritmentListHandlers,
-  ...recruitmentUploadHandlers,
-  ...recruitmentDetailHandlers,
+  ...recruitProjectHandlers,
+  ...studyProjectHandlers,
 );
