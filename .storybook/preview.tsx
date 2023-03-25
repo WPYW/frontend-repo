@@ -9,7 +9,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { initialize, mswDecorator } from 'msw-storybook-addon';
 
-initialize();
+initialize({ onUnhandledRequest: 'bypass' });
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

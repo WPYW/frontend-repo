@@ -14,7 +14,7 @@ import { worker } from '@/api/mocks/browser';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-worker.start();
+worker.start({ onUnhandledRequest: 'bypass' });
 
 const queryClient = new QueryClient({
   defaultOptions: {
