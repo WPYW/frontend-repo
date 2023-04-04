@@ -13,15 +13,6 @@ const Template: ComponentStory<typeof CommentForm> = (args) => <CommentForm {...
 
 const dummyComments = [
   { nickName: '불타는 너구리', created: '2023-02-12', content: '좋은 프로젝트네요' },
-  { nickName: '불타는 너구리', created: '2023-02-12', content: '좋은 프로젝트네요' },
-  { nickName: '불타는 너구리', created: '2023-02-12', content: '좋은 프로젝트네요' },
-  { nickName: '불타는 너구리', created: '2023-02-12', content: '좋은 프로젝트네요' },
-  { nickName: '불타는 너구리', created: '2023-02-12', content: '좋은 프로젝트네요' },
-  { nickName: '불타는 너구리', created: '2023-02-12', content: '좋은 프로젝트네요' },
-  { nickName: '불타는 너구리', created: '2023-02-12', content: '좋은 프로젝트네요' },
-  { nickName: '불타는 너구리', created: '2023-02-12', content: '좋은 프로젝트네요' },
-  { nickName: '불타는 너구리', created: '2023-02-12', content: '좋은 프로젝트네요' },
-  { nickName: '불타는 너구리', created: '2023-02-12', content: '좋은 프로젝트네요' },
 ];
 
 export const DefaultCommentForm = Template.bind({});
@@ -46,7 +37,7 @@ DefaultCommentForm.parameters = {
       rest.post<PostAddCommentReqBody>(
         `${BACKEND_API_URL}/projects/:id/comments`,
         async (req, res, ctx) => {
-          dummyComments.push({
+          dummyComments.unshift({
             nickName: '물에 빠진 너구리',
             created: '2023-02-23',
             content: req.body.content,
