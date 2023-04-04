@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
 import * as S from './index.styles';
 
 import reactLogo from '@/assets/logo-react.svg';
@@ -7,11 +6,10 @@ import springLogo from '@/assets/logo-spring.svg';
 import ec2Logo from '@/assets/logo-ec2.svg';
 import jsLogo from '@/assets/logo-js.svg';
 
-import { BaseButton, NavigationItem, SearchBar } from '@/components/atoms';
+import { NavigationItem, SearchBar } from '@/components/atoms';
 import { IProjectListHeaderProps } from './index.types';
 import { RecruitModal } from '@/components/organisms';
 import { useDispatch } from 'react-redux';
-import { recruitModalOpen } from '@/RTK/slices/recruitModalSlice';
 
 export function RecruitmentListHeader({ ordering, setParams }: IProjectListHeaderProps) {
   const [clickTechItemId, setClickTechItemId] = useState<string[]>([]);
@@ -79,7 +77,7 @@ export function RecruitmentListHeader({ ordering, setParams }: IProjectListHeade
             기타
           </NavigationItem>
         </S.NavigationWrapper>
-        <BaseButton onClick={() => dispatch(recruitModalOpen())}>모달 테스트</BaseButton>
+        <S.Button>모달 테스트</S.Button>
       </S.SubWrapper>
       <SearchBar
         placeholder="최고의 팀원을 찾아보세요~"

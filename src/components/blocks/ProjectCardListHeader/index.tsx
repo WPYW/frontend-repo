@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as S from './index.styles';
 import { ProjectCardListHeaderProps } from './index.types';
 
-import { BaseButton, NavigationItem, SearchBar } from '@/components/atoms';
+import { NavigationItem, SearchBar } from '@/components/atoms';
 import { useDispatch } from 'react-redux';
 import { uploadModalOpen } from '@/stores/slices/uploadModalSlice';
 
@@ -29,7 +29,7 @@ export function ProjectCardListHeader({ ordering, setParams }: ProjectCardListHe
             좋아요순
           </NavigationItem>
         </S.NavigationWrapper>
-        <BaseButton onClick={() => dispatch(uploadModalOpen())}>프로젝트 업로드</BaseButton>
+        <S.Button onClick={() => dispatch(uploadModalOpen())}>프로젝트 업로드</S.Button>
       </S.SubWrapper>
       <SearchBar
         placeholder="어떤 프로젝트를 찾으시나요?"
