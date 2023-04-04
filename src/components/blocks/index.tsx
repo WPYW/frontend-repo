@@ -1,5 +1,4 @@
 export * from './Header';
-export * from './PageDescription';
 export * from './ProjectCard';
 export * from './Carousel';
 export * from './ProjectCardList';
