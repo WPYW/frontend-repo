@@ -1,21 +1,20 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
+
 import App from './App';
 import './index.css';
 
-import { PortalProjectModal } from '@/components/organisms';
+import { UploadModal as PromoteProjectUploadModal } from '@/components/organisms/PromoteProject';
 
-import { store } from '@/RTK/stores/store';
+import { store } from '@/stores/store';
 import { Provider } from 'react-redux';
 
 import { worker } from '@/api/mocks/browser';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-if (process.env.NODE_ENV === 'development') {
-  worker.start();
-}
+worker.start({ onUnhandledRequest: 'bypass' });
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -31,18 +30,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <QueryClientProvider client={queryClient}>
       <Router>
         <App />
-      </Router>
-    </QueryClientProvider>
-  </Provider>,
-  // </React.StrictMode>,
-);
-
-ReactDOM.createRoot(document.getElementById('modal-root') as HTMLElement).render(
-  // <React.StrictMode>
-  <Provider store={store}>
-    <QueryClientProvider client={queryClient}>
-      <Router>
-        <PortalProjectModal />
+        <PromoteProjectUploadModal />
       </Router>
     </QueryClientProvider>
   </Provider>,

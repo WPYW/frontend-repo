@@ -1,32 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as S from './index.styles';
-import { IParams } from './index.types';
 
-import { LoadingDots } from '@/components/atoms';
-import {
-  ProjectCardList,
-  ProjectCardListHeader,
-  ScrollCatcher,
-  SideBar,
-} from '@/components/blocks';
+import { SideBar } from '@/components/blocks';
 
-import { useGetProjectList } from './useGetProjectList';
+import { CardList } from '@/components/organisms/PromoteProject';
+
+import { Outlet } from 'react-router-dom';
 
 export default function MainPage() {
-  const [params, setParams] = useState<IParams>({ ordering: 'created', search: '', page: 1 });
-
-  const { projects, getNextPageDetector, isLoading } = useGetProjectList(params);
-
   return (
     <S.Wrapper>
       <S.ColumnLeft>
         <SideBar />
       </S.ColumnLeft>
       <S.ColumnRight>
-        <ProjectCardListHeader ordering={params.ordering} setParams={setParams} />
-        {isLoading ? <LoadingDots /> : <ProjectCardList projects={projects} />}
-        <ScrollCatcher getNextPageDetector={getNextPageDetector} />
+        <CardList />
       </S.ColumnRight>
+      <Outlet />
     </S.Wrapper>
   );
 }

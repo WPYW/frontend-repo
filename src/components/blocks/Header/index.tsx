@@ -1,14 +1,15 @@
 import React from 'react';
-
 import * as S from './index.styles';
 
-import { HeaderLogo, DarkModeToggle } from '@/components/atoms';
+import { DarkModeToggle } from '@/components/atoms';
 
 export function Header() {
   return (
     <S.Wrapper>
       <S.SubWrapper>
-        <HeaderLogo />
+        <S.LogoWrapper href="/" aria-label="Header logo link for mainpage">
+          <S.Logo />
+        </S.LogoWrapper>
         <DarkModeToggle />
       </S.SubWrapper>
     </S.Wrapper>
