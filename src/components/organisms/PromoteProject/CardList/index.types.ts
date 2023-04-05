@@ -12,3 +12,9 @@ interface project {
 export interface CardListProps {
   projects: project[];
 }
+
+export interface IParams {
+  ordering: string;
+  search: string;
+  page: number;
+}

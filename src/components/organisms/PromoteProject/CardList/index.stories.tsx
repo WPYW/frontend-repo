@@ -1,20 +1,20 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { ProjectCardList } from './index';
+import { CardList } from './index';
 
 import TempImagePath1 from '@/assets/temp1.png';
 import TempImagePath2 from '@/assets/temp2.jpg';
 import TempImagePath3 from '@/assets/temp3.jpg';
 
 export default {
-  title: 'blocks/ProjectCardList',
-  component: ProjectCardList,
-} as ComponentMeta<typeof ProjectCardList>;
+  title: 'organisms/PromoteProject/CardList',
+  component: CardList,
+} as ComponentMeta<typeof CardList>;
 
-const Template: ComponentStory<typeof ProjectCardList> = (args) => <ProjectCardList {...args} />;
+const Template: ComponentStory<typeof CardList> = () => <CardList />;
 
-export const DefaultProjectCardList = Template.bind({});
-DefaultProjectCardList.args = {
+export const DefaultCardList = Template.bind({});
+DefaultCardList.args = {
   projects: [
     {
       id: '',

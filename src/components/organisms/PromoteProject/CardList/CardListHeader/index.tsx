@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import * as S from './index.styles';
-import { ProjectCardListHeaderProps } from './index.types';
+import { CardListHeaderProps } from './index.types';
 
 import { NavigationItem, SearchBar } from '@/components/atoms';
 import { useDispatch } from 'react-redux';
 import { uploadModalOpen } from '@/stores/slices/uploadModalSlice';
 
-export function ProjectCardListHeader({ ordering, setParams }: ProjectCardListHeaderProps) {
+export function CardListHeader({ ordering, setParams }: CardListHeaderProps) {
   const [value, setValue] = useState('');
 
   const dispatch = useDispatch();
