@@ -5,6 +5,7 @@ import { Header } from '@/components/blocks';
 import { LoadingDots } from '@/components/atoms';
 import { DetailModal as PromoteProjectDetailModal } from '@/components/organisms/PromoteProject';
 
+const LoginPage = lazy(() => import('@/pages/LoginPage'));
 const MainPage = lazy(() => import('@/pages/MainPage'));
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
       <Suspense fallback={<LoadingDots />}>
         <Routes location={location}>
           <Route path="*" element={<div>404 Not Found</div>} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/" element={<MainPage />}>
             {background && <Route path="/projects/:id" element={<PromoteProjectDetailModal />} />}
           </Route>
