@@ -2,14 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as S from './index.styles';
 import { CardProps } from './index.types';
 
-import { Carousel } from '../Carousel';
+import { Carousel, Hashtags } from '@/components/blocks';
 import { IconWithCount } from '@/components/atoms';
 import { useDispatch } from 'react-redux';
 import { promoteProjectDetailModalOpen } from '@/stores/slices/promoteProjectDetailModal';
 import { Link, useLocation } from 'react-router-dom';
-import { Hashtags } from '../Hashtags';
 
-export function ProjectCard({ project }: CardProps) {
+export function Card({ project }: CardProps) {
   const { id, title, description, thumbnails, hashtags, views, likes, created } = project;
 
   const ref = useRef<HTMLParagraphElement>(null);

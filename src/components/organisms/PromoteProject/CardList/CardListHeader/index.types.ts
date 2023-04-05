@@ -4,7 +4,7 @@ export interface IParams {
   page: number;
 }
 
-export interface ProjectCardListHeaderProps {
+export interface CardListHeaderProps {
   ordering: string;
   setParams: (value: React.SetStateAction<IParams>) => void;
 }
