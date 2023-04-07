@@ -18,6 +18,7 @@ export const RecruitModalCalender: React.FC<DatePickerProps> = ({
   onChange,
 }) => {
   const [selectedDateState, setSelectedDateState] = useState<Date | null>(selectedDate);
+  const [presentDate, setPresentDate] = useState<Date>(new Date());
 
   const handleDateChange = (date: Date | null) => {
     setSelectedDateState(date);
@@ -32,7 +33,9 @@ export const RecruitModalCalender: React.FC<DatePickerProps> = ({
         onChange={handleDateChange}
         dateFormat="yyyy-MM-dd"
         locale="ko"
-        placeholderText="날짜를 선택해주세요 ⏳"
+        placeholderText="현재 날짜 이후를 선택해주세요 ! ⏳"
+        minDate={presentDate}
+        shouldCloseOnSelect={true}
       />
     </S.Container>
   );

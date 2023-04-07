@@ -1,9 +1,9 @@
 interface project {
   id: string;
-  projectTitle: string;
-  projectDescription: string;
-  previewImages: string[];
-  projectHashtag: string[];
+  title: string;
+  description: string;
+  thumbnails: string[];
+  hashtags: string[];
   views: number;
   likes: number;
   created: string;

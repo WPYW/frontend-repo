@@ -5,14 +5,6 @@ export const Wrapper = styled.div``;
 export const SubWrapper = styled.div`
   display: flex;
   flex-direction: column;
-
-  &::after {
-    content: '';
-    height: 1px;
-    background-color: #cecece;
-
-    margin-top: 8px;
-  }
 `;
 
 export const LabelWrapper = styled.div`

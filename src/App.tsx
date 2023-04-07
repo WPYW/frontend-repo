@@ -4,8 +4,9 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import { Header } from '@/components/blocks';
 import { LoadingDots } from '@/components/atoms';
 import { DetailModal as PromoteProjectDetailModal } from '@/components/organisms/PromoteProject';
-
+import { DetailModal as RecruitProjectDetailModal } from '@/components/organisms/PromoteProject';
 const MainPage = lazy(() => import('@/pages/MainPage'));
+const RecruitListPage = lazy(() => import('@/pages/RecruitListPage'));
 
 export default function App() {
   const location = useLocation();
@@ -22,6 +23,9 @@ export default function App() {
           <Route path="*" element={<div>404 Not Found</div>} />
           <Route path="/" element={<MainPage />}>
             {background && <Route path="/projects/:id" element={<PromoteProjectDetailModal />} />}
+          </Route>
+          <Route path="/recruits" element={<RecruitListPage />}>
+            {background && <Route path="/recruits/:id" element={<RecruitProjectDetailModal />} />}
           </Route>
         </Routes>
         {state?.backgroundLocation && (

@@ -1,25 +1,43 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import * as S from './index.styles';
-import { FontWeight, TextAlign } from './index.types';
-import { FaAlignLeft, FaAlignCenter, FaAlignRight, FaBold } from 'react-icons/fa';
 
-export const RecruitListSubmit = () => {
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
+export const RecruitInputTextForm = () => {
   const [subjectValue, setSubjectValue] = useState('');
   const [textAlign, setTextAlign] = useState('left');
   const [fontWeight, setFontWeight] = useState('normal');
-  const descriptionRef = useRef<HTMLTextAreaElement>(null);
+  const [descriptionValue, setDescriptionValue] = useState('');
+
+  const toolbarOptions = [
+    ['bold', 'italic', 'underline', 'strike'], // toggled buttons
+    ['blockquote', 'code-block'],
+
+    [{ header: 1 }, { header: 2 }], // custom button values
+    [{ list: 'ordered' }, { list: 'bullet' }],
+    [{ script: 'sub' }, { script: 'super' }], // superscript/subscript
+    [{ indent: '-1' }, { indent: '+1' }], // outdent/indent
+    [{ direction: 'rtl' }], // text direction
+
+    [{ size: ['small', false, 'large', 'huge'] }], // custom dropdown
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],
+
+    [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+    [{ font: [] }],
+    [{ align: [] }],
+
+    ['clean'], // remove formatting button
+  ];
 
   const handleSubjectChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSubjectValue(e.target.value);
   };
 
-  const handleTextAlignClick = (align: TextAlign) => {
-    setTextAlign(align);
+  const handleDescriptionChange = (value: string) => {
+    setDescriptionValue(value);
   };
 
-  const handleFontWeightClick = (fontWeight: FontWeight) => {
-    setFontWeight((prevWeight) => (prevWeight === 'bold' ? 'normal' : 'bold'));
-  };
   return (
     <S.Wrapper>
       <S.SubjectInput
@@ -28,41 +46,16 @@ export const RecruitListSubmit = () => {
         value={subjectValue}
         onChange={handleSubjectChange}
       />
-      <S.TextAlignButtonGroup>
-        <S.TextAlignButton
-          active={textAlign === 'left'}
-          onClick={() => handleTextAlignClick('left')}
-        >
-          <FaAlignLeft />
-        </S.TextAlignButton>
-        <S.TextAlignButton
-          active={textAlign === 'center'}
-          onClick={() => handleTextAlignClick('center')}
-        >
-          <FaAlignCenter />
-        </S.TextAlignButton>
-        <S.TextAlignButton
-          active={textAlign === 'right'}
-          onClick={() => handleTextAlignClick('right')}
-        >
-          <FaAlignRight />
-        </S.TextAlignButton>
-        <S.FontWeightButton
-          active={fontWeight === 'bold'}
-          onClick={() => handleFontWeightClick('bold')}
-        >
-          <FaBold />
-        </S.FontWeightButton>
-      </S.TextAlignButtonGroup>
-      <S.DescriptionInput
+      <S.StyledReactQuill
         placeholder="프로젝트에 대한 소개글을 작성해주세요."
-        ref={descriptionRef}
-        textAlign={textAlign as TextAlign}
-        fontWeight={fontWeight as FontWeight}
+        value={descriptionValue}
+        onChange={handleDescriptionChange}
+        modules={{ toolbar: toolbarOptions }}
+        style={{ height: '300px' }}
       />
       <S.Button type="submit">Add</S.Button>
     </S.Wrapper>
   );
 };
 
-export default RecruitListSubmit;
+export default RecruitInputTextForm;

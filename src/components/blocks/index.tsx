@@ -4,7 +4,7 @@ export * from './ProjectCard';
 export * from './Carousel';
 export * from './ProjectCardList';
 export * from './ProjectCardListHeader';
-export * from './RecruitmentCardList';
+export * from './RecruitModalBlock';
 export * from './RecruitMentListHeader';
 export * from './ScrollCatcher';
 export * from './SideBar';

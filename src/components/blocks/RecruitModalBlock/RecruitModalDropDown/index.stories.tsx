@@ -15,4 +15,5 @@ export const DefaultRecruitModalDropDown = Template.bind({});
 DefaultRecruitModalDropDown.args = {
   placeholder: '스터디/프로젝트 선택',
   options: ['스터디', '프로젝트'],
+  description: '스터디를 선택해주세요',
 };
