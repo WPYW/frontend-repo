@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components';
 import { DescriptionProps } from './index.types';
+
 import { ReactComponent as ViewsIcon } from '@/assets/views-icon.svg';
 import { ReactComponent as LikesIcon } from '@/assets/likes-icon.svg';
 
-export const Wrapper = styled.a`
+export const Wrapper = styled.div`
   all: unset;
 
   display: flex;
@@ -27,10 +28,7 @@ export const Wrapper = styled.a`
   }
 `;
 
-export const CardHeaderWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
+export const CardHeaderWrapper = styled.div``;
 
 export const CardBodyWrapper = styled.div`
   display: flex;
@@ -92,16 +90,6 @@ export const CardFooterWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-`;
-
-export const Dday = styled.h2`
-  background-color: #ff7425;
-  border-radius: 5px;
-  padding: 10px;
-  color: white;
-  font-size: 15px;
-  font-weight: bold;
-  text-align: center;
 `;
 
 export const Views = styled(ViewsIcon)`

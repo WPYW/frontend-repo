@@ -13,12 +13,13 @@ const RecruitPasswordInput = ({ label, onChange }: PasswordProps) => {
 
   return (
     <div>
-      <label>{label}</label>
+      <S.PasswordLabel>{label}</S.PasswordLabel>
       <S.PasswordInput
         type="password"
         value={password}
         onChange={handlePasswordChange}
         autoComplete="off"
+        placeholder="비밀번호를 입력해주세요."
       />
     </div>
   );

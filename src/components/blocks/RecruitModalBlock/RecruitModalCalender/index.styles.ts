@@ -4,16 +4,13 @@ import { FaCalendarAlt } from 'react-icons/fa';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
 `;
 
 export const Label = styled.label`
+  padding: 5px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: bold;
   font-family: 'Poppins', sans-serif;
-  margin-bottom: 8px;
-  color: black;
-
   &::before {
     content: '*';
     margin-right: 4px;
@@ -22,27 +19,10 @@ export const Label = styled.label`
 `;
 
 export const Input = styled(DatePicker)`
-  width: 100%;
   padding: 0.5rem;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 0.25rem;
-`;
-
-export const DatePickersContainer = styled.div`
-  display: flex;
-  gap: 1rem;
-`;
-
-export const DatePickerWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-`;
-
-export const DatePickerLabel = styled.label`
-  margin-bottom: 0.25rem;
-  font-size: 0.875rem;
 `;
 
 export const StyledDatePicker = styled(DatePicker)`
@@ -52,9 +32,8 @@ export const StyledDatePicker = styled(DatePicker)`
   font-size: 14px;
   color: #333;
   background-color: #fff;
-  width: 100%;
   font-family: 'Poppins', sans-serif;
-
+  width: 600px;
   &:hover {
     border-color: #c6c6c6;
   }
