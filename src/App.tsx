@@ -5,6 +5,7 @@ import { Header } from '@/components/blocks';
 import { LoadingDots } from '@/components/atoms';
 import { DetailModal as PromoteProjectDetailModal } from '@/components/organisms/PromoteProject';
 import { DetailModal as RecruitProjectDetailModal } from '@/components/organisms/PromoteProject';
+import LoginPage from './pages/LoginPage';
 const MainPage = lazy(() => import('@/pages/MainPage'));
 const RecruitListPage = lazy(() => import('@/pages/RecruitListPage'));
 
