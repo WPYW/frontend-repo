@@ -1,50 +1,66 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Recruit } from './index';
+import { RecruitModal } from './index';
 
-import { RecruitModalHeader } from './RecruitModalHeader';
+import { RecruitModalDropDown } from './RecruitModalDropDown';
+import { RecruitSubjectLabel } from './RecruitSubjectLabel';
 import { RecruitModalInputLabel } from './RecruitModalInputLabel';
-import { RecruitModalForm } from './RecruitModalForm';
+import { RecruitModalCalender } from './RecruitModalCalender';
+import RecruitInputTextForm from './RecruitInputTextForm';
+import RecruitPasswordInput from './RecruitPasswordInput';
 import { RecruitModalButton } from './RecruitModalButton';
+import { action } from '@storybook/addon-actions';
 
 export default {
-  title: 'blocks/RecruitModal/RecruitModal',
-  component: Recruit,
-} as ComponentMeta<typeof Recruit>;
+  title: 'blocks/RecruitModal',
+  component: RecruitModal,
+} as ComponentMeta<typeof RecruitModal>;
 
-const Template: ComponentStory<typeof Recruit> = (args) => <Recruit {...args} />;
+const Template: ComponentStory<typeof RecruitModal> = (args) => <RecruitModal {...args} />;
 
 export const ProjectUploadModal = Template.bind({});
 ProjectUploadModal.args = {
   children: (
     <>
-      <RecruitModalHeader
-        title="프로젝트 공유"
-        description="아래에 있는 양식에 따라 모집 공고를 등록해주세요 ❤️"
+      <RecruitSubjectLabel title="1. 모집 기본 정보 입력" />
+      <RecruitModalDropDown
+        placeholder="스터디/프로젝트 선택"
+        options={['스터디', '프로젝트']}
+        description="모집 구분"
       />
-
-      <RecruitModalForm>
-        <RecruitModalInputLabel label="모집 프로젝트명">
-          <input placeholder="입력해주세요~!~!" style={{ all: 'unset' }}></input>{' '}
-        </RecruitModalInputLabel>
-        <RecruitModalInputLabel label="모집 프로젝트 간단 소개">
-          <input placeholder="입력해주세요" style={{ all: 'unset' }}></input>{' '}
-        </RecruitModalInputLabel>
-        <RecruitModalInputLabel label="오픈채팅 링크">
-          <input placeholder="입력해주세요" style={{ all: 'unset' }}></input>{' '}
-        </RecruitModalInputLabel>
-        <RecruitModalInputLabel label="Thumbnail 이미지 (최대 3개)">
-          <input placeholder="입력해주세요" style={{ all: 'unset' }}></input>{' '}
-        </RecruitModalInputLabel>
-        {/* <RecruitModalInputLabel label="데모사이트 링크" optional>
-          <input placeholder="입력해주세요" style={{ all: 'unset' }}></input>{' '}
-        </RecruitModalInputLabel> */}
-        <RecruitModalInputLabel label="해시태그 (최대 10개)" optional>
-          <input placeholder="입력해주세요" style={{ all: 'unset' }}></input>{' '}
-        </RecruitModalInputLabel>
-      </RecruitModalForm>
-
-      <RecruitModalButton>모집 업로드</RecruitModalButton>
+      <RecruitModalDropDown
+        placeholder="모집 인원을 정해주세요."
+        options={['1', '2', '3', '4']}
+        description="모집인원"
+      />
+      <RecruitModalDropDown
+        placeholder="진행 방식을 선택하세요."
+        options={['online', 'offline']}
+        description="진행 방식"
+      />
+      <RecruitModalInputLabel label="오픈채팅 링크">
+        <input placeholder="입력해주세요" style={{ all: 'unset' }}></input>
+      </RecruitModalInputLabel>
+      <RecruitModalInputLabel label="기술 스택(복수 선택 가능)" optional>
+        <input placeholder="입력해주세요" style={{ all: 'unset' }}></input>
+      </RecruitModalInputLabel>
+      <RecruitModalInputLabel label="모집 포지션(복수 선택 가능)" optional>
+        <input placeholder="입력해주세요" style={{ all: 'unset' }}></input>
+      </RecruitModalInputLabel>
+      <RecruitModalCalender
+        label=" 마감날짜 선택"
+        selectedDate={null}
+        onChange={action('onChange')}
+      />
+      <RecruitSubjectLabel title="2. 모집 정보 소개"></RecruitSubjectLabel> <RecruitInputTextForm />
+      <RecruitPasswordInput
+        label={'정보 수정을 위한 비밀번호 입력'}
+        onChange={(password: string) => {
+          console.log('입력이 잘된다.');
+        }}
+      />
+      <RecruitModalButton>취소</RecruitModalButton>
+      <RecruitModalButton>글 등록</RecruitModalButton>
     </>
   ),
 };

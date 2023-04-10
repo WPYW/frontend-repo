@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import * as S from './index.styles';
 import { RecruitModalDropDownProps } from './index.types';
 
-export function RecruitModalDropDown({ options, placeholder }: RecruitModalDropDownProps) {
+export function RecruitModalDropDown({
+  options,
+  placeholder,
+  description,
+}: RecruitModalDropDownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
   const handleOptionSelect = (option: string) => {
@@ -13,6 +17,7 @@ export function RecruitModalDropDown({ options, placeholder }: RecruitModalDropD
   return (
     <S.Wrapper>
       <S.DropdownContainer>
+        <S.DropdownLabel>{description}</S.DropdownLabel>
         <S.DropdownButton type="button" isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
           {selectedOption || placeholder}
         </S.DropdownButton>

@@ -1,13 +1,13 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { RecruitListSubmit } from './index';
+import { RecruitInputTextForm } from './index';
 
 export default {
-  title: 'Blocks/RecruitModal/ListSubmit',
-  component: RecruitListSubmit,
-} as ComponentMeta<typeof RecruitListSubmit>;
+  title: 'Blocks/RecruitModal/RecruitInputTextForm',
+  component: RecruitInputTextForm,
+} as ComponentMeta<typeof RecruitInputTextForm>;
 
-const Template: ComponentStory<typeof RecruitListSubmit> = (args) => <RecruitListSubmit />;
+const Template: ComponentStory<typeof RecruitInputTextForm> = (args) => <RecruitInputTextForm />;
 
 export const Default = Template.bind({});
 

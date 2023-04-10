@@ -1,18 +1,18 @@
 import { HTMLAttributes, AnchorHTMLAttributes } from 'react';
 
 export interface CardProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
-  studys: {
+  recruits: {
     id: string;
     password: string;
-    studyHashtag: string[];
-    studyTitle: string;
-    studyDescription: string;
+    created: string;
+    title: string;
+    description: string;
+    recruitHashtag: string[];
     contactInfo: string;
     views: number;
-    studyMember: number;
+    recruitMember: number;
+    shut: boolean;
     deadline: string;
-    remote: boolean;
-    created: string;
   };
 }
 

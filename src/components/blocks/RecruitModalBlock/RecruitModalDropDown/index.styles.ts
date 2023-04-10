@@ -2,19 +2,18 @@ import styled, { css } from 'styled-components';
 import { DropdownButtonProps } from './index.types';
 export const Wrapper = styled.div`
   display: flex;
-  gap: 8px;
   flex-wrap: wrap;
 `;
 
 export const DropdownContainer = styled.div`
-  position: relative;
+  position: relative; /* Added */
   display: inline-block;
-  width: 30%;
+  width: 100%;
 `;
 
 export const DropdownButton = styled.button<DropdownButtonProps>`
   width: 100%;
-  padding: 10px;
+  padding: 3px;
   font-size: 16px;
   font-family: 'Poppins', sans-serif;
   letter-spacing: 5px;
@@ -22,7 +21,7 @@ export const DropdownButton = styled.button<DropdownButtonProps>`
   color: #bcbcbc;
   border: none;
   border-bottom: 1px solid #ff9b25;
-  background-color: white;
+  background-color: transparent;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -51,10 +50,10 @@ export const DropdownButton = styled.button<DropdownButtonProps>`
 `;
 
 export const DropdownMenu = styled.div`
+  position: absolute; /* Changed */
+  top: calc(100% + 5px); /* Added */
+  left: 0; /* Added */
   width: 100%;
-  position: absolute;
-  top: 100%;
-  left: 0;
   background-color: white;
   border: 1px solid #ddd;
   z-index: 1;
@@ -65,8 +64,15 @@ export const DropdownMenuItem = styled.div`
   font-family: 'Poppins', sans-serif;
   letter-spacing: 5px;
   font-weight: bolder;
+
   cursor: pointer;
   &:hover {
     background-color: #f1f1f1;
   }
+`;
+
+export const DropdownLabel = styled.label`
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: bolder;
 `;
