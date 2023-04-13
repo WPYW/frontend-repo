@@ -32,13 +32,17 @@ export const SubWrapper = styled.div`
   justify-content: space-between;
 
   margin: auto;
-  padding: 0px 1rem;
+  padding: 0px 3rem;
   width: auto;
-  max-width: 1280px;
+  /* max-width: 1280px; */
   height: 52px;
   min-height: 3rem;
 
   position: relative;
+
+  @media screen and (max-width: 420px) {
+    padding: 0px 2rem;
+  }
 `;
 
 export const LogoWrapper = styled.a`
