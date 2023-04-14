@@ -3,26 +3,20 @@ import { registerLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import ko from 'date-fns/locale/ko';
 import * as S from './index.styles';
-
+import { DatePickerProps } from './index.types';
 registerLocale('ko', ko);
-
-interface DatePickerProps {
-  label: string;
-  selectedDate: Date | null;
-  onChange: (date: Date | null) => void;
-}
 
 export const RecruitModalCalender: React.FC<DatePickerProps> = ({
   label,
   selectedDate,
-  onChange,
+  setDate,
 }) => {
   const [selectedDateState, setSelectedDateState] = useState<Date | null>(selectedDate);
   const [presentDate, setPresentDate] = useState<Date>(new Date());
 
   const handleDateChange = (date: Date | null) => {
     setSelectedDateState(date);
-    onChange(date);
+    setDate.setValue(date);
   };
 
   return (
@@ -33,7 +27,7 @@ export const RecruitModalCalender: React.FC<DatePickerProps> = ({
         onChange={handleDateChange}
         dateFormat="yyyy-MM-dd"
         locale="ko"
-        placeholderText="현재 날짜 이후를 선택해주세요 ! ⏳"
+        placeholderText="현재 날짜 이후를 선택해주세요 !"
         minDate={presentDate}
         shouldCloseOnSelect={true}
       />

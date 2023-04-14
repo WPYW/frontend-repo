@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import * as S from './index.styles';
-
+import { DescriptionInputProps } from './index.types';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
-export const RecruitInputTextForm = () => {
-  const [subjectValue, setSubjectValue] = useState('');
+export const RecruitInputTextForm = ({ setTitle, setDescription }: DescriptionInputProps) => {
+  const { value, setValue } = setTitle;
   const [textAlign, setTextAlign] = useState('left');
   const [fontWeight, setFontWeight] = useState('normal');
-  const [descriptionValue, setDescriptionValue] = useState('');
+  const { descriptionValue, setDescriptionValue } = setDescription;
 
   const toolbarOptions = [
     ['bold', 'italic', 'underline', 'strike'], // toggled buttons
@@ -30,8 +30,14 @@ export const RecruitInputTextForm = () => {
     ['clean'], // remove formatting button
   ];
 
+  // const { value, setValue } = setTextInput;
+
+  // const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setValue(event.target.value);
+  // };
+
   const handleSubjectChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSubjectValue(e.target.value);
+    setValue(e.target.value);
   };
 
   const handleDescriptionChange = (value: string) => {
@@ -43,7 +49,7 @@ export const RecruitInputTextForm = () => {
       <S.SubjectInput
         type="text"
         placeholder="글 제목을 입력해주세요!"
-        value={subjectValue}
+        value={value}
         onChange={handleSubjectChange}
       />
       <S.StyledReactQuill
@@ -53,7 +59,6 @@ export const RecruitInputTextForm = () => {
         modules={{ toolbar: toolbarOptions }}
         style={{ height: '300px' }}
       />
-      <S.Button type="submit">Add</S.Button>
     </S.Wrapper>
   );
 };

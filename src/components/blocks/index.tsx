@@ -1,7 +1,5 @@
 export * from './Header';
 export * from './Carousel';
-export * from './ProjectCardList';
-export * from './ProjectCardListHeader';
 export * from './RecruitModalBlock';
 export * from './RecruitMentListHeader';
 export * from './ScrollCatcher';

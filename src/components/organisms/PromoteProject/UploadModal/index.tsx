@@ -55,7 +55,6 @@ export function UploadModal() {
             title="프로젝트 공유"
             description="아래에 있는 양식에 따라 깃허브 링크를 등록해주세요 ❤️"
           />
-
           <ModalForm>
             <ModalInputLabel label="프로젝트명">
               <TextInput placeholder="예시 - What Project You Want" setTextInput={setTitle} />

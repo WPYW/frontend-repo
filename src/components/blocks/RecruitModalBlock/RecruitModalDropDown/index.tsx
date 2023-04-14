@@ -6,12 +6,14 @@ export function RecruitModalDropDown({
   options,
   placeholder,
   description,
+  setDropdownInput,
 }: RecruitModalDropDownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
   const handleOptionSelect = (option: string) => {
     setSelectedOption(option);
     setIsOpen(false);
+    setDropdownInput.setValue(option);
   };
 
   return (

@@ -4,7 +4,7 @@ import reactLogo from '@/assets/logo-react.svg';
 import springLogo from '@/assets/logo-spring.svg';
 import ec2Logo from '@/assets/logo-ec2.svg';
 import jsLogo from '@/assets/logo-js.svg';
-import { BaseButton, NavigationItem, SearchBar } from '@/components/atoms';
+import { NavigationItem, SearchBar } from '@/components/atoms';
 import { IProjectListHeaderProps } from './index.types';
 import { useDispatch } from 'react-redux';
 import { recruituploadModalOpen } from '@/stores/slices/recruitModalSlice';
@@ -72,7 +72,7 @@ export function RecruitmentListHeader({ ordering, setParams }: IProjectListHeade
             기타
           </NavigationItem>
         </S.NavigationWrapper>
-        <BaseButton onClick={() => dispatch(recruituploadModalOpen())}>모달 테스트</BaseButton>
+        <S.Button onClick={() => dispatch(recruituploadModalOpen())}>모집하기</S.Button>
       </S.SubWrapper>
       <SearchBar
         placeholder="최고의 팀원을 찾아보세요~"
