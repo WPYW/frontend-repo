@@ -30,9 +30,9 @@ export const StyledDatePicker = styled(DatePicker)`
   border-radius: 4px;
   padding: 10px;
   font-size: 14px;
-  color: #333;
-  background-color: #fff;
+  background-color: transparent;
   font-family: 'Poppins', sans-serif;
+  font-weight: bold;
   width: 600px;
   &:hover {
     border-color: #c6c6c6;

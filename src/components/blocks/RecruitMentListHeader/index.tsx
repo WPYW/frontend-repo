@@ -72,7 +72,7 @@ export function RecruitmentListHeader({ ordering, setParams }: IProjectListHeade
             기타
           </NavigationItem>
         </S.NavigationWrapper>
-        <S.Button onClick={() => dispatch(recruituploadModalOpen())}>모달 테스트</S.Button>
+        <S.Button onClick={() => dispatch(recruituploadModalOpen())}>모집하기</S.Button>
       </S.SubWrapper>
       <SearchBar
         placeholder="최고의 팀원을 찾아보세요~"

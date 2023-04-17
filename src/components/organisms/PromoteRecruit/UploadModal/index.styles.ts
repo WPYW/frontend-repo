@@ -19,7 +19,7 @@ export const SubWrapper = styled.div`
 export const HeaderWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
 
   gap: 20px;
 `;
@@ -27,16 +27,14 @@ export const HeaderWrapper = styled.div`
 export const HeaderDropdownsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: fit-content;
+  width: 100%;
   gap: 25px;
 `;
 
 export const HeaderInputsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: fit-content;
-
+  width: 400px;
   gap: 20px;
   border-bottom: 1px solid #ff9b25;
   > *:not(:last-child) {
@@ -63,6 +61,7 @@ export const BodyInputsWrapper = styled.div`
 export const FooterWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 20px;
 `;
 
 export const FooterInputsWrapper = styled.div`
