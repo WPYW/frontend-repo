@@ -30,9 +30,10 @@ export default function App() {
             {background && <Route path="/recruits/:id" element={<RecruitProjectDetailModal />} />}
           </Route>
         </Routes>
-        {state?.backgroundLocation && (
+        {background && (
           <Routes>
             <Route path="/projects/:id" element={<PromoteProjectDetailModal />} />
+            <Route path="/recruits/:id" element={<RecruitProjectDetailModal />} />
           </Routes>
         )}
       </Suspense>
