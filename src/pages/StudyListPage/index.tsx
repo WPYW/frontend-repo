@@ -4,7 +4,7 @@ import { IParams } from './index.types';
 
 import { ScrollCatcher, SideBar } from '@/components/blocks';
 
-import { LoadingDots } from '@/components';
+import { LoadingDots } from '@/components/atoms';
 
 import StudyCardList from '@/components/blocks/StudyCardList';
 import { useGetStudyList } from './useGetStudyList';
@@ -15,7 +15,7 @@ export default function StudyListPage() {
 
   const { studys, getNextPageDetector, isLoading } = useGetStudyList(params);
 
-  fetch('/study', { method: 'get' })
+  fetch('/studys', { method: 'get' })
     .then((response) => response.json())
     .then((data) => console.log(data));
   return (

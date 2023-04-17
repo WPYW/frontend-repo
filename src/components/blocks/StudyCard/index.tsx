@@ -18,8 +18,7 @@ export function StudyCard({ studys }: CardProps) {
     contactInfo,
     views,
     studyMember,
-    startDate,
-    endDate,
+    created,
     deadline,
     remote,
   } = studys;
@@ -47,11 +46,14 @@ export function StudyCard({ studys }: CardProps) {
         </S.Description>
       </S.CardBodyWrapper>
       <S.CardFooterWrapper>
-        <S.Created>{startDate}</S.Created>
-
+        <S.Created>{created}</S.Created>
         <div style={{ display: 'flex', gap: '10px' }}>
-          <IconWithCount iconSrc={viewsIconPath} count={views} />
-          <IconWithCount iconSrc={usersIconPath} count={studyMember} />
+          <IconWithCount count={views}>
+            <S.Views />
+          </IconWithCount>
+          <IconWithCount count={studyMember}>
+            <S.Likes />
+          </IconWithCount>
         </div>
       </S.CardFooterWrapper>
     </S.Wrapper>

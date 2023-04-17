@@ -6,29 +6,28 @@ import { BACKEND_API_URL } from '@/common/url';
 import { SideBar } from './SideBar';
 
 interface IDetail {
+  id: string;
   title: string;
   description: string;
-
-  dday: number;
+  deadline: string;
   member: number;
   positions: string[];
   skills: string[];
-
-  contact: string;
+  contactInfo: string;
   likes: number;
-
   comments: string[];
 }
 
-export function RecruitDetail() {
+export function DetailModal() {
   const [detail, setDetail] = useState<IDetail>({
+    id: '',
     title: '',
     description: '',
-    dday: 0,
+    deadline: '',
     member: 0,
     positions: [],
     skills: [],
-    contact: '',
+    contactInfo: '',
     likes: 0,
     comments: [],
   });
@@ -47,7 +46,7 @@ export function RecruitDetail() {
           <S.RecruitInfoCard>
             <S.CardItem>
               <S.ItemLabel>마감일</S.ItemLabel>
-              <S.ItemValue>{detail.dday}</S.ItemValue>
+              <S.ItemValue>{detail.deadline}</S.ItemValue>
             </S.CardItem>
             <S.CardItem>
               <S.ItemLabel>모집인원</S.ItemLabel>
@@ -68,7 +67,7 @@ export function RecruitDetail() {
           </S.RecruitInfoCard>
           <CommentForm comments={detail.comments} addComment={() => null} />
         </S.SubWrapper>
-        <SideBar contact={detail.contact} likes={detail.likes} />
+        <SideBar contact={detail.contactInfo} likes={detail.likes} />
       </S.Wrapper>
     </Modal>
   );

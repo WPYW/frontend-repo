@@ -10,10 +10,9 @@ export interface CardProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
     contactInfo: string;
     views: number;
     studyMember: number;
-    startDate: string;
-    endDate: string;
     deadline: string;
     remote: boolean;
+    created: string;
   };
 }
 

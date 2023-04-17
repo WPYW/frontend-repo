@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 import { DescriptionProps } from './index.types';
+import { ReactComponent as ViewsIcon } from '@/assets/views-icon.svg';
+import { ReactComponent as LikesIcon } from '@/assets/likes-icon.svg';
 
 export const Wrapper = styled.a`
   all: unset;
@@ -100,4 +102,16 @@ export const Dday = styled.h2`
   font-size: 15px;
   font-weight: bold;
   text-align: center;
+`;
+
+export const Views = styled(ViewsIcon)`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+export const Likes = styled(LikesIcon)`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;

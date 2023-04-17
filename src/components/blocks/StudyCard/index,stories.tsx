@@ -21,9 +21,8 @@ DefaultCard.args = {
     studyHashtag: ['React', 'TypeScript', '프론트엔드', 'AWS', 'Next'],
     views: 320,
     studyMember: 2,
-    startDate: '2023-02-14',
     remote: false,
-    endDate: '2023-02-15',
+    created: '2023-04-12',
     deadline: 'D - 30',
   },
 };
@@ -40,9 +39,8 @@ CardWithDescriptionOverlay.args = {
     studyHashtag: ['React', 'TypeScript', '프론트엔드', 'AWS', 'Next'],
     views: 320,
     studyMember: 2,
-    startDate: '2023-02-14',
     remote: false,
-    endDate: '2023-02-15',
     deadline: 'D - 30',
+    created: '2023-02-14',
   },
 };

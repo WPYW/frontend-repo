@@ -1,7 +1,6 @@
 import { rest } from 'msw';
 import { BACKEND_API_URL } from '@/common/url';
 import { recruitDetails, recruits } from './dummyData';
-import { RecruitmentListHeader } from '@/components/blocks';
 
 const recruitmentUploadHandlers = rest.post(`/recruits`, async (req, res, ctx) => {
   return res(ctx.status(201), ctx.delay(4000), ctx.json(req.body));

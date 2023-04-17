@@ -7,10 +7,9 @@ export interface StudyData {
   contactInfo: string;
   views: number;
   studyMember: number;
-  startDate: string;
-  endDate: string;
   deadline: string;
   remote: boolean;
+  created: string;
 }
 
 export interface CardListProps {

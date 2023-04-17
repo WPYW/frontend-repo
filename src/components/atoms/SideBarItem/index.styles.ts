@@ -21,5 +21,6 @@ export const Wrapper = styled.button<Pick<SideBarItemProps, 'clicked'>>`
     background-color: var(--side-bar-item-background-color-hover);
   }
 
-  background-color: ${(props) => props.clicked && 'var(--side-bar-item-background-color-hover)'};
+  background-color: ${(props) =>
+    props.clicked ? 'var(--side-bar-item-background-color-hover)' : 'none'};
 `;

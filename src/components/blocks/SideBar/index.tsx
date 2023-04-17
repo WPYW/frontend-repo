@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import * as S from './index.styles';
 
 import { SideBarItem } from '@/components/atoms';
 
 export function SideBar() {
   const [$headerClicked, setHeaderClicked] = useState(false);
-  const [clickedSideBarItem, setClickedSideBarItem] = useState('promote');
 
   const navigate = useNavigate();
+
+  const [searchParams, setSearchParams] = useSearchParams();
 
   return (
     <S.Wrapper>
@@ -19,21 +20,15 @@ export function SideBar() {
       <S.SubWrapper $headerClicked={$headerClicked}>
         <SideBarItem
           id="promote"
-          clicked={clickedSideBarItem === 'promote'}
-          onClick={(event) => {
-            setClickedSideBarItem((event.target as HTMLElement).id);
-            navigate('/');
-          }}
+          clicked={searchParams.get('purpose') === 'promote'}
+          onClick={() => navigate('/?purpose=promote')}
         >
           💻 프로젝트 홍보
         </SideBarItem>
         <SideBarItem
-          id="recruit"
-          clicked={clickedSideBarItem === 'recruit'}
-          onClick={(event) => {
-            setClickedSideBarItem((event.target as HTMLElement).id);
-            navigate('/');
-          }}
+          id="recruits"
+          clicked={searchParams.get('purpose') === 'recruits'}
+          onClick={() => navigate('/recruits?purpose=recruits')}
         >
           🧑🏻‍💻 프로젝트 / 스터디 모집
         </SideBarItem>
