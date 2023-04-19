@@ -14,7 +14,7 @@ export default function RecruitListPage() {
   const [params, setParams] = useState<IParams>({ ordering: 'created', search: '', page: 1 });
 
   const { recruits, getNextPageDetector, isLoading } = useGetRecruitList(params);
-  console.log(recruits);
+
   return (
     <S.Wrapper>
       <S.ColumnLeft>

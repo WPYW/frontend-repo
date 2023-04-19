@@ -46,7 +46,7 @@ export function DetailModal() {
       isOpen={isOpen}
       modalCloseHandler={() => {
         dispatch(promoteProjectDetailModalClose());
-        navigate('/');
+        navigate('/?purpose=promote');
       }}
     >
       <S.Wrapper>
