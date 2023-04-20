@@ -1,8 +1,7 @@
+import { LoadingDots } from '@/components/atoms';
 import React from 'react';
 
 import styled from 'styled-components';
-
-import { LoadingDots } from '../../LoadingDots';
 
 interface IScrollCatcher {
   target: React.MutableRefObject<null>;

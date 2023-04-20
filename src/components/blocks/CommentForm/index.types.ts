@@ -5,6 +5,6 @@ interface IComment {
 }
 
 export interface CommentFormProps {
-  comments: IComment[] | string[];
+  comments: IComment[];
   addComment: (comment: FormData) => void;
 }
