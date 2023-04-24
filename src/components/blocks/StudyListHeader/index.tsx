@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import * as S from './index.styles';
 
-import { BaseButton, NavigationItem, SearchBar } from '@/components/atoms';
-import { modalOpen } from '@/RTK/slices/modalSlice';
+import { NavigationItem, SearchBar } from '@/components/atoms';
 import { useDispatch } from 'react-redux';
 import { IProjectListHeaderProps } from './index.types';
 
@@ -35,7 +34,7 @@ export function StudyListHeader({ ordering, setParams }: IProjectListHeaderProps
             기타
           </NavigationItem>
         </S.NavigationWrapper>
-        <BaseButton onClick={() => dispatch(modalOpen())}>스터디 모집</BaseButton>
+        <S.Button>스터디 모집</S.Button>
       </S.SubWrapper>
       <SearchBar
         placeholder="최고의 팀원을 찾아보세요~"

@@ -59,3 +59,8 @@ export const Logo = styled(LogoImage)`
     height: 1.5rem;
   }
 `;
+
+export const ToggleLoginButtonWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;

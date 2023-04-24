@@ -9,7 +9,7 @@ import './index.css';
 import { SideBar } from './SideBar';
 
 import { LoadingDots } from '@/components/atoms';
-import { Hashtags, RecruitModal, CommentForm } from '@/components/blocks';
+import { Hashtags, Modal, CommentForm } from '@/components/blocks';
 import { BACKEND_API_URL } from '@/common/url';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -42,7 +42,7 @@ export function DetailModal() {
   const navigate = useNavigate();
 
   return (
-    <RecruitModal
+    <Modal
       isOpen={isOpen}
       modalCloseHandler={() => {
         dispatch(promoteProjectDetailModalClose());
@@ -64,6 +64,6 @@ export function DetailModal() {
           />
         </S.SubWrapper>
       </S.Wrapper>
-    </RecruitModal>
+    </Modal>
   );
 }
