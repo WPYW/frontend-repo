@@ -5,16 +5,27 @@ import { SideBar } from '@/components/blocks';
 
 import { CardList } from '@/components/organisms/PromoteProject';
 
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useNavigate, useSearchParams } from 'react-router-dom';
+import { BACKEND_API_URL } from '@/common/url';
 
 export default function MainPage() {
-  const authorizationCode = useLocation().search.replace('?code=', '');
+  const [searchParams] = useSearchParams();
+
+  const navigate = useNavigate();
+
   useEffect(() => {
-    fetch(`http://localhost/api/v1/accounts/kakao/login/callback?code=${authorizationCode}`)
-      .then((res) => res.json())
-      .then((res) => console.log(res));
-    console.log(authorizationCode);
-  }, [authorizationCode]);
+    const authorizationCode = searchParams.get('code');
+
+    if (authorizationCode !== null) {
+      fetch(`${BACKEND_API_URL}/accounts/kakao/callback/?code=${authorizationCode}`)
+        .then((res) => res.json())
+        .then((res) => {
+          const { access: accessToken, refresh: refreshToken } = res.token;
+          console.log(accessToken, refreshToken);
+        })
+        .then(() => navigate('/'));
+    }
+  }, [searchParams]);
 
   return (
     <S.Wrapper>

@@ -17,11 +17,9 @@ export function CardList() {
     <>
       <CardListHeader ordering={params.ordering} setParams={setParams} />
       <S.Wrapper>
-        {isLoading ? (
-          <LoadingDots />
-        ) : (
-          projects.map((project, index) => <Card key={index} project={project} />)
-        )}
+        {projects.map((project, index) => (
+          <Card key={index} project={project} />
+        ))}
       </S.Wrapper>
       <ScrollCatcher getNextPageDetector={getNextPageDetector} />
     </>

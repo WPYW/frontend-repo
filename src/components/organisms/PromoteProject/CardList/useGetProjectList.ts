@@ -37,6 +37,7 @@ export function useGetProjectList(params: IParams) {
   const getNextPageDetector = {
     target: target,
     state: {
+      isLoading: isLoading,
       isFetching: isFetching,
       isFetchingNextPage: isFetchingNextPage,
       hasNextPage: hasNextPage,
