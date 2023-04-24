@@ -105,15 +105,15 @@ const fetchEncodedReadme = async (githubLink: string) => {
 const sendProjectToServer = async (project: IProject) => {
   const form = new FormData();
 
-  form.append('projectTitle', project.projectTitle);
-  form.append('projectDescription', project.projectDescription);
+  form.append('title', project.projectTitle);
+  form.append('description', project.projectDescription);
   form.append('githubLink', project.githubLink);
   form.append('demositeLink', project.demositeLink);
   for (const image of project.previewImages) {
-    form.append('previewImages', image);
+    form.append('thumbnails', image);
   }
   for (const hashtag of project.projectHashtag) {
-    form.append('projectHashtag', hashtag);
+    form.append('hashtags', hashtag);
   }
 
   const response = await fetch(`${BACKEND_API_URL}/projects/`, {

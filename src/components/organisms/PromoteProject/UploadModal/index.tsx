@@ -31,7 +31,8 @@ export function UploadModal() {
     uploadProject,
   } = useProjectUpload();
 
-  const submitProject = async () => {
+  const submitProject = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
     try {
       await uploadProject();
       dispatch(uploadModalClose());
