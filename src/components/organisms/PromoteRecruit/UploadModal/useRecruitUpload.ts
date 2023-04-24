@@ -74,7 +74,6 @@ export function useRecruitUpload() {
 
   const uploadRecruit = async () => {
     recruitUploadFormValidationCheck(recruit); // 업로드 폼 validation 체크
-
     await sendRecruitToServer(recruit); //올바른 리포지토리 링크이면 프로젝트 업로드
   };
 
@@ -86,7 +85,7 @@ export function useRecruitUpload() {
     setHashtags,
     setRecruitMember,
     setRecruitType,
-    uploadProject: uploadRecruit,
+    uploadRecruit,
   };
 }
 
@@ -100,19 +99,23 @@ const recruitUploadFormValidationCheck = (recruit: IRecruit) => {
 const sendRecruitToServer = async (recruit: IRecruit) => {
   const form = new FormData();
 
-  form.append('recruitTitle', recruit.recruitTitle);
-  form.append('recruitDescription', recruit.recruitDescription);
-  form.append('contactInfo', recruit.contactInfo);
-  form.append('recruitMember', recruit.recruitMember);
-  form.append('created', recruit.created);
+  form.append('title', recruit.recruitTitle);
+  form.append('description', recruit.recruitDescription);
+  form.append('member', recruit.recruitMember);
+  form.append('contact', recruit.contactInfo);
+  // form.append('end', recruit.created); //이거 end로 리팩토링
+  form.append('deadline', 'D-day 30');
+  form.append('shut', 'true');
+  // form.append('password', '123');
+  // form.append('shut', 'true');
   for (const hashtag of recruit.recruitTech) {
-    form.append('recruitHashtag', hashtag);
+    form.append('skills', hashtag);
   }
   for (const type of recruit.recruitType) {
-    form.append('recruitType', type);
+    form.append('position', type);
   }
 
-  const response = await fetch(`${BACKEND_API_URL}/recruits/`, {
+  const response = await fetch(`${BACKEND_API_URL}/recruits`, {
     method: 'POST',
     body: form,
   });
