@@ -5,6 +5,12 @@ import { CommentForm, Hashtags, Modal } from '@/components/blocks';
 import { BACKEND_API_URL } from '@/common/url';
 import { SideBar } from './SideBar';
 
+interface IComment {
+  nickName: string;
+  created: string;
+  content: string;
+}
+
 interface IDetail {
   id: string;
   title: string;
@@ -15,7 +21,7 @@ interface IDetail {
   skills: string[];
   contactInfo: string;
   likes: number;
-  comments: string[];
+  comments: IComment[];
 }
 
 export function DetailModal() {

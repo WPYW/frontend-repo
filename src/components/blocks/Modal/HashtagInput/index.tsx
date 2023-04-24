@@ -12,6 +12,7 @@ export function HashtagInput({ setHashtagInput, ...rest }: HashtagInputProps) {
   const addHashtagHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (hashtag === '') return;
     if (event.key === 'Enter') {
+      event.preventDefault();
       addHashtag(hashtag);
       setHashtag('');
     }
@@ -37,8 +38,11 @@ export function HashtagInput({ setHashtagInput, ...rest }: HashtagInputProps) {
       ))}
       <S.Input
         value={hashtag}
-        onChange={(event) => setHashtag(event.target.value)}
-        onKeyUp={addHashtagHandler}
+        onChange={(event) => {
+          if (event.target.value === ' ') return;
+          setHashtag(event.target.value);
+        }}
+        onKeyDown={addHashtagHandler}
         {...rest}
       />
     </S.Wrapper>
