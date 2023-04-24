@@ -29,11 +29,13 @@ export function UploadModal() {
     setRecruitMember,
     setHashtags,
     setRecruitType,
+    uploadRecruit,
   } = useRecruitUpload();
 
-  const submitRecruit = async () => {
+  const submitRecruit = async (e: React.MouseEvent) => {
+    e.preventDefault();
     try {
-      // await uploadRecruit();
+      await uploadRecruit();
       dispatch(recruituploadModalClose());
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: { message: string } | any) {
